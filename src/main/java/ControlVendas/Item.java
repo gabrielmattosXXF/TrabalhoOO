@@ -15,26 +15,25 @@ public class Item
      
      private String nomeItem;
      private double precoItem;
-     private int quantItem; //a quantidade de intens vai ser armazenada em um Map, com chave sendo o objeto item e valor sendo sua quantidade no estoque?
-     //ou item guardará a quantidade de itens no estoque e o estoque será formado por um list ou um set de itens?
+     private int quantItem=0; 
      
      public Item(String nome, double preco, int quant)
      {
-          nomeItem=nome;
-          precoItem=preco;
-          quantItem=quant;
+          this.nomeItem=nome;
+          this.precoItem=preco;
+          this.quantItem=quant;
      }
      
      public Item()
      {
           System.out.println("Informe o nome do item: ");
-          nomeItem=teclado.nextLine();
+          this.nomeItem=teclado.nextLine();
           
           System.out.println("Informe o preço do item: ");
-          precoItem=teclado.nextDouble();
+          this.precoItem=teclado.nextDouble();
           
           System.out.println("Informe a quantidade do item: ");
-          quantItem=teclado.nextInt();
+          this.quantItem=teclado.nextInt();
      }
      
      public String getNome()
@@ -68,9 +67,9 @@ public class Item
      
      public void setQuant(int quant)
      {
-         if(quant>0)
+         if(quantItem+quant>=0)
          {
-             quantItem=quant;
+             quantItem+=quant;
          }
          else
          {
@@ -79,4 +78,11 @@ public class Item
              setPreco(quant);
          }
      }
+
+    @Override
+    public String toString() {
+        return "Item{" +"Nome=" + nomeItem + ", preco=" + precoItem + ", quantidade em estoque=" + quantItem + '}';
+    }
+     
+     
 }
