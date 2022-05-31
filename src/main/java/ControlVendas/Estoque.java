@@ -43,6 +43,16 @@ public class Estoque
         }
     }
     
+    public static boolean veirificaEStoqueVazio()
+    {
+        if(estoqueMercadoria.isEmpty())
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    
     public static boolean verificaDispoProd(String nome)
     {
         if(estoqueMercadoria.isEmpty())
@@ -59,6 +69,21 @@ public class Estoque
         }
         
         
+    }
+    
+    public static boolean verificaProdInicializado(String nome)
+    {
+        int i;
+        
+        for(i=0; i<estoqueMercadoria.size(); i++)
+        {
+            if(estoqueMercadoria.get(i).getNome().equalsIgnoreCase(nome))
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
      
     public static Item retornaItem(String nome)
@@ -102,5 +127,15 @@ public class Estoque
             System.out.println("Produto "+(i+1)+" -> "+produto);
             i++;
         }
+    }
+    
+    public static void setPrecoProd(String nome, double preco)
+    {
+        estoqueMercadoria.get(retornaIndexNome(nome)).setPreco(preco);
+    }
+    
+    public static void setNomeProd(String nome1, String nome2)
+    {
+        estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
     }
 }

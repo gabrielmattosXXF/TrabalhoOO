@@ -19,7 +19,7 @@ public class Item
      
      public Item(String nome, double preco, int quant)
      {
-          this.nomeItem=nome;
+          this.nomeItem=nome.toLowerCase();
           this.precoItem=preco;
           this.quantItem=quant;
      }
@@ -27,7 +27,7 @@ public class Item
      public Item()
      {
           System.out.println("Informe o nome do item: ");
-          this.nomeItem=teclado.nextLine();
+          this.nomeItem=teclado.nextLine().toLowerCase();
           
           System.out.println("Informe o preço do item: ");
           this.precoItem=teclado.nextDouble();
@@ -78,10 +78,15 @@ public class Item
              setPreco(quant);
          }
      }
+     
+     public void setNome(String nome)
+     {
+         this.nomeItem=nome.toLowerCase();
+     }
 
     @Override
     public String toString() {
-        return "Item{" +"Nome=" + nomeItem + ", preco=" + precoItem + ", quantidade em estoque=" + quantItem + '}';
+        return "Nome=" + nomeItem + ", preco=" + precoItem + ", quantidade em estoque=" + quantItem+".";
     }
      
      
