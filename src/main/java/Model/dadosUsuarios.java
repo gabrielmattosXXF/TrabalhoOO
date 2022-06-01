@@ -9,10 +9,24 @@ import java.util.*;
  *
  * @author Gabriel Mattos
  */
-public class dadosUsuarios
+public class DadosUsuarios
 {
     public static List<Usuario> dadosLogin = new ArrayList<>();
     
+    static
+    {
+        if(dadosLogin.isEmpty())
+        {
+             dadosLogin.add(new Administrador("Luiz Gustavo Ferreira Nazareth"," luizgustavonazareth4@gmail.com", "12345678"));
+             dadosLogin.add(new Administrador("Gabriel Mattos"," gabrielmattos@gmail.com", "12345678"));
+             dadosLogin.add(new Administrador("Augusto de Filippo Cavalini"," augustocavalini@gmail.com", "12345678"));
+             dadosLogin.add(new Administrador("Yuri Freitas Toledo"," yuritoledo@gmail.com", "12345678"));
+        }
+        
+        
+        
+    }
+            
     public static boolean validaLogin(String login, String senha)
     {
         for(Usuario user : dadosLogin)
@@ -27,3 +41,5 @@ public class dadosUsuarios
     
     
 }
+
+
