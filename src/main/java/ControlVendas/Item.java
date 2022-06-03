@@ -15,12 +15,14 @@ public class Item
      
      private String nomeItem;
      private double precoItem;
+     private double precoDeCompra;
      private int quantItem=0; 
      
-     public Item(String nome, double preco, int quant)
+     public Item(String nome, double preco,double precoCompra, int quant)
      {
           this.nomeItem=nome.toLowerCase();
           this.precoItem=preco;
+          this.precoDeCompra=precoCompra;
           this.quantItem=quant;
      }
      
