@@ -62,5 +62,16 @@ public class DadosUsuario
     {
         dadosLogin.add(user);
     }
+    public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)
+    {
+        for(Usuario user : dadosLogin)
+        {
+            if(user.verificaLogin(login, senha))
+            {
+                return user;
+            }
+        }
+
+    }
     
 }
