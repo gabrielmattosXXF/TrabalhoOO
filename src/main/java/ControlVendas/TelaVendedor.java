@@ -17,7 +17,7 @@ public class TelaVendedor {
     public TelaVendedor(Vendedor v)
     {
         Scanner teclado = new Scanner(System.in);
-        String options[] = {"Realiza Venda", "Consultar Produto", "Criar Ordem de Serviço", "Cancelar"};
+        String options[] = {"Realizar Venda", "Consultar Produto", "Criar Ordem de Serviço", "Cancelar"};
         
         JOptionPane.showMessageDialog(null, "bem vindo a tela do Vendedor", "tela do Vendedor", JOptionPane.INFORMATION_MESSAGE, null);
         
@@ -31,26 +31,27 @@ public class TelaVendedor {
             {
                 case 0:
                 {                    
-                    System.out.println("Informe o nome do item: ");
-                    String nomeProduto=teclado.nextLine();
-                    System.out.println("Informe a quantidade Vendida: ");
-                    int qntd=teclado.nextInt();
+                    //tem que ser criado um loop para computar a venda
                     
-                    if(!Estoque.realizaVenda(nomeProduto,qntd,v))
-                    {
-                        System.out.println("Quantidade ou produto inválido.");
-                    }
+                    String nomeProduto=JOptionPane.showInputDialog("Informe o nome do item: ");
+                    int qntd= Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade vendida: "));
+                    
+                    Venda.realizaVenda(nomeProduto, qntd, v);
+                    
+                    break;
                 }
                 case 1:
                 {
                     //System.out.println("Informe o nome do item: ");
                     //String nomeProduto=teclado.nextLine();
+                    //System.out.println(Estoque.retornaItem(nomeProduto));
                     String nomeProduto=JOptionPane.showInputDialog("Informe o nome do item: ");
-                    System.out.println(Estoque.retornaItem(nomeProduto));
+                    JOptionPane.showConfirmDialog(null, Estoque.retornaItem(nomeProduto));
+                    break;
                 }
                 case 2:
                 {
-                    
+                    break;
                 }
                 case 3:
                 {

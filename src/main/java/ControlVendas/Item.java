@@ -58,20 +58,6 @@ public class Item
          return quantItem;
      }
      
-     public void setPreco(double preco)
-     {
-         if(preco>0)
-         {
-             precoItem=preco;
-         }
-         else
-         {
-             System.out.println("Preço inválido. Digite o ajuste novamente.");
-             preco=teclado.nextDouble();
-             setPreco(preco);
-         }
-     }
-     
      public void setQuant(int quant)
      {
          if(quantItem+quant>=0)
@@ -86,6 +72,20 @@ public class Item
          }
      }
      
+     public void setPreco(double preco)
+     {
+         if(preco>0)
+         {
+             precoItem=preco;
+         }
+         else
+         {
+             System.out.println("Preço inválido. Digite o ajuste novamente.");
+             preco=teclado.nextDouble();
+             setPreco(preco);
+         }
+     }
+     
      public void setNome(String nome)
      {
          this.nomeItem=nome.toLowerCase();
@@ -93,7 +93,7 @@ public class Item
 
     @Override
     public String toString() {
-        return "Nome=" + nomeItem + ", preco=" + precoItem + ", quantidade em estoque=" + quantItem+".";
+        return "Nome =" + nomeItem + ", preco =" + precoItem + ", quantidade em estoque =" + quantItem+".";
     }
      
      

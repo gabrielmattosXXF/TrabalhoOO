@@ -41,7 +41,7 @@ public class Estoque
         if(verificaDispoProd(nome))
         {
             //estoqueMercadoria.get(retornaIndexNome(nome)).getQuant();
-            estoqueMercadoria.get(retornaIndexNome(nome)).setQuant(-quant);
+            estoqueMercadoria.get(retornaIndexNome(nome)).setQuant((-quant));
         }
     }
     
@@ -75,8 +75,17 @@ public class Estoque
     
     public static boolean verificaProdInicializado(String nome)
     {
-        int i;
+        for(Item prod : estoqueMercadoria)
+        {
+            if(prod.getNome().equalsIgnoreCase(nome))
+            {
+                return true;
+            }
+        }
         
+        return false;
+        
+        /*
         for(i=0; i<estoqueMercadoria.size(); i++)
         {
             if(estoqueMercadoria.get(i).getNome().equalsIgnoreCase(nome))
@@ -86,6 +95,9 @@ public class Estoque
         }
         
         return false;
+        */
+        
+        
     }
      
     public static Item retornaItem(String nome)
@@ -141,6 +153,7 @@ public class Estoque
         estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
     }
     
+    /*
     public static boolean realizaVenda(String nome,int qntd,Vendedor v)
     {
         if(verificaDispoProd(nome))
@@ -159,4 +172,7 @@ public class Estoque
         else
             return false;
     }
+    */
+    
+    
 }

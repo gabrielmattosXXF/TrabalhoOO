@@ -21,7 +21,7 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Gabriel Mattos", "gabrielmattos@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
-             //dadosLogin.add(new Administrador("Yuri Freitas Toledo", "sim", "nao"));
+             dadosLogin.add(new Administrador("ugas", "sim", "nao"));
         }
         
         
