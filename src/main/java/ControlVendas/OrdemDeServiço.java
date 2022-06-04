@@ -48,6 +48,6 @@ public class OrdemDeServiço {
     private double preco;
     
     
-    public Ordem
+    //public Ordem
     
 }

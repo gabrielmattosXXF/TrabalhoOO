@@ -4,12 +4,17 @@
  */
 package Model;
 
+import java.util.*;
+import ControlVendas.Item;
 /**
  *
  * @author Gabriel Mattos
  */
 public class Vendedor extends Usuario
 {
+    private List<Item> produtosVendidos=new ArrayList<>();
+    private double comissao=0;
+    
     public Vendedor(String nomeUsuario, String login, String senha)
     {
         super(nomeUsuario, login, senha, "Vendedor");
@@ -53,5 +58,13 @@ public class Vendedor extends Usuario
     @Override
     public String toString() {
         return "Vendedor "+getNomeUsuario();
+    }
+    
+    public void computaVenda(String nome, double preco, int qntd)
+    {        
+        Item p1=new Item(nome,preco,qntd);
+        
+        produtosVendidos.add(p1);
+        comissao+=p1.getPreco()*0.05;
     }
 }

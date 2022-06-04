@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class DadosUsuario
 {
-    public static List<Usuario> dadosLogin = new ArrayList<>();
+    private static List<Usuario> dadosLogin = new ArrayList<>();
     
     static
     {
@@ -58,6 +58,9 @@ public class DadosUsuario
             System.out.println(user);
         }
     }
-    
+    public static void adicionaLogin(Usuario user)
+    {
+        dadosLogin.add(user);
+    }
     
 }

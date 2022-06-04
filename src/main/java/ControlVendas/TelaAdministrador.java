@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package ControlVendas;
+import Model.Vendedor;
+import Model.DadosUsuario;
 
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -20,7 +22,7 @@ public class TelaAdministrador {
         
         JOptionPane.showMessageDialog(null, "bem vindo a tela do administrador", "tela do administrador", JOptionPane.INFORMATION_MESSAGE, null);
         
-        String options[] = {"Adiciona ao estoque", "Imprime estoque", "Administrar produto", "Cancelar"};
+        String options[] = {"Adiciona ao estoque", "Imprime estoque", "Administrar produto","Contratar Vendedor", "Cancelar"};
         
         //JOptionPane.showInputDialog(null, opcoes, "Ações do administrador", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
         
@@ -105,7 +107,7 @@ public class TelaAdministrador {
                             
                             break;
                         }
-                        
+                       
                         case 4:
                         {
                             break;
@@ -115,6 +117,20 @@ public class TelaAdministrador {
                 }
 
                 case 3:
+                {
+                    System.out.println("Informe o nome de Usuario: ");
+                    String nomeUsuario=teclado.nextLine();
+                    System.out.println("Informe o login: ");
+                    String login=teclado.nextLine();
+                    System.out.println("Informe a senha: ");
+                    String senha=teclado.nextLine();
+                    
+                    Vendedor v=new Vendedor(nomeUsuario,login,senha);
+                    DadosUsuario.adicionaLogin(v);
+                    break;
+                }
+                
+                case 4:
                 {
                     break;
                 }

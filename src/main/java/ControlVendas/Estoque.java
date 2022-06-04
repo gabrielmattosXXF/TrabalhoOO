@@ -4,6 +4,7 @@
  */
 package ControlVendas;
 
+import Model.Vendedor;
 import java.util.*;
 
 /**
@@ -39,6 +40,7 @@ public class Estoque
     {
         if(verificaDispoProd(nome))
         {
+            //estoqueMercadoria.get(retornaIndexNome(nome)).getQuant();
             estoqueMercadoria.get(retornaIndexNome(nome)).setQuant(-quant);
         }
     }
@@ -60,15 +62,15 @@ public class Estoque
             System.out.println("Estoque vazio!");
             return false;
         }
-        else
+        else if(verificaProdInicializado(nome))
         {
             if(estoqueMercadoria.get(retornaIndexNome(nome)).getQuant()>0)
                 return true;
             else
                 return false;
         }
-        
-        
+        else
+            return false;
     }
     
     public static boolean verificaProdInicializado(String nome)
@@ -137,5 +139,24 @@ public class Estoque
     public static void setNomeProd(String nome1, String nome2)
     {
         estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
+    }
+    
+    public static boolean realizaVenda(String nome,int qntd,Vendedor v)
+    {
+        if(verificaDispoProd(nome))
+        {
+            if(qntd>=estoqueMercadoria.get(retornaIndexNome(nome)).getQuant())
+            {
+                diminuiQuantidade(nome, qntd);
+                v.computaVenda(nome ,retornaItem(nome).getPreco(),qntd);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+            return false;
     }
 }
