@@ -4,7 +4,8 @@
  */
 package ControlVendas;
 import java.util.*;
-
+import javax.swing.JOptionPane;
+import java
 /**
  *
  * @author Gabriel Mattos
@@ -28,14 +29,19 @@ public class Item
      
      public Item()
      {
-          System.out.println("Informe o nome do item: ");
-          this.nomeItem=teclado.nextLine().toLowerCase();
+          //System.out.println("Informe o nome do item: ");
+          //this.nomeItem=teclado.nextLine().toLowerCase();
+          this.nomeItem=JOptionPane.showInputDialog(null,"informe o nome do item");
           
-          System.out.println("Informe o preço do item: ");
-          this.precoItem=teclado.nextDouble();
+          //System.out.println("Informe o preço do item: ");
+          //this.precoItem=teclado.nextDouble();
+          //this.precoItem=JOptionPane.showInputDialog(null,"informe o preço do Item");
+          this.precoItem = Double.parseDouble(JOptionPane.showInputDialog(null,"informe o preço do Item"));
+
+          //System.out.println("Informe a quantidade do item: ");
+          //this.quantItem=teclado.nextInt();
+          this.quantItem=Integer.parseInt(JOptionPane.showInputDialog(null,"informe a quantidade do Item"));
           
-          System.out.println("Informe a quantidade do item: ");
-          this.quantItem=teclado.nextInt();
      }
      
      public String getNome()
