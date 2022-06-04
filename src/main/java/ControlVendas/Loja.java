@@ -17,35 +17,66 @@ public class Loja
     {
         Scanner teclado = new Scanner(System.in);
         
-        String login=JOptionPane.showInputDialog(null, "Digite o seu login:");
-        String senha=JOptionPane.showInputDialog(null, "Digite a sua senha:");
+        String[] optionsInicial = {"Fazer Login", "Cancelar"};
         
+        JOptionPane.showMessageDialog(null, "Bem vindo à tela inicial", "Tela inicial", JOptionPane.INFORMATION_MESSAGE, null);
         
-        if(DadosUsuario.validaLogin(login, senha))
-        {   
-            
-            if(DadosUsuario.NivelAcessoLogin(login, senha) == "Administrador")
-            {
-                TelaAdministrador telaAdm = new TelaAdministrador();
-            }
-                //if(user.getNivelDeAcesso() == "Tecnico")
-                //{
-                    
-                //}
-                //if(user.getNivelDeAcesso() == "Vendedor")
-                //{
-                    
-                //}
-            //}
-        }
-        else
+        int option = 0;
+        
+        while(option != 1)
         {
-            //chamar outroJOptionPane pq o login ta errado ou o usuario nao ta cadastrado
+            option = JOptionPane.showOptionDialog(null, "Digite a opção desejada","Opções", JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, optionsInicial, optionsInicial[0]);
+            
+            switch(option)
+            {
+                case 0:
+                {                    
+                    String login=JOptionPane.showInputDialog(null, "Digite o seu login:");
+                    String senha=JOptionPane.showInputDialog(null, "Digite a sua senha:");
+                    
+                    if(DadosUsuario.validaLogin(login, senha))
+                    {   
+
+                        if(DadosUsuario.NivelAcessoLogin(login, senha) == "Administrador")
+                        {
+                            TelaAdministrador telaAdm = new TelaAdministrador();
+                        }
+                        else if(DadosUsuario.NivelAcessoLogin(login, senha) == "Tecnico")
+                        {
+
+                        }
+                        else if(DadosUsuario.NivelAcessoLogin(login, senha) == "Vendedor")
+                        {
+                            //Vendedor v = retornaUsuario();
+                            
+                            //TelaVendedor telaVend = new TelaVendedor(v);
+                        }
+                        
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, "Login ou senha incorretos.", "tela inicial", JOptionPane.INFORMATION_MESSAGE, null);
+                    }
+                    
+                }
+                case 1:
+                {
+                    break;
+                }
+            }
         }
-        
-        //no inicio do programa deve ser lido um login e uma senha
-        //vai ser verificado o nivel de acesso de login
-        //caso ele seja de administrador, será direcionado à página do administrador( representado pelo for abaixo)
-    
     }
 }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

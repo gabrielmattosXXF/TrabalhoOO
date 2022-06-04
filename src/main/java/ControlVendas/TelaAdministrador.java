@@ -4,6 +4,8 @@
  */
 package ControlVendas;
 import Model.Vendedor;
+import Model.Administrador;
+import Model.Tecnico;
 import Model.DadosUsuario;
 
 import java.util.*;
@@ -20,9 +22,9 @@ public class TelaAdministrador {
         
         Scanner teclado=new Scanner(System.in);
         
-        JOptionPane.showMessageDialog(null, "bem vindo a tela do administrador", "tela do administrador", JOptionPane.INFORMATION_MESSAGE, null);
+        JOptionPane.showMessageDialog(null, "Bem vindo a tela do administrador", "tela do administrador", JOptionPane.INFORMATION_MESSAGE, null);
         
-        String options[] = {"Adiciona ao estoque", "Imprime estoque", "Administrar produto","Contratar Vendedor", "Cancelar"};
+        String options[] = {"Adiciona ao estoque", "Imprime estoque", "Administrar produto","Administrar funcionários", "Cancelar"};
         
         //JOptionPane.showInputDialog(null, opcoes, "Ações do administrador", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
         
@@ -30,7 +32,7 @@ public class TelaAdministrador {
         
         
         // O while representa a tela do administrador
-        while(option!=3)
+        while(option!=4)
         {
             option = JOptionPane.showOptionDialog(null, "Informe a ação desejada", "Janela do administrador", JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
@@ -118,16 +120,47 @@ public class TelaAdministrador {
 
                 case 3:
                 {
-                    System.out.println("Informe o nome de Usuario: ");
-                    String nomeUsuario=teclado.nextLine();
-                    System.out.println("Informe o login: ");
-                    String login=teclado.nextLine();
-                    System.out.println("Informe a senha: ");
-                    String senha=teclado.nextLine();
+                    String[] nivelUsuario = {"Administrador", "Vendedor", "Técnico", "Cancelar"};
                     
-                    Vendedor v=new Vendedor(nomeUsuario,login,senha);
-                    DadosUsuario.adicionaLogin(v);
-                    break;
+                    int optionUsuario = JOptionPane.showOptionDialog(null, "Informe o tipo de usuário ","Opções", JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, nivelUsuario, nivelUsuario[3]);;
+                    
+                    switch(optionUsuario)
+                    {
+                        case 0:
+                        {
+                            String nomeUsuario = JOptionPane.showInputDialog(null, "Digite o nome do novo usuário:");
+                            String login=JOptionPane.showInputDialog(null, "Digite o login do novo usuário:");
+                            String senha=JOptionPane.showInputDialog(null, "Digite a senha do novo usuário:");
+                            
+                            DadosUsuario.adicionaLogin(new Administrador(nomeUsuario, login, senha));
+                            break;
+                        }
+                        
+                        case 1:
+                        {
+                            String nomeUsuario = JOptionPane.showInputDialog(null, "Digite o nome do novo usuário:");
+                            String login=JOptionPane.showInputDialog(null, "Digite o login do novo usuário:");
+                            String senha=JOptionPane.showInputDialog(null, "Digite a senha do novo usuário:");
+                            
+                            DadosUsuario.adicionaLogin(new Vendedor(nomeUsuario, login, senha));
+                            break;
+                        }
+                        
+                        case 2:
+                        {
+                            String nomeUsuario = JOptionPane.showInputDialog(null, "Digite o nome do novo usuário:");
+                            String login=JOptionPane.showInputDialog(null, "Digite o login do novo usuário:");
+                            String senha=JOptionPane.showInputDialog(null, "Digite a senha do novo usuário:");
+                            
+                            DadosUsuario.adicionaLogin(new Tecnico(nomeUsuario, login, senha));
+                            break;
+                        }
+                        
+                        case 3:
+                        {
+                            break;
+                        }
+                    }
                 }
                 
                 case 4:
