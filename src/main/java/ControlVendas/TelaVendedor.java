@@ -43,8 +43,9 @@ public class TelaVendedor {
                 }
                 case 1:
                 {
-                    System.out.println("Informe o nome do item: ");
-                    String nomeProduto=teclado.nextLine();
+                    //System.out.println("Informe o nome do item: ");
+                    //String nomeProduto=teclado.nextLine();
+                    String nomeProduto=JOptionPane.showInputDialog("Informe o nome do item: ");
                     System.out.println(Estoque.retornaItem(nomeProduto));
                 }
                 case 2:

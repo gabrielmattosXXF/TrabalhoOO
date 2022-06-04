@@ -47,9 +47,9 @@ public class Loja
                         }
                         else if(DadosUsuario.NivelAcessoLogin(login, senha) == "Vendedor")
                         {
-                            //Vendedor v = retornaUsuario();
+                            Vendedor v = (Vendedor) DadosUsuario.retornaUsuario(login, senha);
                             
-                            //TelaVendedor telaVend = new TelaVendedor(v);
+                            TelaVendedor telaVend = new TelaVendedor(v);
                         }
                         
                     }

@@ -66,11 +66,13 @@ public class DadosUsuario
     {
         for(Usuario user : dadosLogin)
         {
-            if(user.verificaLogin(login, senha))
+            if(user.verificaLogin(loginDigitado, senhaDigitada))
             {
                 return user;
             }
         }
+        
+        return null;
 
     }
     
