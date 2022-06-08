@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ControlVendas;
+package Control;
 
 import Model.Vendedor;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +60,8 @@ public class Estoque
     {
         if(estoqueMercadoria.isEmpty())
         {
-            System.out.println("Estoque vazio!");
+            JOptionPane.showMessageDialog(null, "Estoque vazio!", "Estoque", 0);
+            //System.out.println("Estoque vazio!");
             return false;
         }
         else if(verificaProdInicializado(nome))
@@ -120,9 +122,10 @@ public class Estoque
         }
         if(i==estoqueMercadoria.size())
         {
-            System.out.println("Item não localizado no estoque. Insira outro nome: ");
+            nome = JOptionPane.showInputDialog(null, "Item não localizado no estoque. Insira outro nome: ");
+            //System.out.println("Item não localizado no estoque. Insira outro nome: ");
             {
-                nome=teclado.nextLine();
+                //nome=teclado.nextLine();
                 retornaIndexNome(nome);
             }
         }
@@ -133,12 +136,14 @@ public class Estoque
     
     public static void imprimeEstoque()
     {
-        System.out.println("Estoque da loja:");
+        JOptionPane.showMessageDialog(null, "Estoque da loja:");
+        //System.out.println("Estoque da loja:");
         int i=0;
         
         for(Item produto : estoqueMercadoria)
         {
-            System.out.println("Produto "+(i+1)+" -> "+produto);
+            JOptionPane.showMessageDialog(null, "Produto " + (i+1) + " -> " + produto);
+            //System.out.println("Produto "+(i+1)+" -> "+produto);
             i++;
         }
     }

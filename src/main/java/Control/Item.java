@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ControlVendas;
+package Control;
 import java.util.*;
 import javax.swing.JOptionPane;
 /**
@@ -66,8 +66,9 @@ public class Item
          }
          else
          {
-             System.out.println("Quantidade inválida. Digite o ajuste novamente.");
-             quant=teclado.nextInt();
+             quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade inválida. Digite o ajuste novamente."));
+             //System.out.println("Quantidade inválida. Digite o ajuste novamente.");
+             //quant=teclado.nextInt();
              setPreco(quant);
          }
      }
@@ -80,8 +81,9 @@ public class Item
          }
          else
          {
-             System.out.println("Preço inválido. Digite o ajuste novamente.");
-             preco=teclado.nextDouble();
+             preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Preço inválido. Digite o ajuste novamente."));
+             //System.out.println("Preço inválido. Digite o ajuste novamente.");
+             //preco=teclado.nextDouble();
              setPreco(preco);
          }
      }

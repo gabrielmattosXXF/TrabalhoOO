@@ -5,7 +5,7 @@
 package Model;
 
 import java.util.*;
-import ControlVendas.Item;
+import Control.Item;
 /**
  *
  * @author Gabriel Mattos

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ControlVendas;
+package Control;
 import Model.Vendedor;
 import Model.Administrador;
 import Model.Tecnico;
@@ -79,34 +79,37 @@ public class TelaAdministrador {
                     {
                         case 0:
                         {
-                            System.out.println("Informe a quantidade a ser adicionada: ");
-                            int quant=teclado.nextInt();
+                            int quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a quantidade a ser adicionada: "));
+                            //System.out.println("Informe a quantidade a ser adicionada: ");
+                            //int quant=teclado.nextInt();
                             Estoque.aumentaQuantidade(nome, quant);
                             break;
                         }
                         
                         case 1:
                         {
-                            System.out.println("Informe a quantidade a ser removida: ");
-                            int quant=teclado.nextInt();
+                            int quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Informe a quantidade a ser removida: "));
+                            //System.out.println("Informe a quantidade a ser removida: ");
+                            //int quant=teclado.nextInt();
                             Estoque.diminuiQuantidade(nome, quant);
                             break;
                         }
                         
                         case 2:
                         {
-                            System.out.println("Informe o novo preço: ");
-                            double preco=teclado.nextDouble();
+                            double preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Informe o novo preço: "));                            
+                            //System.out.println("Informe o novo preço: ");
+                            //double preco=teclado.nextDouble();
                             Estoque.setPrecoProd(nome, preco);
                             break;
                         }
                         
                         case 3:
                         {
-                            System.out.println("Informe o novo nome: ");
-                            String novo_nome=teclado.nextLine();
+                            String novo_nome = (JOptionPane.showInputDialog(null, "Informe a quantidade a ser adicionada: "));
+                            //System.out.println("Informe o novo nome: ");
+                            //String novo_nome=teclado.nextLine();
                             Estoque.setNomeProd(nome, novo_nome);
-                            
                             break;
                         }
                        

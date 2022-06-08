@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ControlVendas;
-import ControlVendas.Estoque.*;
-import ControlVendas.TelaVendedor;
+package Control;
+import Control.Estoque.*;
+import Control.TelaVendedor;
 import Model.Vendedor;
 
-import static ControlVendas.Estoque.diminuiQuantidade;
-import static ControlVendas.Estoque.estoqueMercadoria;
-import static ControlVendas.Estoque.retornaIndexNome;
-import static ControlVendas.Estoque.retornaItem;
-import static ControlVendas.Estoque.verificaDispoProd;
+import static Control.Estoque.diminuiQuantidade;
+import static Control.Estoque.estoqueMercadoria;
+import static Control.Estoque.retornaIndexNome;
+import static Control.Estoque.retornaItem;
+import static Control.Estoque.verificaDispoProd;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
