@@ -60,9 +60,9 @@ public class TelaAdministrador {
                         break;
                     }
                     
-                    System.out.println("Informe o nome do produto: ");
-                    
-                    String nome = teclado.nextLine();
+                    //System.out.println("Informe o nome do produto: ");
+                    //String nome = teclado.nextLine();
+                    String nome = JOptionPane.showInputDialog(null, "Informe o nome do produto: ");
                     
                     while(!Estoque.verificaProdInicializado(nome))
                     {

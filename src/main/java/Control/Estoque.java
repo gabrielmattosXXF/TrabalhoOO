@@ -140,8 +140,11 @@ public class Estoque
         //System.out.println("Estoque da loja:");
         int i=0;
         
+        String printEstoque;
+        
         for(Item produto : estoqueMercadoria)
         {
+            //printEstoque+=(produto+"\n");
             JOptionPane.showMessageDialog(null, "Produto " + (i+1) + " -> " + produto);
             //System.out.println("Produto "+(i+1)+" -> "+produto);
             i++;
