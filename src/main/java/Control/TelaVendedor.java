@@ -5,7 +5,7 @@
 package Control;
 
 import Model.Vendedor;
-import java.util.Scanner;
+//import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +16,7 @@ public class TelaVendedor {
     
     public TelaVendedor(Vendedor v)
     {
-        Scanner teclado = new Scanner(System.in);
+        //Scanner teclado = new Scanner(System.in);
         String options[] = {"Realizar Venda", "Consultar Produto", "Criar Ordem de Serviço", "Cancelar"};
         
         JOptionPane.showMessageDialog(null, "bem vindo a tela do Vendedor", "tela do Vendedor", JOptionPane.INFORMATION_MESSAGE, null);
@@ -51,6 +51,7 @@ public class TelaVendedor {
                 }
                 case 2:
                 {
+                    //ordem de serviço que ainda não foi implementado
                     break;
                 }
                 case 3:

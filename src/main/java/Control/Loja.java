@@ -4,7 +4,7 @@
  */
 package Control;
 import Model.*;
-import java.util.*;
+//import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +15,7 @@ public class Loja
 {
     public static void main(String[] args)
     {
-        Scanner teclado = new Scanner(System.in);
+        //Scanner teclado = new Scanner(System.in);
         
         String[] optionsInicial = {"Fazer Login", "Cancelar"};
         
