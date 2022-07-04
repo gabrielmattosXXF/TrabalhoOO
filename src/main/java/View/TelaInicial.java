@@ -39,7 +39,6 @@ public class TelaInicial extends JFrame implements Tela
         
         JButton btLogin = new JButton("Login");
         btLogin.addActionListener(new OpcaoLogin(this)); //addActionListener adiciona um comando ao click do botão
-        //vai implementar uma classe no control que recebe esse comando. Essa classe chama dentro dela a tela login, implementando a interface ActionListener
         botoes.add(btLogin);
         
         JButton btCadastro = new JButton("Cadastro");

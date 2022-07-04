@@ -30,8 +30,7 @@ public class ConfirmaLogin implements ActionListener
         this.tela = tela;
     }
     
-    
-    
+    @Override
     public void actionPerformed(ActionEvent e) {
         //new TelaInicial(); //faz redirecionar à tela inicial
         
@@ -44,16 +43,17 @@ public class ConfirmaLogin implements ActionListener
             {
                 //redirecionamento para a tela do administrador
                 //new TelaAdministrador();
+                new TelaAdm();
                 this.tela.setVisible(false);
             }
             else if(usuario.getNivelDeAcesso().equals("Vendedor"))
             {
-                //new TelaVendedor((Vendedor)usuario);//gambiarra?
+                new TelaVendedor((Vendedor)usuario);//gambiarra?
                 this.tela.setVisible(false);
             }
             else if(usuario.getNivelDeAcesso().equals("Tecnico"))
             {
-                //new TelaTecnico();
+                new TelaTecnico();
                 this.tela.setVisible(false);
             }
         }

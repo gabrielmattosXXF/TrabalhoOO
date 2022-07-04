@@ -151,6 +151,26 @@ public class Estoque
         }
     }
     
+    public static String imprimeEstoqueS()
+    {
+        Integer i=1;
+        
+        String printEstoque="Estoque da loja:\n";
+        
+        if(!Estoque.veirificaEStoqueVazio())
+        {
+            for(Item produto : estoqueMercadoria)
+            {
+                printEstoque+="Produto " +i.toString()+" -> "+produto+"\n";
+                //printEstoque = printEstoque.concat("Produto " + (i+1) + " -> " + produto+"\n");
+                //JOptionPane.showMessageDialog(null, "Produto " + (i+1) + " -> " + produto);
+                //System.out.println("Produto "+(i+1)+" -> "+produto);
+                i++;
+            }
+        }
+        return printEstoque;
+    }
+    
     public static void setPrecoProd(String nome, double preco)
     {
         estoqueMercadoria.get(retornaIndexNome(nome)).setPreco(preco);

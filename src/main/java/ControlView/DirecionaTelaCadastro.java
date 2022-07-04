@@ -16,9 +16,9 @@ import View.*;
 public class DirecionaTelaCadastro implements ActionListener
 {
     
-    TelaInicial tela;
+    Tela tela;
     
-    public DirecionaTelaCadastro(TelaInicial tela)
+    public DirecionaTelaCadastro(Tela tela)
     {
         this.tela=tela;
         
