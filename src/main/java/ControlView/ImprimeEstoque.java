@@ -24,8 +24,9 @@ public class ImprimeEstoque implements ActionListener
     public ImprimeEstoque(TelaAdm tela)
     {
         //tela.setVisible(false);
-        tela.setVisible(true);
-        this.tela=tela;
+        //tela.setVisible(true);
+        //this.tela=tela;
+        Estoque.imprimeEstoqueS();
     }
     
     private JPanel painelDeTexto(){

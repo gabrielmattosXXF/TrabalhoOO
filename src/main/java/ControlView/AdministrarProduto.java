@@ -34,8 +34,8 @@ public class AdministrarProduto implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        this.tela.add(painelDeTexto(), BorderLayout.EAST);
-        this.tela.setVisible(true);
+       // this.tela.add(painelDeTexto(), BorderLayout.EAST);
+        //this.tela.setVisible(true);
     }
 
 }
