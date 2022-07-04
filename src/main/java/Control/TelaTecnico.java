@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Control;
-import java.util.*;
+//import java.util.*;
 import javax.swing.JOptionPane;
 /**
  *
@@ -13,7 +13,7 @@ public class TelaTecnico {
     
     public TelaTecnico()
     {
-        Scanner teclado = new Scanner(System.in);
+        //Scanner teclado = new Scanner(System.in);
         String options[] = {"Conserta produto", "Destrói produto", "Cancelar"};
         
         JOptionPane.showMessageDialog(null, "bem vindo a tela do Técnico", "tela do Técnico", JOptionPane.INFORMATION_MESSAGE, null);
