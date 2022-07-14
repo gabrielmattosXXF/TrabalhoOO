@@ -76,15 +76,15 @@ public class DadosUsuario
 
     }
     
-    public static String[] imprimeFuncionario()
+    public static List imprimeFuncionario()
     {
-        String[] Funcionarios = new String[dadosLogin.size()];
+        List <String> listaFuncionario = new ArrayList<>();
         int contador = 0;
         for(Usuario user : dadosLogin)
         {
-            Funcionarios[contador++] = user.getNomeUsuario();
+            listaFuncionario.add(user.getNomeUsuario());
         }
-        return Funcionarios;
+        return listaFuncionario;
     }
     
 }

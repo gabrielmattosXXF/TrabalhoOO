@@ -134,24 +134,17 @@ public class Estoque
     }
      
     
-    public static void imprimeEstoque()
+    public static List imprimeEstoque()
     {
-        JOptionPane.showMessageDialog(null, "Estoque da loja:");
-        //System.out.println("Estoque da loja:");
-        int i=0;
-        
-        String printEstoque;
-        
-        for(Item produto : estoqueMercadoria)
+        List<String> listaEstoque = new ArrayList<>();
+        for(Item prod : estoqueMercadoria)
         {
-            //printEstoque+=(produto+"\n");
-            JOptionPane.showMessageDialog(null, "Produto " + (i+1) + " -> " + produto);
-            //System.out.println("Produto "+(i+1)+" -> "+produto);
-            i++;
+            listaEstoque.add(prod.getNome());
         }
+        return listaEstoque;
     }
     
-    public static String imprimeEstoqueS()
+    /*public static String imprimeEstoqueS()
     {
         Integer i=1;
         
@@ -170,6 +163,7 @@ public class Estoque
         }
         return printEstoque;
     }
+    */
     
     public static void setPrecoProd(String nome, double preco)
     {

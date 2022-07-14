@@ -4,8 +4,9 @@
  */
 package View;
 
-import Control.Estoque;
+import Control.*;
 import ControlView.*;
+import Model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,12 +70,14 @@ public class TelaAdm extends JFrame implements Tela
         
         JButton btImprimeEstoque = new JButton("Imprime estoque");
         btImprimeEstoque.addActionListener(e -> {
-            
-            JPanel caixaEstoque = new JPanel();
-            caixaEstoque.add(new JLabel(Estoque.imprimeEstoqueS()));
-            
+                
+            JList listaEstoque = new JList (Estoque.imprimeEstoque().toArray());
+            listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            JScrollPane scroll= new JScrollPane (listaEstoque);
+            btImprimeEstoque.add(scroll);
+
             painelTxt.removeAll();
-            painelTxt.add(caixaEstoque, BorderLayout.CENTER);
+            painelTxt.add(scroll, BorderLayout.CENTER);
             painelTxt.revalidate();
             painelTxt.repaint();
             
@@ -99,7 +102,7 @@ public class TelaAdm extends JFrame implements Tela
             opcao.add(new JLabel("Informe a opção desejada:"));
             
             JPanel btopcao = new JPanel();
-            botoes.setLayout(new GridLayout(0, 2));
+            btopcao.setLayout(new GridLayout(4,0));
             
             JButton adicionar = new JButton("Adicionar");
             adicionar.addActionListener(new DirecionaTelaCadastro(this));
@@ -109,7 +112,42 @@ public class TelaAdm extends JFrame implements Tela
             //remover.addActionListener(new DirecionaTelaCadastro(this)); //Fazer uma tela de remoção de usuário
             btopcao.add(remover);
             
+            JButton imprime = new JButton("Imprimir funcionários");
+            imprime.addActionListener(f -> {
+
+                String[] funcionarios = {"Administradores","Técnicos","Vendedores"};
+                JComboBox listfunc = new JComboBox<>(funcionarios);
+                btopcao.add(listfunc);
+
+                painelTxt.removeAll();
+                painelTxt.add(listfunc, BorderLayout.CENTER);
+                painelTxt.revalidate();
+                painelTxt.repaint();
+
+                listfunc.addActionListener(l->
+                {
+
+                JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario().toArray());
+                listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+                JScrollPane scroll= new JScrollPane (listaFuncionarios);
+                
+                btopcao.add(scroll); 
+
+                painelTxt.removeAll();
+                painelTxt.add(listfunc, BorderLayout.CENTER);
+                painelTxt.add(listaFuncionarios,BorderLayout.SOUTH);
+                painelTxt.revalidate();
+                painelTxt.repaint();
+
+                });
+
+            });
+            btopcao.add(imprime);
+            
+            
             opcao.add(btopcao);
+            
+            
             
             painelTxt.removeAll();
             painelTxt.add(opcao, BorderLayout.CENTER);
