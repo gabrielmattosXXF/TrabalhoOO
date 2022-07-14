@@ -76,4 +76,15 @@ public class DadosUsuario
 
     }
     
+    public static String[] imprimeFuncionario()
+    {
+        String[] Funcionarios = new String[dadosLogin.size()];
+        int contador = 0;
+        for(Usuario user : dadosLogin)
+        {
+            Funcionarios[contador++] = user.getNomeUsuario();
+        }
+        return Funcionarios;
+    }
+    
 }
