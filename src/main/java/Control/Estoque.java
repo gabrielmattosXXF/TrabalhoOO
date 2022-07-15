@@ -4,6 +4,7 @@
  */
 package Control;
 
+import Model.Item;
 import Model.Vendedor;
 import java.util.*;
 import javax.swing.JOptionPane;

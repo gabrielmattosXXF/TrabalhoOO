@@ -22,7 +22,6 @@ public class TelaAdm extends JFrame implements Tela
     */
     
     JPanel painelTxt;
-    JPanel painBt;
     
     public TelaAdm()
     {
@@ -53,7 +52,6 @@ public class TelaAdm extends JFrame implements Tela
     
     private JPanel painelDeTexto()
     {
-
         JPanel caixaTexto = new JPanel();
         caixaTexto.add(new JLabel("Bem vindo à tela do administrador!"));
         return caixaTexto;
@@ -85,7 +83,11 @@ public class TelaAdm extends JFrame implements Tela
         botoes.add(btImprimeEstoque);
         
         JButton btAdministrarProduto = new JButton("Administrar produto");
-        //btConfirmar.addActionListener(new ConfirmaLogin(this, this.login, this.senha));
+        btAdministrarProduto.addActionListener(d-> {
+            this.setVisible(false);
+            new TelaAdmProduto();
+        });
+        //btAdministrarProduto.addActionListener(new DirecionaTelaAdmProduto(this));
         botoes.add(btAdministrarProduto);
         
         /*JButton btAdministrarFuncionarios = new JButton("Administrar funcionários");//caso queira fazer a possibilidade de remover usuário, criar uma outra classe no control view que leve a uma tela de remoção de usuário
