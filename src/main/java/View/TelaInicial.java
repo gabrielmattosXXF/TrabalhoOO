@@ -18,15 +18,13 @@ public class TelaInicial extends JFrame implements Tela
 {
     public TelaInicial()
     {
-        //o package control serve para fazer o redirecionamento das telas do view. dependendo do botão clicado, é o control que redireciona ele a uma tela específica
-        //essas classes de controle inplementam a interface implements ActionListener que faz aparecer a tela
-
-        //adicionar um título â essa tela acima dos botões de entrada
         super("Tela inicial");
 
         this.setLayout(new BorderLayout());
-        this.add(painelDeBotoes(), BorderLayout.CENTER);
-        this.setSize(500, 500);
+        this.setLayout(new GridLayout(2,0));
+        this.add(new JLabel("Bem vindo à tela inicial!"));
+        this.add(painelDeBotoes());
+        this.setSize(300, 200);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -35,15 +33,21 @@ public class TelaInicial extends JFrame implements Tela
     private JPanel painelDeBotoes()
     {
         JPanel botoes = new JPanel();
-        botoes.setLayout(new GridLayout(2, 0));
+        botoes.setLayout(new GridLayout(0,2));
         
         JButton btLogin = new JButton("Login");
-        btLogin.addActionListener(new OpcaoLogin(this)); //addActionListener adiciona um comando ao click do botão
+        //btLogin.addActionListener(new OpcaoLogin(this)); //addActionListener adiciona um comando ao click do botão
+        btLogin.addActionListener(a->{
+            this.setVisible(false);//faz a tela ficar oculta após o comando acontecer
+            new TelaLogin();
+        });
         botoes.add(btLogin);
         
-        JButton btCadastro = new JButton("Cadastro");
-        btCadastro.addActionListener(new DirecionaTelaCadastro(this)); //mesma coisa que na tela de login
-        botoes.add(btCadastro);
+        JButton btSair = new JButton("Sair");
+        btSair.addActionListener(a->{
+            System.exit(0);
+        }); //mesma coisa que na tela de login
+        botoes.add(btSair);
         return botoes;
     }
     

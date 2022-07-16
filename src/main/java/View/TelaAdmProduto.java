@@ -5,6 +5,8 @@
 package View;
 import javax.swing.*;
 import java.awt.*;
+import Control.Estoque;
+import Model.Item;
 
 /**
  *
@@ -18,14 +20,15 @@ public class TelaAdmProduto extends JFrame implements Tela
     
     JPanel principal;
     //private JList<String> lista;
+    //o item selecionado na JList retorna seu index ao action, fazendo alterações na lista dessa forma. Será feita alterações da mesma forma no item da lista normal do estoque
     
-    /*private JTextField nomeItem;
+    private JTextField nomeItem;
     private JTextField precoItem;
-    private JTextField quantItem;*/
+    private JTextField quantItem;
     
-    JTextField nomeItem;
-    JTextField precoItem;
-    JTextField quantItem; 
+    //JTextField nomeItem;
+    //JTextField precoItem;
+    //JTextField quantItem; 
     
     
     public TelaAdmProduto()
@@ -49,7 +52,7 @@ public class TelaAdmProduto extends JFrame implements Tela
         
         this.setSize(500, 500);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
     }
@@ -74,7 +77,7 @@ public class TelaAdmProduto extends JFrame implements Tela
         JPanel precoGer = new JPanel();
         JPanel quantGer = new JPanel();
         JPanel botoesGer = new JPanel();
-        botoesGer.setLayout(new GridLayout(0, 4));
+        botoesGer.setLayout(new GridLayout(0, 5));
         
         nomeGer.add(new JLabel("Nome: "));
         nomeGer.add(nomeItem);
@@ -87,19 +90,41 @@ public class TelaAdmProduto extends JFrame implements Tela
 
         JButton btAdicionar = new JButton("Adicionar");
         //btAdicionar.addActionListener(new SalvarContato(this));
+        btAdicionar.addActionListener(a->{
+            //fazer um script que adiciona o contato escrito à JList
+            Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
+        });
         botoesGer.add(btAdicionar);
 
         JButton btRemover = new JButton("Remover");
         //btRemover.addActionListener(new RemoverContato(this));
+        btRemover.addActionListener(b->{
+            //fazer um script que adiciona o contato escrito à JList
+            
+        });
         botoesGer.add(btRemover);
         
         JButton btEditar = new JButton("Editar");
         //btnEditar.addActionListener(new EditarContato(this));
+        btEditar.addActionListener(c->{
+            
+        });
         botoesGer.add(btEditar);
         
         JButton btLimpar = new JButton("Limpar");
         //btnLimpar.addActionListener(new LimparFormulario(this));
+        btLimpar.addActionListener(d->{
+            nomeItem.setText("");
+            precoItem.setText("");
+            quantItem.setText("");
+        });
         botoesGer.add(btLimpar);
+        
+        JButton btSair = new JButton("Sair");
+        btSair.addActionListener(d->{
+            this.setVisible(false);
+        });
+        botoesGer.add(btSair);
         
         painelGer.add(nomeGer);
         painelGer.add(precoGer);

@@ -41,28 +41,26 @@ public class ConfirmaLogin implements ActionListener
             
             if(usuario.getNivelDeAcesso().equals("Administrador"))
             {
-                //redirecionamento para a tela do administrador
-                //new TelaAdministrador();
-                new TelaAdm();
                 this.tela.setVisible(false);
+                new TelaAdm();
             }
             else if(usuario.getNivelDeAcesso().equals("Vendedor"))
             {
-                new TelaVendedor((Vendedor)usuario);//gambiarra?
                 this.tela.setVisible(false);
+                new TelaVendedor((Vendedor)usuario);//gambiarra?
             }
             else if(usuario.getNivelDeAcesso().equals("Tecnico"))
             {
-                new TelaTecnico();
                 this.tela.setVisible(false);
+                new TelaAdm(); //NÃO SEI PQ CARALHOS ESSA MERDA NAO FUNCIONA
             }
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Login Inválido");
             //fazer implementação que retorna a tela de incio
-            new TelaInicial();
             tela.setVisible(false);
+            new TelaInicial();
         }
         
         tela.setVisible(false);

@@ -26,7 +26,7 @@ public class Estoque
         estoqueMercadoria.add(produto);
     }
     
-    static void adicionaProdutoAoEstoque(Item produto)
+    public static void adicionaProdutoAoEstoque(Item produto)
     {
         //Item produto = new Item();
         

@@ -17,10 +17,6 @@ import java.awt.*;
  */
 public class TelaAdm extends JFrame implements Tela
 {
-    /*
-    essa tela tem que ter uma implementação diferente, pois a ação de um botão não pode levar a uma nova tela sempre
-    */
-    
     JPanel painelTxt;
     
     public TelaAdm()
@@ -41,7 +37,7 @@ public class TelaAdm extends JFrame implements Tela
 
         this.setSize(500, 500);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
     
@@ -84,7 +80,7 @@ public class TelaAdm extends JFrame implements Tela
         
         JButton btAdministrarProduto = new JButton("Administrar produto");
         btAdministrarProduto.addActionListener(d-> {
-            this.setVisible(false);
+            //this.setVisible(false);
             new TelaAdmProduto();
         });
         //btAdministrarProduto.addActionListener(new DirecionaTelaAdmProduto(this));

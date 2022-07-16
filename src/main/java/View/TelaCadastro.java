@@ -64,11 +64,6 @@ public class TelaCadastro extends JFrame implements Tela
         btCancelar.addActionListener(new RetornaInicio(this));//fazer retornar para a tela do administrador
         botoes.add(btCancelar);
         
-        /* ~~funcionalidade não faz sentido na tela do administrador
-        JButton btLogin = new JButton("Login");
-        btLogin.addActionListener(new OpcaoLogin(this));
-        botoes.add(btLogin);
-        */
         return botoes;
     }
     

@@ -48,13 +48,15 @@ public class CadastraLogin implements ActionListener
             JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
             //new TelaAdministrador();
             //levar até uma tela e fechar essa tela atual
+            tela.setVisible(false);
             new TelaAdm();
         }
         else
         {
             JOptionPane.showMessageDialog(null, "Usuario ja cadastrado");
-            new TelaAdm();
             tela.setVisible(false);
+            new TelaAdm();
+            
             
         }
     }
