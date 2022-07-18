@@ -140,7 +140,7 @@ public class Estoque
         List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
         {
-            listaEstoque.add(prod.getNome());
+            listaEstoque.add(prod.toString());
         }
         return listaEstoque;
     }

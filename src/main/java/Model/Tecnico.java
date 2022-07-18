@@ -11,7 +11,7 @@ package Model;
 public class Tecnico extends Usuario
 {
     public Tecnico(String nomeUsuario, String login, String senha) {
-        super(nomeUsuario, login, senha, "Técnico");
+        super(nomeUsuario, login, senha, "Tecnico");
     }
 
     @Override

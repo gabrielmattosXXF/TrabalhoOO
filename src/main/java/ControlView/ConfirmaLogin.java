@@ -52,7 +52,7 @@ public class ConfirmaLogin implements ActionListener
             else if(usuario.getNivelDeAcesso().equals("Tecnico"))
             {
                 this.tela.setVisible(false);
-                new TelaAdm(); //NÃO SEI PQ CARALHOS ESSA MERDA NAO FUNCIONA
+                new TelaTecnico(); 
             }
         }
         else

@@ -4,6 +4,9 @@
  */
 package Model;
 import java.util.*;
+import View.*;
+import javax.swing.*;
+//import java.awt.*;
 
 /**
  *
@@ -12,6 +15,8 @@ import java.util.*;
 public class DadosUsuario
 {
     private static List<Usuario> dadosLogin = new ArrayList<>();
+    
+    //vamos implementar um tratamenot na lista para armazenar sempre na ordem adm, func e tec;
     
     static
     {
@@ -22,9 +27,8 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
+             
         }
-        
-        
         
     }
     public static String NivelAcessoLogin(String login, String senha)
@@ -76,15 +80,79 @@ public class DadosUsuario
 
     }
     
-    public static List imprimeFuncionario()
+    public static List imprimeFuncionario(int i)
     {
         List <String> listaFuncionario = new ArrayList<>();
-        int contador = 0;
-        for(Usuario user : dadosLogin)
+        
+        if(i==0)
         {
-            listaFuncionario.add(user.getNomeUsuario());
+            for(Usuario user : dadosLogin)
+            {
+                if(user.getNivelDeAcesso()=="Administrador")
+                    listaFuncionario.add(user.getNomeUsuario());
+            }
         }
+        else if(i==1)
+        {
+            for(Usuario user : dadosLogin)
+            {
+                if(user.getNivelDeAcesso()=="Vendedor")
+                    listaFuncionario.add(user.getNomeUsuario());
+            }            
+        }
+        else if(i==2)
+        {
+            for(Usuario user : dadosLogin)
+            {
+                if(user.getNivelDeAcesso()=="Tecnico")
+                    listaFuncionario.add(user.getNomeUsuario());
+            }            
+        }
+        
+        if(listaFuncionario.isEmpty())
+        {
+            
+        }
+        
         return listaFuncionario;
     }
     
+    
+    public static void removeFuncionario(int index)
+    {
+        dadosLogin.remove(index);
+    }
+    
+    public static int indexLastAdm() //função só serve se a lista já tiver sido tratada
+    {
+        int i;
+        for(i=0; i<dadosLogin.size(); i++)
+        {
+            if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
+            {
+                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
+                {
+                    return i;
+                }
+            }
+        }
+        
+        return i;
+    }
+    
+    public static int indexLastVend()
+    {
+        int i;
+        for(i=0; i<dadosLogin.size(); i++)
+        {
+            if(dadosLogin.get(i).getNivelDeAcesso()=="Vendedor")
+            {
+                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico")
+                {
+                    return i;
+                }
+            }
+        }
+        return i;
+    }
 }
