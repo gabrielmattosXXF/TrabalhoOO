@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.Estoque;
 import Control.*;
 import ControlView.*;
 import Model.*;
@@ -85,11 +86,7 @@ public class TelaAdm extends JFrame implements Tela
         });
         botoes.add(btAdministrarProduto);
         
-        /*JButton btAdministrarFuncionarios = new JButton("Administrar funcionários");//caso queira fazer a possibilidade de remover usuário, criar uma outra classe no control view que leve a uma tela de remoção de usuário
-        btAdministrarFuncionarios.addActionListener(new DirecionaTelaCadastro(this));
-        botoes.add(btAdministrarFuncionarios);*/
-        
-        JButton btAdministrarFuncionarios = new JButton("Administrar funcionários");//caso queira fazer a possibilidade de remover usuário, criar uma outra classe no control view que leve a uma tela de remoção de usuário
+        JButton btAdministrarFuncionarios = new JButton("Administrar funcionários");
         btAdministrarFuncionarios.addActionListener(e-> {
             
             JPanel opcao = new JPanel();
@@ -115,17 +112,34 @@ public class TelaAdm extends JFrame implements Tela
                 
                 btopcao.add(scroll); 
                 
-                JButton removerFunc = new JButton("Remover");
+                JButton removerFunc = new JButton("Remover");//fazer uma tela de aviso antes de remover o usuário
                 removerFunc.addActionListener(evento->{
                     
                     int selectedIndex = listaFuncionarios.getSelectedIndex();
-                    if(selectedIndex != -1)
+                    
+                    if(JOptionPane.showConfirmDialog(null, "Deseja remover o "+DadosUsuario.retornaUsuarioIndex(selectedIndex))==0)
                     {
-                        DadosUsuario.removeFuncionario(selectedIndex);
+                        if(selectedIndex != -1)
+                        {
+                            DadosUsuario.removeFuncionario(selectedIndex);//fazer um mecanismo que atualize a JList na hora de execução
+
+                                //DefaultListModel<String> model = (DefaultListModel<String>) listaFuncionarios.getModel();
+                                //model.removeElementAt(selectedIndex);
+                                //listaFuncionarios.setModel(model);
+                                //painelTxt.repaint();
+                                
+                                //painelTxt.removeAll();
+                                //painelTxt.add(scroll,BorderLayout.CENTER);
+                                //painelTxt.add(removerFunc,BorderLayout.SOUTH);
+                                //painelTxt.revalidate();
+                                //painelTxt.repaint();
+                                
+                        }
                     }
                     
                 });
                 
+                //listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
 
                 painelTxt.removeAll();
                 painelTxt.add(scroll,BorderLayout.CENTER);

@@ -58,7 +58,7 @@ public class Item
          return quantItem;
      }
      
-     public void setQuant(int quant)
+     /*public void setQuant(int quant)
      {
          if(quantItem+quant>=0)
          {
@@ -69,6 +69,21 @@ public class Item
              quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade inválida. Digite o ajuste novamente."));
              //System.out.println("Quantidade inválida. Digite o ajuste novamente.");
              //quant=teclado.nextInt();
+             setPreco(quant);
+         }
+     }*/
+     
+     public void setQuant(int quant)
+     {
+        if(quant>0)
+         {
+             quantItem=quant;
+         }
+         else
+         {
+             quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade inválida. Digite novamente."));
+             //System.out.println("Preço inválido. Digite o ajuste novamente.");
+             //preco=teclado.nextDouble();
              setPreco(quant);
          }
      }

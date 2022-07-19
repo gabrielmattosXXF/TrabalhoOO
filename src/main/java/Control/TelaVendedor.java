@@ -4,6 +4,7 @@
  */
 package Control;
 
+import Model.Estoque;
 import Model.Vendedor;
 //import java.util.Scanner;
 import javax.swing.JOptionPane;

@@ -123,6 +123,11 @@ public class DadosUsuario
         dadosLogin.remove(index);
     }
     
+    public static Usuario retornaUsuarioIndex(int index)
+    {
+        return dadosLogin.get(index);
+    }
+    
     public static int indexLastAdm() //função só serve se a lista já tiver sido tratada
     {
         int i;

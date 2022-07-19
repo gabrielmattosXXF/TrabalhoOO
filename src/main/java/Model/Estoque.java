@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Control;
+package Model;
 
 import Model.Item;
+import Model.Usuario;
 import Model.Vendedor;
 import java.util.*;
 import javax.swing.JOptionPane;
@@ -17,7 +18,7 @@ public class Estoque
 {
     Scanner teclado = new Scanner(System.in);
     
-    static List<Item> estoqueMercadoria = new ArrayList<>();
+    private static List<Item> estoqueMercadoria = new ArrayList<>();
      
     static void adicionaProdutoAoEstoque()
     {
@@ -145,26 +146,15 @@ public class Estoque
         return listaEstoque;
     }
     
-    /*public static String imprimeEstoqueS()
+    public static List imprimeEstoqueS()
     {
-        Integer i=1;
-        
-        String printEstoque="Estoque da loja:\n";
-        
-        if(!Estoque.veirificaEStoqueVazio())
+        List<Item> listaEstoque = new ArrayList<>();
+        for(Item prod : estoqueMercadoria)
         {
-            for(Item produto : estoqueMercadoria)
-            {
-                printEstoque+="Produto " +i.toString()+" -> "+produto+"\n";
-                //printEstoque = printEstoque.concat("Produto " + (i+1) + " -> " + produto+"\n");
-                //JOptionPane.showMessageDialog(null, "Produto " + (i+1) + " -> " + produto);
-                //System.out.println("Produto "+(i+1)+" -> "+produto);
-                i++;
-            }
+            listaEstoque.add(prod);
         }
-        return printEstoque;
+        return listaEstoque;
     }
-    */
     
     public static void setPrecoProd(String nome, double preco)
     {
@@ -197,5 +187,13 @@ public class Estoque
     }
     */
     
+    public static void removeItem(int index)
+    {
+        estoqueMercadoria.remove(index);
+    }
     
+    public static Item retornaItemIndex(int index)
+    {
+        return estoqueMercadoria.get(index);
+    }
 }

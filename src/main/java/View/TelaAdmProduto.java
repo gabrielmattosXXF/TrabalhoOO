@@ -5,7 +5,7 @@
 package View;
 import javax.swing.*;
 import java.awt.*;
-import Control.Estoque;
+import Model.Estoque;
 import Model.Item;
 
 /**
@@ -25,6 +25,7 @@ public class TelaAdmProduto extends JFrame implements Tela
     private JTextField nomeItem;
     private JTextField precoItem;
     private JTextField quantItem;
+    private JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
     
     //JTextField nomeItem;
     //JTextField precoItem;
@@ -35,9 +36,28 @@ public class TelaAdmProduto extends JFrame implements Tela
     {
         super("Administrar Produto");
         
+        //DefaultListModel<Item> model = new DefaultListModel<>();
+        
+        listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+        
         nomeItem = new JTextField(15);
         precoItem = new JTextField(15);
         quantItem = new JTextField(15);
+        
+        listaEstoque.addListSelectionListener(a->{
+            int firstIndex = listaEstoque.getSelectedIndex();
+
+            if (firstIndex != -1) {
+                
+                Item elementAt = Estoque.retornaItemIndex(firstIndex);
+                
+                this.nomeItem.setText(elementAt.getNome());
+                this.precoItem.setText(Double.toString(elementAt.getPreco()));
+                this.quantItem.setText(Integer.toString(elementAt.getQuant()));
+                
+                //tela.setLastIndex(firstIndex);
+            }
+        });
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -61,8 +81,9 @@ public class TelaAdmProduto extends JFrame implements Tela
     {
         JPanel painelProd = new JPanel();
         painelProd.setBorder(BorderFactory.createTitledBorder("Lista de produtos"));
+        JScrollPane scroll= new JScrollPane (listaEstoque);
         
-        //fazer a impressão da lista de produtos
+        painelProd.add(scroll);
         
         return painelProd;
     }
@@ -89,24 +110,56 @@ public class TelaAdmProduto extends JFrame implements Tela
         quantGer.add(quantItem, BorderLayout.CENTER);
 
         JButton btAdicionar = new JButton("Adicionar");
-        //btAdicionar.addActionListener(new SalvarContato(this));
         btAdicionar.addActionListener(a->{
             //fazer um script que adiciona o contato escrito à JList
             Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
+            //this.principal.repaint();
+            //SwingUtilities.updateComponentTreeUI(this);
+            this.setVisible(false);//cambiarra
+            new TelaAdmProduto();
         });
         botoesGer.add(btAdicionar);
 
         JButton btRemover = new JButton("Remover");
-        //btRemover.addActionListener(new RemoverContato(this));
         btRemover.addActionListener(b->{
-            //fazer um script que adiciona o contato escrito à JList
             
+            int selectedIndex = listaEstoque.getSelectedIndex();
+                    
+            if(JOptionPane.showConfirmDialog(null, "Deseja remover o "+Estoque.retornaItemIndex(selectedIndex))==0)
+            {
+                if(selectedIndex != -1)
+                {
+                Estoque.removeItem(selectedIndex);//fazer um mecanismo que atualize a JList na hora de execução
+
+                                //DefaultListModel<String> model = (DefaultListModel<String>) listaFuncionarios.getModel();
+                                //model.removeElementAt(selectedIndex);
+                                //listaFuncionarios.setModel(model);
+                                //painelTxt.repaint();
+                                
+                                //painelTxt.removeAll();
+                                //painelTxt.add(scroll,BorderLayout.CENTER);
+                                //painelTxt.add(removerFunc,BorderLayout.SOUTH);
+                                //painelTxt.revalidate();
+                                //painelTxt.repaint();
+                    this.setVisible(false);//cambiarra
+                    new TelaAdmProduto();
+                }
+            }
         });
         botoesGer.add(btRemover);
         
         JButton btEditar = new JButton("Editar");
-        //btnEditar.addActionListener(new EditarContato(this));
         btEditar.addActionListener(c->{
+            int selectedIndex = listaEstoque.getSelectedIndex();
+            
+            Item selectedItem = Estoque.retornaItemIndex(selectedIndex);
+            
+            selectedItem.setNome(nomeItem.getText());
+            selectedItem.setPreco(Double.parseDouble(precoItem.getText()));
+            selectedItem.setQuant(Integer.parseInt(quantItem.getText()));
+            
+            this.setVisible(false);//cambiarra
+            new TelaAdmProduto();
             
         });
         botoesGer.add(btEditar);
