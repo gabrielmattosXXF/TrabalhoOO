@@ -37,7 +37,7 @@ public class TelaVendedor {
                     String nomeProduto=JOptionPane.showInputDialog("Informe o nome do item: ");
                     int qntd= Integer.parseInt(JOptionPane.showInputDialog("Informe a quantidade vendida: "));
                     
-                    Venda.realizaVenda(nomeProduto, qntd, v);
+                    //Venda.realizaVenda(nomeProduto, qntd, v);
                     
                     break;
                 }
