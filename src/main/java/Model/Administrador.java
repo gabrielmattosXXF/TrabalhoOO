@@ -59,6 +59,6 @@ public class Administrador extends Usuario
     @Override
     public String toString()
     {
-        return "Administrador " + getNomeUsuario();
+        return "Administrador " + getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
     }
 }

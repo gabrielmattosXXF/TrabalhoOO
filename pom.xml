@@ -17,7 +17,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Control.Loja</mainClass>
+                            <mainClass>View.TelaInicial</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

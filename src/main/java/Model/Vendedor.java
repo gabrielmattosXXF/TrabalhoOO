@@ -56,7 +56,7 @@ public class Vendedor extends Usuario
 
     @Override
     public String toString() {
-        return "Vendedor "+getNomeUsuario();
+        return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
     }
     
     public void computaVenda(String nome, double preco, int qntd)

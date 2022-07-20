@@ -16,7 +16,7 @@ public class DadosUsuario
 {
     private static List<Usuario> dadosLogin = new ArrayList<>();
     
-    //vamos implementar um tratamenot na lista para armazenar sempre na ordem adm, func e tec;
+    //vamos implementar um tratamento na lista para armazenar sempre na ordem adm, func e tec;
     
     static
     {
@@ -142,7 +142,7 @@ public class DadosUsuario
             }
         }
         
-        return i;
+        return 0;
     }
     
     public static int indexLastVend()
@@ -150,14 +150,23 @@ public class DadosUsuario
         int i;
         for(i=0; i<dadosLogin.size(); i++)
         {
-            if(dadosLogin.get(i).getNivelDeAcesso()=="Vendedor")
+            if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
             {
                 if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico")
                 {
                     return i;
                 }
             }
+            else if(dadosLogin.get(i).getNivelDeAcesso()=="Vendedor")
+                {
+                    if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico")
+                    {
+                        return i;
+                    }
+                } 
+            
         }
-        return i;
+        
+        return 0;
     }
 }

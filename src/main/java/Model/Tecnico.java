@@ -51,6 +51,6 @@ public class Tecnico extends Usuario
 
     @Override
     public String toString() {
-        return "Técnico";
+        return "Técnico "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
     }
 }

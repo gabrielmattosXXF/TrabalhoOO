@@ -168,9 +168,33 @@ public class TelaAdm extends JFrame implements Tela
                     
                     JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
                     listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+                    
                     JScrollPane scroll= new JScrollPane (listaFuncionarios);
 
-                    btopcao.add(scroll); 
+                    btopcao.add(scroll);
+                    
+                    listaFuncionarios.addListSelectionListener(s->{
+                        
+                        int funcSelectedIndex = listaFuncionarios.getSelectedIndex();
+                    
+                        if(selectedIndex==0)
+                        {
+                            //JOptionPane.showConfirmDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
+                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
+                        }
+                        else if(selectedIndex==1)
+                        {
+                            funcSelectedIndex+=DadosUsuario.indexLastAdm()+1;
+                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
+                        }
+                        else if(selectedIndex==2)
+                        {
+                            funcSelectedIndex+=DadosUsuario.indexLastVend()+1;
+                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
+                        }
+                    });
+                    
+                    
 
                     painelTxt.removeAll();
                     painelTxt.add(listFunc, BorderLayout.CENTER);
@@ -179,7 +203,7 @@ public class TelaAdm extends JFrame implements Tela
                     painelTxt.repaint();
 
                 });
-
+                
             });
             btopcao.add(imprime);
             
