@@ -62,6 +62,22 @@ public class TelaTecnico extends JFrame implements Tela
         //botoes.setSize(500, 250);
         botoes.setLayout(new GridLayout(4, 0));
         
+        JButton btImprimeEstoque = new JButton("Imprime estoque");
+        btImprimeEstoque.addActionListener(e -> {
+                
+            JList listaEstoque = new JList (Estoque.imprimeEstoque().toArray());
+            listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            JScrollPane scroll= new JScrollPane (listaEstoque);
+            btImprimeEstoque.add(scroll);
+
+            painelTxt.removeAll();
+            painelTxt.add(scroll, BorderLayout.CENTER);
+            painelTxt.revalidate();
+            painelTxt.repaint();
+            
+        });
+        botoes.add(btImprimeEstoque);
+        
         return botoes;
     }
 }

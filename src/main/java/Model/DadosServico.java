@@ -18,4 +18,21 @@ public class DadosServico
         dadosServico.add(serv);
     }
     
+    public static Servico retornaServicoIndex(int index)
+    {
+        return dadosServico.get(index);
+    }
+    
+    public static List imprimeServico()
+    {
+        List <Integer> listaServico = new ArrayList<>();
+        
+        for(Servico serv : dadosServico)
+            {
+                listaServico.add(serv.getNumServico());
+            }  
+        
+        return listaServico;
+    }
+    
 }
