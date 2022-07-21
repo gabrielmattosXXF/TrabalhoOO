@@ -153,7 +153,7 @@ public class TelaAdm extends JFrame implements Tela
             JButton imprime = new JButton("Imprimir funcionários");
             imprime.addActionListener(g -> {
 
-                String[] funcionarios = {"Administradores", "Vendedores", "Técnicos"};
+                String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
                 JComboBox listFunc = new JComboBox<>(funcionarios);
                 btopcao.add(listFunc);
 
@@ -189,7 +189,7 @@ public class TelaAdm extends JFrame implements Tela
                         }
                         else if(selectedIndex==2)
                         {
-                            funcSelectedIndex+=DadosUsuario.indexLastVend()+1;
+                            funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
                             JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
                         }
                     });

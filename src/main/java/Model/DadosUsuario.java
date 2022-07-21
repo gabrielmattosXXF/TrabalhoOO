@@ -27,11 +27,67 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
-             dadosLogin.add(new Tecnico("ugas", "opa", "opa"));
+             dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
+             
+             ordenaDadosLoginAlfabetico();
+             ordenaDadosLoginNivel();
+             
              
         }
         
     }
+    
+    public static void ordenaDadosLoginAlfabetico() {
+
+        
+        int menorIndice;
+        for (int i = 0; i < dadosLogin.size(); i++) {
+
+            menorIndice = i;
+            for (int j = i + 1; j < dadosLogin.size(); j++) {
+                //if(nomes.getElementAt(menorIndice).getNome().compareToIgnoreCase(nomes.getElementAt(j).getNome())> 0)
+                if(dadosLogin.get(menorIndice).getNomeUsuario().compareToIgnoreCase(dadosLogin.get(j).getNomeUsuario())> 0)
+                {
+                    menorIndice = j;//ao final do loop esse valor representará o indice do contato com o menor nome, que será colocado na primeira posição
+                }
+            }
+
+            trocaDadosLogin(menorIndice, i);
+            
+        }
+    }
+    
+    public static void ordenaDadosLoginNivel() {
+
+        int menorIndice;
+        for (int i = 0; i < dadosLogin.size(); i++) {
+
+            menorIndice = i;
+            for (int j = i + 1; j < dadosLogin.size(); j++) {
+                //if(nomes.getElementAt(menorIndice).getNome().compareToIgnoreCase(nomes.getElementAt(j).getNome())> 0)
+                if(dadosLogin.get(menorIndice).getNivelDeAcesso().compareToIgnoreCase(dadosLogin.get(j).getNivelDeAcesso())> 0)
+                {
+                    menorIndice = j;//ao final do loop esse valor representará o indice do contato com o menor nome, que será colocado na primeira posição
+                }
+            }
+
+            trocaDadosLogin(menorIndice, i);
+            
+        }
+    }
+    
+    public static void trocaDadosLogin(int origem, int destino) {
+
+        /*Usuario auxUser = dadosLogin.get(origem);
+        dadosLogin.remove(origem);
+        dadosLogin.add(origem, dadosLogin.get(destino));
+        dadosLogin.remove(destino);
+        dadosLogin.add(destino, auxUser);*/
+        
+        Collections.swap(dadosLogin, origem, destino);
+        
+    }
+    
     public static String NivelAcessoLogin(String login, String senha)
     {
         for(Usuario user : dadosLogin)
@@ -56,13 +112,13 @@ public class DadosUsuario
         return false;
     }
     
-    public static void imprimelogin()
+    /*public static void imprimelogin()
     {
         for(Usuario user : dadosLogin)
         {
             System.out.println(user);
         }
-    }
+    }*/
     public static void adicionaLogin(Usuario user)
     {
         dadosLogin.add(user);
@@ -97,7 +153,7 @@ public class DadosUsuario
         {
             for(Usuario user : dadosLogin)
             {
-                if(user.getNivelDeAcesso()=="Vendedor")
+                if(user.getNivelDeAcesso()=="Tecnico")
                     listaFuncionario.add(user.getNomeUsuario());
             }            
         }
@@ -105,7 +161,7 @@ public class DadosUsuario
         {
             for(Usuario user : dadosLogin)
             {
-                if(user.getNivelDeAcesso()=="Tecnico")
+                if(user.getNivelDeAcesso()=="Vendedor")
                     listaFuncionario.add(user.getNomeUsuario());
             }            
         }
@@ -136,7 +192,7 @@ public class DadosUsuario
         {
             if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
             {
-                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
+                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico" || dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
                 {
                     return i;
                 }
@@ -146,21 +202,21 @@ public class DadosUsuario
         return 0;
     }
     
-    public static int indexLastVend()
+    public static int indexLastTec()
     {
         int i;
         for(i=0; i<dadosLogin.size(); i++)
         {
             if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
             {
-                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico")
+                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
                 {
                     return i;
                 }
             }
-            else if(dadosLogin.get(i).getNivelDeAcesso()=="Vendedor")
+            else if(dadosLogin.get(i).getNivelDeAcesso()=="Tecnico")
                 {
-                    if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico")
+                    if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
                     {
                         return i;
                     }
