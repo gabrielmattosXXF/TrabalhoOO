@@ -30,9 +30,8 @@ public class CriarServico implements ActionListener
         String telefoneCliente = tela.getNomeClienteP().getText();
         String dataChegada = tela.getDataChegadaP().getText();
         String dataSaida = tela.getDataSaidaP().getText();
-        boolean autorizacao = true;
         
-        DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, autorizacao));
+        //DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, autorizacao));
         
         
         /*

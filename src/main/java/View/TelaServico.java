@@ -21,12 +21,13 @@ public class TelaServico extends JFrame implements Tela
     private JTextField dataChegadaP;//criar tipo Data
     private JTextField dataSaidaP;//criar tipo Data
     
-    //boolean autorizacao; fazer um modelo faz se tornar true qnd o botão for selecionado
-    
     private JTextField marcaP;
     private JTextField modeloP;
     private JTextField serialP;
     private JTextField defeitoP;
+    //private JTextField reparoP; serão informadas pelo técnico
+    //private JTextField observacaoP;
+    //private JTextField precoP;
     
     
     
@@ -40,7 +41,6 @@ public class TelaServico extends JFrame implements Tela
         this.marcaP = new JTextField(50);
         this.modeloP = new JTextField(50);
         this.serialP = new JTextField(50);
-        this.defeitoP = new JTextField(50);
         
         this.setLayout(new BorderLayout());
         this.add(painelCaixaTexto(), BorderLayout.CENTER);
@@ -71,8 +71,6 @@ public class TelaServico extends JFrame implements Tela
         caixaTexto.add(this.modeloP);
         caixaTexto.add(new JLabel("Serial:"));
         caixaTexto.add(this.serialP);
-        caixaTexto.add(new JLabel("Defeito:"));
-        caixaTexto.add(this.defeitoP);
         
         return caixaTexto;
     }

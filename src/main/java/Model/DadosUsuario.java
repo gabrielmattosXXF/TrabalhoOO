@@ -27,6 +27,7 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
+             dadosLogin.add(new Tecnico("ugas", "opa", "opa"));
              
         }
         

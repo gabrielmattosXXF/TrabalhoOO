@@ -13,7 +13,9 @@ public class Aparelho {
     private String marca;
     private String modelo;
     private int serial;
-    private String defeito;
+    private String defeito="";
+    private String reparo="";
+    private String observacao="";
     
     public Aparelho(String marca, String modelo, int serial)
     {        
@@ -60,5 +62,25 @@ public class Aparelho {
     public void setDefeito(String newDefeito)
     {
         defeito=newDefeito;
+    }
+    
+    public String getReparo()
+    {
+        return reparo;
+    }
+    
+    public void setreparo(String newReparo)
+    {
+        defeito=newReparo;
+    }
+    
+    public String getObservacao()
+    {
+        return observacao;
+    }
+    
+    public void setobservacao(String newObservacao)
+    {
+        defeito=newObservacao;
     }
 }

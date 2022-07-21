@@ -20,11 +20,11 @@ public class TelaTecnicoS extends JFrame implements Tela
     
     JPanel principal;
     
-    private JLabel numServico = new JLabel("");
-    private JLabel nomeCliente = new JLabel("");
-    private JLabel telefoneCliente = new JLabel("");
-    private JLabel dataChegada = new JLabel("");
-    private JLabel dataSaida = new JLabel("");
+    private JLabel numServico = new JLabel("OS");
+    private JLabel nomeCliente = new JLabel("Nome");
+    private JLabel telefoneCliente = new JLabel("Telefone");
+    private JLabel dataChegada = new JLabel("Data entrada");
+    private JLabel dataSaida = new JLabel("data saida");
     
     private JList listaServico = new JList (DadosServico.imprimeServico().toArray());
     
@@ -59,28 +59,27 @@ public class TelaTecnicoS extends JFrame implements Tela
             }
         });
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//repensar isso
 
         this.principal = new JPanel();
         this.principal.setLayout(new BorderLayout());
         this.principal.setLayout(new GridLayout(2, 0));
         
         this.principal.add(painelGerencia(), BorderLayout.CENTER);
-        this.principal.add(painelProdutos());
+        this.principal.add(painelServicos());
         
         this.add(principal);
         
-        this.setSize(500, 500);
+        this.setSize(600, 600);
         this.setVisible(true);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
     }
     
-    private JPanel painelProdutos()
+    private JPanel painelServicos()
     {
         JPanel painelProd = new JPanel();
-        painelProd.setBorder(BorderFactory.createTitledBorder("Lista de produtos"));
+        painelProd.setBorder(BorderFactory.createTitledBorder("Lista de Serviços"));
         JScrollPane scroll= new JScrollPane (listaServico);
         
         painelProd.add(scroll);
@@ -91,97 +90,77 @@ public class TelaTecnicoS extends JFrame implements Tela
     private JPanel painelGerencia()
     {
         JPanel painelGer = new JPanel();
-        painelGer.setBorder(BorderFactory.createTitledBorder("Preencha os dados do produto"));
-        painelGer.setLayout(new GridLayout(4, 0));
+        painelGer.setBorder(BorderFactory.createTitledBorder("Informações da Ordem de Serviço"));
+        painelGer.setLayout(new GridLayout(6, 0));
         
-        JPanel nomeGer = new JPanel();
-        JPanel precoGer = new JPanel();
-        JPanel quantGer = new JPanel();
-        JPanel botoesGer = new JPanel();
-        botoesGer.setLayout(new GridLayout(0, 5));
+        painelGer.add(numServico);
+        painelGer.add(nomeCliente);
+        painelGer.add(telefoneCliente);
+        painelGer.add(dataChegada);
+        painelGer.add(dataSaida);
         
-        nomeGer.add(new JLabel("Nome: "));
-        nomeGer.add(nomeItem);
+        JPanel botoesGer = new JPanel();//Fazer as funcionalidades realizar orçamento e direcionar o Serviço para a lista de feitos e de sem concerto
         
-        precoGer.add(new JLabel("Preço: "));
-        precoGer.add(precoItem, BorderLayout.CENTER);
-        
-        quantGer.add(new JLabel("Quantidade: "));
-        quantGer.add(quantItem, BorderLayout.CENTER);
+        //botoesGer.setLayout(new GridLayout(0, 5));
 
-        JButton btAdicionar = new JButton("Adicionar");
+        JButton btAdicionar = new JButton("Add. Feito");//vale a pena implementar isso?
         btAdicionar.addActionListener(a->{
-            //fazer um script que adiciona o contato escrito à JList
-            Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
-            //this.principal.repaint();
-            //SwingUtilities.updateComponentTreeUI(this);
+            
             this.setVisible(false);//cambiarra
-            new TelaAdmProduto();
+            new TelaTecnico();
         });
         botoesGer.add(btAdicionar);
 
-        JButton btRemover = new JButton("Remover");
-        btRemover.addActionListener(b->{
-            
-            int selectedIndex = listaEstoque.getSelectedIndex();
-                    
-            if(JOptionPane.showConfirmDialog(null, "Deseja remover o "+Estoque.retornaItemIndex(selectedIndex))==0)
-            {
-                if(selectedIndex != -1)
-                {
-                Estoque.removeItem(selectedIndex);//fazer um mecanismo que atualize a JList na hora de execução
-
-                                //DefaultListModel<String> model = (DefaultListModel<String>) listaFuncionarios.getModel();
-                                //model.removeElementAt(selectedIndex);
-                                //listaFuncionarios.setModel(model);
-                                //painelTxt.repaint();
-                                
-                                //painelTxt.removeAll();
-                                //painelTxt.add(scroll,BorderLayout.CENTER);
-                                //painelTxt.add(removerFunc,BorderLayout.SOUTH);
-                                //painelTxt.revalidate();
-                                //painelTxt.repaint();
-                    this.setVisible(false);//cambiarra
-                    new TelaAdmProduto();
-                }
-            }
-        });
-        botoesGer.add(btRemover);
-        
-        JButton btEditar = new JButton("Editar");
+        JButton btEditar = new JButton(" Add. Sem Manutenção");
         btEditar.addActionListener(c->{
-            int selectedIndex = listaEstoque.getSelectedIndex();
-            
-            Item selectedItem = Estoque.retornaItemIndex(selectedIndex);
-            
-            selectedItem.setNome(nomeItem.getText());
-            selectedItem.setPreco(Double.parseDouble(precoItem.getText()));
-            selectedItem.setQuant(Integer.parseInt(quantItem.getText()));
             
             this.setVisible(false);//cambiarra
-            new TelaAdmProduto();
+            new TelaTecnico();
             
         });
         botoesGer.add(btEditar);
         
+        JButton btRemover = new JButton("Add. Orçamento");
+        btRemover.addActionListener(b->{
+            
+            int selectedIndex = listaServico.getSelectedIndex();
+                    
+            if(selectedIndex != -1)
+            {
+                Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
+                
+                
+
+                //selectedItem.setNome(nomeItem.getText());
+                //selectedItem.setPreco(Double.parseDouble(precoItem.getText()));
+                //selectedItem.setQuant(Integer.parseInt(quantItem.getText()));
+                
+                
+                
+                this.setVisible(false);//cambiarra
+                new TelaTecnico();
+            }
+        });
+        botoesGer.add(btRemover);
+        
         JButton btLimpar = new JButton("Limpar");
         //btnLimpar.addActionListener(new LimparFormulario(this));
         btLimpar.addActionListener(d->{
-            nomeItem.setText("");
-            precoItem.setText("");
-            quantItem.setText("");
+            this.numServico.setText("OS: ");
+            this.nomeCliente.setText("Nome: ");
+            this.telefoneCliente.setText("Telefone: ");
+            this.dataChegada.setText("Data chegada: ");
+            this.dataSaida.setText("Data saída: ");
         });
         botoesGer.add(btLimpar);
         
         JButton btSair = new JButton("Sair");
         btSair.addActionListener(d->{
             this.setVisible(false);
+            new TelaInicial();
         });
         botoesGer.add(btSair);
         
-        painelGer.add(nomeGer);
-        painelGer.add(precoGer);
-        painelGer.add(quantGer);
         painelGer.add(botoesGer);
         
         return painelGer;
