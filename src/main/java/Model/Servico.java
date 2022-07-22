@@ -12,7 +12,7 @@ import Model.*;
  */
 public class Servico
 {
-    static int numServicoS=0;
+    private static int numServicoS=0;
     
     private int numServico=0;
     
@@ -23,11 +23,13 @@ public class Servico
     private Date dataChegada;//criar tipo Data
     private Date dataSaida;//criar tipo Data
     
-    //Aparelho aparelho;
+    private Aparelho aparelho;
     
-    private boolean autorizacao;
+    private Double preco=0.0;
     
-    public Servico(String nomeCliente, String telefoneCliente, Date dataChegada, Date dataSaida, boolean autorizacao)
+    //private boolean autorizacao;
+    
+    public Servico(String nomeCliente, String telefoneCliente, Date dataChegada, Date dataSaida,  Aparelho aparelho)
     {
         this.numServicoS++;
         this.numServico=numServicoS;
@@ -38,9 +40,8 @@ public class Servico
         this.dataChegada=dataChegada;
         this.dataSaida=dataSaida;
 
-        //this.aparelho=new Aparelho();
+        this.aparelho=aparelho;
 
-        this.autorizacao=autorizacao;
         
     }
     
@@ -92,4 +93,18 @@ public class Servico
         dataSaida = novaDataS;
     }    
     
+    public Aparelho getAparelho()
+    {
+        return aparelho;
+    }
+    
+    public Double getPreco()
+    {
+        return preco;
+    }
+    
+    public void setPreco(Double novoPreco)
+    {
+        this.preco=novoPreco;
+    }
 }
