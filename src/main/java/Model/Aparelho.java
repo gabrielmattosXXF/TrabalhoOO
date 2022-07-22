@@ -69,7 +69,7 @@ public class Aparelho {
         return reparo;
     }
     
-    public void setreparo(String newReparo)
+    public void setReparo(String newReparo)
     {
         defeito=newReparo;
     }
@@ -79,7 +79,7 @@ public class Aparelho {
         return observacao;
     }
     
-    public void setobservacao(String newObservacao)
+    public void setObservacao(String newObservacao)
     {
         defeito=newObservacao;
     }

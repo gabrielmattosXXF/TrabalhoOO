@@ -20,11 +20,26 @@ public class TelaTecnicoS extends JFrame implements Tela
     
     JPanel principal;
     
-    private JLabel numServico = new JLabel("OS");
-    private JLabel nomeCliente = new JLabel("Nome");
-    private JLabel telefoneCliente = new JLabel("Telefone");
-    private JLabel dataChegada = new JLabel("Data entrada");
-    private JLabel dataSaida = new JLabel("data saida");
+    private JLabel numServico = new JLabel("OS:");
+    private JLabel nomeCliente = new JLabel("Nome:");
+    private JLabel telefoneCliente = new JLabel("Telefone:");
+    private JLabel dataChegada = new JLabel("Data entrada:");
+    private JLabel dataSaida = new JLabel("Data saida:");
+    
+    private JLabel marca = new JLabel("Marca:");
+    private JLabel modelo = new JLabel("Modelo:");
+    private JLabel serial = new JLabel("Serial:");
+    
+    private JLabel defeito = new JLabel("Defeito:");
+    private JLabel reparo = new JLabel("Reparo:");
+    private JLabel observacao = new JLabel("Observacao:");
+    
+    private JTextField tfDefeito;
+    private JTextField tfReparo;
+    private JTextField tfObservacao;
+    private JTextField tfPreco;
+    
+    private JLabel preco = new JLabel("Preço:");
     
     private JList listaServico = new JList (DadosServico.imprimeServico().toArray());
     
@@ -36,9 +51,10 @@ public class TelaTecnicoS extends JFrame implements Tela
         
         listaServico.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
         
-        //nomeItem = new JTextField(15);
-        //precoItem = new JTextField(15);
-        //quantItem = new JTextField(15);
+        tfDefeito = new JTextField(15);
+        tfReparo = new JTextField(15);
+        tfObservacao = new JTextField(15);
+        tfPreco = new JTextField(15);
         
         listaServico.addListSelectionListener(a->{
             int firstIndex = listaServico.getSelectedIndex();
@@ -52,10 +68,16 @@ public class TelaTecnicoS extends JFrame implements Tela
                 this.telefoneCliente.setText("Telefone: "+elementAt.getTelefoneServico());
                 this.dataChegada.setText("Data chegada: "+elementAt.getDataChegada());
                 this.dataSaida.setText("Data saída: "+elementAt.getDataSaida());
-                //this.precoItem.setText(Double.toString(elementAt.getPreco()));
-                //this.quantItem.setText(Integer.toString(elementAt.getQuant()));
                 
-                //tela.setLastIndex(firstIndex);
+                this.marca.setText("Marca: "+elementAt.getAparelho().getMarca());
+                this.modelo.setText("Modelo:"+elementAt.getAparelho().getModelo());
+                //this.serial.setText("Serial:"+elementAt.getAparelho().getSerial());
+                
+                this.tfDefeito.setText(elementAt.getAparelho().getDefeito());
+                this.tfReparo.setText(elementAt.getAparelho().getReparo());
+                this.tfObservacao.setText(elementAt.getAparelho().getObservacao());
+                this.tfPreco.setText(elementAt.getPreco().toString());
+                
             }
         });
         
@@ -63,14 +85,14 @@ public class TelaTecnicoS extends JFrame implements Tela
 
         this.principal = new JPanel();
         this.principal.setLayout(new BorderLayout());
-        this.principal.setLayout(new GridLayout(2, 0));
+        this.principal.setLayout(new GridLayout(0, 2));
         
         this.principal.add(painelGerencia(), BorderLayout.CENTER);
         this.principal.add(painelServicos());
         
         this.add(principal);
         
-        this.setSize(600, 600);
+        this.setSize(650, 600);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         
@@ -91,7 +113,7 @@ public class TelaTecnicoS extends JFrame implements Tela
     {
         JPanel painelGer = new JPanel();
         painelGer.setBorder(BorderFactory.createTitledBorder("Informações da Ordem de Serviço"));
-        painelGer.setLayout(new GridLayout(6, 0));
+        painelGer.setLayout(new GridLayout(13, 0));
         
         painelGer.add(numServico);
         painelGer.add(nomeCliente);
@@ -99,15 +121,41 @@ public class TelaTecnicoS extends JFrame implements Tela
         painelGer.add(dataChegada);
         painelGer.add(dataSaida);
         
+        painelGer.add(marca);
+        painelGer.add(modelo);
+        painelGer.add(serial);
+        
+        JPanel gerDefeito = new JPanel();
+        gerDefeito.add(defeito);
+        gerDefeito.add(tfDefeito);
+        
+        JPanel gerReparo = new JPanel();
+        gerReparo.add(reparo);
+        gerReparo.add(tfReparo);
+        
+        JPanel gerObservacao = new JPanel();
+        gerObservacao.add(observacao);
+        gerObservacao.add(tfObservacao);
+        
+        JPanel gerPreco = new JPanel();
+        gerPreco.add(preco);
+        gerPreco.add(tfPreco);
+        
+        painelGer.add(gerDefeito);
+        painelGer.add(gerReparo);
+        painelGer.add(gerObservacao);
+        painelGer.add(gerPreco);
+        
+        
         JPanel botoesGer = new JPanel();//Fazer as funcionalidades realizar orçamento e direcionar o Serviço para a lista de feitos e de sem concerto
         
-        //botoesGer.setLayout(new GridLayout(0, 5));
+        botoesGer.setLayout(new GridLayout(3, 2));
 
         JButton btAdicionar = new JButton("Add. Feito");//vale a pena implementar isso?
         btAdicionar.addActionListener(a->{
             
             this.setVisible(false);//cambiarra
-            new TelaTecnico();
+            new TelaTecnicoS();
         });
         botoesGer.add(btAdicionar);
 
@@ -115,7 +163,7 @@ public class TelaTecnicoS extends JFrame implements Tela
         btEditar.addActionListener(c->{
             
             this.setVisible(false);//cambiarra
-            new TelaTecnico();
+            new TelaTecnicoS();
             
         });
         botoesGer.add(btEditar);
@@ -129,28 +177,32 @@ public class TelaTecnicoS extends JFrame implements Tela
             {
                 Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
                 
-                
-
-                //selectedItem.setNome(nomeItem.getText());
-                //selectedItem.setPreco(Double.parseDouble(precoItem.getText()));
-                //selectedItem.setQuant(Integer.parseInt(quantItem.getText()));
-                
-                
+                selectedServico.getAparelho().setDefeito(defeito.getText());
+                selectedServico.getAparelho().setReparo(reparo.getText());
+                selectedServico.getAparelho().setObservacao(observacao.getText());
+                selectedServico.setPreco(Double.parseDouble(preco.getText()));
                 
                 this.setVisible(false);//cambiarra
-                new TelaTecnico();
+                new TelaTecnicoS();
             }
         });
         botoesGer.add(btRemover);
         
         JButton btLimpar = new JButton("Limpar");
-        //btnLimpar.addActionListener(new LimparFormulario(this));
         btLimpar.addActionListener(d->{
             this.numServico.setText("OS: ");
             this.nomeCliente.setText("Nome: ");
             this.telefoneCliente.setText("Telefone: ");
             this.dataChegada.setText("Data chegada: ");
             this.dataSaida.setText("Data saída: ");
+            this.marca.setText("Marca: ");
+            this.modelo.setText("Modelo:");
+            this.serial.setText("Serial:");
+            
+            this.tfDefeito.setText("");
+            this.tfReparo.setText("");
+            this.tfObservacao.setText("");
+            this.tfPreco.setText("");
         });
         botoesGer.add(btLimpar);
         
