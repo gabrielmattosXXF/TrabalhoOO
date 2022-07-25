@@ -166,7 +166,7 @@ public class Estoque
         estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
     }
     
-    /*
+    
     public static boolean realizaVenda(String nome,int qntd,Vendedor v)
     {
         if(verificaDispoProd(nome))
@@ -185,7 +185,6 @@ public class Estoque
         else
             return false;
     }
-    */
     
     public static void removeItem(int index)
     {

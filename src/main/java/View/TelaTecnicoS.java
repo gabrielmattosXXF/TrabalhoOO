@@ -154,16 +154,22 @@ public class TelaTecnicoS extends JFrame implements Tela
         JButton btAdicionar = new JButton("Add. Feito");//vale a pena implementar isso?
         btAdicionar.addActionListener(a->{
             
-            this.setVisible(false);//cambiarra
+            this.setVisible(true);//cambiarra
             new TelaTecnicoS();
+            painelGer.removeAll();
+            painelGer.revalidate();
+            painelGer.repaint();
         });
         botoesGer.add(btAdicionar);
 
         JButton btEditar = new JButton(" Add. Sem Manutenção");
         btEditar.addActionListener(c->{
             
-            this.setVisible(false);//cambiarra
+            this.setVisible(true);//cambiarra
             new TelaTecnicoS();
+            painelGer.removeAll();
+            painelGer.revalidate();
+            painelGer.repaint();
             
         });
         botoesGer.add(btEditar);
@@ -182,8 +188,11 @@ public class TelaTecnicoS extends JFrame implements Tela
                 selectedServico.getAparelho().setObservacao(observacao.getText());
                 selectedServico.setPreco(Double.parseDouble(preco.getText()));
                 
-                this.setVisible(false);//cambiarra
+                this.setVisible(true);//cambiarra
                 new TelaTecnicoS();
+                painelGer.removeAll();
+                painelGer.revalidate();
+                painelGer.repaint();
             }
         });
         botoesGer.add(btRemover);
@@ -203,12 +212,15 @@ public class TelaTecnicoS extends JFrame implements Tela
             this.tfReparo.setText("");
             this.tfObservacao.setText("");
             this.tfPreco.setText("");
+            painelGer.removeAll();
+            painelGer.revalidate();
+            painelGer.repaint();
         });
         botoesGer.add(btLimpar);
         
         JButton btSair = new JButton("Sair");
         btSair.addActionListener(d->{
-            this.setVisible(false);
+            this.setVisible(true);
             new TelaInicial();
         });
         botoesGer.add(btSair);

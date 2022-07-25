@@ -82,6 +82,7 @@ public class TelaAdmProduto extends JFrame implements Tela
         JPanel painelProd = new JPanel();
         painelProd.setBorder(BorderFactory.createTitledBorder("Lista de produtos"));
         JScrollPane scroll= new JScrollPane (listaEstoque);
+        scroll.setPreferredSize(new Dimension(450,200));
         
         painelProd.add(scroll);
         

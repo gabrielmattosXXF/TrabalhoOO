@@ -69,6 +69,7 @@ public class TelaAdm extends JFrame implements Tela
             JList listaEstoque = new JList (Estoque.imprimeEstoque().toArray());
             listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
             JScrollPane scroll= new JScrollPane (listaEstoque);
+            scroll.setPreferredSize(new Dimension(200,200));
             btImprimeEstoque.add(scroll);
 
             painelTxt.removeAll();
@@ -109,6 +110,7 @@ public class TelaAdm extends JFrame implements Tela
                 JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
                 listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
                 JScrollPane scroll= new JScrollPane (listaFuncionarios);
+                scroll.setPreferredSize(new Dimension(400,200));
                 
                 btopcao.add(scroll); 
                 
