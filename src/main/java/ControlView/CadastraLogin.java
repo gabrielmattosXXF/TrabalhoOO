@@ -46,10 +46,6 @@ public class CadastraLogin implements ActionListener
             //está estabelecido que o usuário digitou o nivel de acesso corretamente
             //fazer um tratamento de excessão aq
             JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
-            //new TelaAdministrador();
-            //levar até uma tela e fechar essa tela atual
-            //DadosUsuario.ordenaDadosLoginAlfabetico();
-            //DadosUsuario.ordenaDadosLoginNivel();
             tela.setVisible(false);
             new TelaAdm();
         }

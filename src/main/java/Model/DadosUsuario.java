@@ -29,58 +29,11 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
              
-             //ordenaDadosLoginAlfabetico();
-             //ordenaDadosLoginNivel();
              Collections.sort(dadosLogin);
              
         }
         
     }
-    
-    /*public static void ordenaDadosLoginAlfabetico() {//olhar a aula de interface para refazer esse método
-
-        
-        int menorIndice;
-        for (int i = 0; i < dadosLogin.size(); i++) {
-
-            menorIndice = i;
-            for (int j = i + 1; j < dadosLogin.size(); j++) {
-                //if(nomes.getElementAt(menorIndice).getNome().compareToIgnoreCase(nomes.getElementAt(j).getNome())> 0)
-                if(dadosLogin.get(menorIndice).getNomeUsuario().compareToIgnoreCase(dadosLogin.get(j).getNomeUsuario())> 0)
-                {
-                    menorIndice = j;//ao final do loop esse valor representará o indice do contato com o menor nome, que será colocado na primeira posição
-                }
-            }
-
-            trocaDadosLogin(menorIndice, i);
-            
-        }
-    }
-    
-    public static void ordenaDadosLoginNivel() {
-
-        int menorIndice;
-        for (int i = 0; i < dadosLogin.size(); i++) {
-
-            menorIndice = i;
-            for (int j = i + 1; j < dadosLogin.size(); j++) {
-                //if(nomes.getElementAt(menorIndice).getNome().compareToIgnoreCase(nomes.getElementAt(j).getNome())> 0)
-                if(dadosLogin.get(menorIndice).getNivelDeAcesso().compareToIgnoreCase(dadosLogin.get(j).getNivelDeAcesso())> 0)
-                {
-                    menorIndice = j;//ao final do loop esse valor representará o indice do contato com o menor nome, que será colocado na primeira posição
-                }
-            }
-
-            trocaDadosLogin(menorIndice, i);
-            
-        }
-    }
-    
-    public static void trocaDadosLogin(int origem, int destino) {
-
-        Collections.swap(dadosLogin, origem, destino);
-        
-    }*/
     
     public static String NivelAcessoLogin(String login, String senha)
     {

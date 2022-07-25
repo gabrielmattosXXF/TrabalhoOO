@@ -69,14 +69,12 @@ public class Usuario implements Comparable<Usuario>
 
     @Override
     public int compareTo(Usuario outro) {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         if(nivelDeAcesso.equalsIgnoreCase(outro.nivelDeAcesso))
         {
             return nomeUsuario.compareToIgnoreCase(outro.nomeUsuario);
         }
         else
         {
-            //return nomeUsuario.compareToIgnoreCase(outro.nomeUsuario);
             return nivelDeAcesso.compareToIgnoreCase(outro.nivelDeAcesso);
         }
     }
