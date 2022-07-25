@@ -58,12 +58,25 @@ public class DadosUsuario
         }
         return false;
     }
+    
+    public static boolean verificaLoginInicializado(String login)
+    {
+        for(Usuario user : dadosLogin)
+        {
+            if(user.getLogin().equals(login))
+                return true;
+            
+        }
+        return false;
+    }
+    
     public static void adicionaLogin(Usuario user)
     {
         dadosLogin.add(user);
         Collections.sort(dadosLogin);
     }
-    public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)
+    
+    public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)//verificar diminuição de acoplamento aqui
     {
         for(Usuario user : dadosLogin)
         {
@@ -114,15 +127,14 @@ public class DadosUsuario
         return listaFuncionario;
     }
     
-    
     public static void removeFuncionario(int index)
     {
         dadosLogin.remove(index);
     }
     
-    public static Usuario retornaUsuarioIndex(int index)
+    public static String imprimeUsuarioIndex(int index)
     {
-        return dadosLogin.get(index);
+        return dadosLogin.get(index).toString();
     }
     
     public static int indexLastAdm() //função só serve se a lista já tiver sido tratada

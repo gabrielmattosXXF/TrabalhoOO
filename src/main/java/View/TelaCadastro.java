@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package View;
-import ControlView.*;
+import Control.CadastraLogin;
+import Control.RetornaInicio;
 
 import javax.swing.*;
 import java.awt.*;

@@ -101,10 +101,12 @@ public class TelaVenda extends JFrame implements Tela{
             {
                 if(selectedIndex != -1)
                 {
-                Estoque.realizaVenda(nomeItem,quantItem,v);
+                //Estoque.realizaVenda(nomeItem,quantItem,v);
+                }
+            }
         });
                 
-        
-     }    
+        return painelGer;
+     }  
     
 }

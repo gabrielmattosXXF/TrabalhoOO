@@ -5,7 +5,7 @@
 package View;
 
 import Model.Aparelho;
-import ControlView.CriarServico;
+import Control.CriarServico;
 import javax.swing.*;
 import java.awt.*;
 

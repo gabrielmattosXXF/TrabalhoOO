@@ -4,9 +4,10 @@
  */
 package View;
 
+import Control.DirecionaTelaCadastro;
+import Control.RetornaInicio;
 import Model.Estoque;
 import Control.*;
-import ControlView.*;
 import Model.*;
 
 import javax.swing.*;
@@ -104,51 +105,67 @@ public class TelaAdm extends JFrame implements Tela
             btopcao.add(adicionar);
             
             JButton remover = new JButton("Remover");
-            
             remover.addActionListener(f->{
                 
-                JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
-                listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
-                JScrollPane scroll= new JScrollPane (listaFuncionarios);
-                scroll.setPreferredSize(new Dimension(400,200));
+                //JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
+                //listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+                //JScrollPane scroll= new JScrollPane (listaFuncionarios);
                 
-                btopcao.add(scroll); 
-                
-                JButton removerFunc = new JButton("Remover");//fazer uma tela de aviso antes de remover o usuário
-                removerFunc.addActionListener(evento->{
-                    
-                    int selectedIndex = listaFuncionarios.getSelectedIndex();
-                    
-                    if(JOptionPane.showConfirmDialog(null, "Deseja remover o "+DadosUsuario.retornaUsuarioIndex(selectedIndex))==0)
-                    {
-                        if(selectedIndex != -1)
-                        {
-                            DadosUsuario.removeFuncionario(selectedIndex);//fazer um mecanismo que atualize a JList na hora de execução
-
-                                //DefaultListModel<String> model = (DefaultListModel<String>) listaFuncionarios.getModel();
-                                //model.removeElementAt(selectedIndex);
-                                //listaFuncionarios.setModel(model);
-                                //painelTxt.repaint();
-                                
-                                //painelTxt.removeAll();
-                                //painelTxt.add(scroll,BorderLayout.CENTER);
-                                //painelTxt.add(removerFunc,BorderLayout.SOUTH);
-                                //painelTxt.revalidate();
-                                //painelTxt.repaint();
-                                
-                        }
-                    }
-                    
-                });
-                
-                //listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
+                String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
+                JComboBox listFunc = new JComboBox<>(funcionarios);
+                btopcao.add(listFunc);
 
                 painelTxt.removeAll();
-                painelTxt.add(scroll,BorderLayout.CENTER);
-                painelTxt.add(removerFunc,BorderLayout.SOUTH);
+                painelTxt.add(listFunc, BorderLayout.CENTER);
                 painelTxt.revalidate();
                 painelTxt.repaint();
-                
+
+                listFunc.addActionListener(h->
+                {
+                    int selectedIndex = listFunc.getSelectedIndex();
+                    
+                    JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
+                    listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+                    
+                    JScrollPane scroll= new JScrollPane (listaFuncionarios);
+
+                    btopcao.add(scroll);
+                    
+                    listaFuncionarios.addListSelectionListener(s->{
+                        
+                        int funcSelectedIndex = listaFuncionarios.getSelectedIndex();
+                    
+                        if(selectedIndex==1)
+                        {
+                            funcSelectedIndex+=DadosUsuario.indexLastAdm()+1;
+                            
+                            
+                        }
+                        else if(selectedIndex==2)
+                        {
+                            funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
+                            
+                        }
+                        if(JOptionPane.showConfirmDialog(null, "Deseja remover o "+DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex))==0)
+                        {
+                            if(selectedIndex != -1)
+                            {
+                                DadosUsuario.removeFuncionario(funcSelectedIndex);
+                            }
+                        }
+                        
+                    });
+                    
+                    
+                    painelTxt.removeAll();
+                    painelTxt.add(listFunc, BorderLayout.CENTER);
+                    painelTxt.add(scroll,BorderLayout.SOUTH);
+                    painelTxt.revalidate();
+                    painelTxt.repaint();
+                    this.revalidate();
+                    this.repaint();
+
+                    });
             });
             btopcao.add(remover);
             
@@ -179,21 +196,15 @@ public class TelaAdm extends JFrame implements Tela
                         
                         int funcSelectedIndex = listaFuncionarios.getSelectedIndex();
                     
-                        if(selectedIndex==0)
-                        {
-                            //JOptionPane.showConfirmDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
-                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
-                        }
-                        else if(selectedIndex==1)
+                        if(selectedIndex==1)
                         {
                             funcSelectedIndex+=DadosUsuario.indexLastAdm()+1;
-                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
                         }
                         else if(selectedIndex==2)
                         {
                             funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
-                            JOptionPane.showMessageDialog(null, DadosUsuario.retornaUsuarioIndex(funcSelectedIndex).toString());
                         }
+                        JOptionPane.showMessageDialog(null, DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex));
                     });
                     
                     

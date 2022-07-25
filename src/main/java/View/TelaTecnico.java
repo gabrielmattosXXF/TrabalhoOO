@@ -4,7 +4,6 @@
  */
 package View;
 import Control.*;
-import ControlView.*;
 import Model.*;
 
 import javax.swing.*;

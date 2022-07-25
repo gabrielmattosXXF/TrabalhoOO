@@ -9,9 +9,9 @@ package View;
  *
  * @author Derlucio Nazareth
  */
+import Control.RetornaInicio;
 import Model.Estoque;
 import Control.*;
-import ControlView.*;
 import Model.*;
 
 import javax.swing.*;
@@ -24,10 +24,12 @@ import java.awt.*;
 public class TelaVendedor extends JFrame implements Tela
 {
     JPanel painelTxt;
+    protected Vendedor v;
     
-    public TelaVendedor()
+    public TelaVendedor(Vendedor v)
     {
         super("Tela Vendedor");
+        this.v=v;
 
         //this.setLayout(new BorderLayout());
         this.setLayout(new GridLayout(0, 2));

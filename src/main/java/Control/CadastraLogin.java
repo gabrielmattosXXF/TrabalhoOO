@@ -2,11 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ControlView;
+package Control;
 
 import View.*;
 import Control.*;
-import ControlView.*;
 import Model.*;
 
 import javax.swing.*;
@@ -29,7 +28,8 @@ public class CadastraLogin implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(!DadosUsuario.validaLogin(tela.getLogin().getText(), tela.getSenha().getText()))
+        //if(!DadosUsuario.validaLogin(tela.getLogin().getText(), tela.getSenha().getText()))
+        if(!DadosUsuario.verificaLoginInicializado(tela.getLogin().getText()))
         {
             if(tela.getNivel().getText().equalsIgnoreCase("Administrador"))
             {
