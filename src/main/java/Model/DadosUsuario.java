@@ -12,7 +12,7 @@ import javax.swing.*;
  *
  * @author Gabriel Mattos
  */
-public class DadosUsuario
+public class DadosUsuario 
 {
     private static List<Usuario> dadosLogin = new ArrayList<>();
     
@@ -29,15 +29,15 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
              
-             ordenaDadosLoginAlfabetico();
-             ordenaDadosLoginNivel();
-             
+             //ordenaDadosLoginAlfabetico();
+             //ordenaDadosLoginNivel();
+             Collections.sort(dadosLogin);
              
         }
         
     }
     
-    public static void ordenaDadosLoginAlfabetico() {
+    /*public static void ordenaDadosLoginAlfabetico() {//olhar a aula de interface para refazer esse método
 
         
         int menorIndice;
@@ -78,15 +78,9 @@ public class DadosUsuario
     
     public static void trocaDadosLogin(int origem, int destino) {
 
-        /*Usuario auxUser = dadosLogin.get(origem);
-        dadosLogin.remove(origem);
-        dadosLogin.add(origem, dadosLogin.get(destino));
-        dadosLogin.remove(destino);
-        dadosLogin.add(destino, auxUser);*/
-        
         Collections.swap(dadosLogin, origem, destino);
         
-    }
+    }*/
     
     public static String NivelAcessoLogin(String login, String senha)
     {
@@ -111,17 +105,10 @@ public class DadosUsuario
         }
         return false;
     }
-    
-    /*public static void imprimelogin()
-    {
-        for(Usuario user : dadosLogin)
-        {
-            System.out.println(user);
-        }
-    }*/
     public static void adicionaLogin(Usuario user)
     {
         dadosLogin.add(user);
+        Collections.sort(dadosLogin);
     }
     public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)
     {

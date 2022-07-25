@@ -8,7 +8,7 @@ package Model;
  *
  * @author Gabriel Mattos
  */
-public class Usuario
+public class Usuario implements Comparable<Usuario>
 {
     private String nomeUsuario;
     private String login;
@@ -66,4 +66,20 @@ public class Usuario
     {
         return this.senha.equals(senhaDigitada) && this.login.equals(loginDigitado);
     }
+
+    @Override
+    public int compareTo(Usuario outro) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(nivelDeAcesso.equalsIgnoreCase(outro.nivelDeAcesso))
+        {
+            return nomeUsuario.compareToIgnoreCase(outro.nomeUsuario);
+        }
+        else
+        {
+            //return nomeUsuario.compareToIgnoreCase(outro.nomeUsuario);
+            return nivelDeAcesso.compareToIgnoreCase(outro.nivelDeAcesso);
+        }
+    }
+
+    
 }
