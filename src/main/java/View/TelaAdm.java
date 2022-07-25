@@ -103,7 +103,7 @@ public class TelaAdm extends JFrame implements Tela
             btopcao.add(adicionar);
             
             JButton remover = new JButton("Remover");
-            //remover.addActionListener(new DirecionaTelaCadastro(this)); //Fazer uma tela de remoção de usuário
+            
             remover.addActionListener(f->{
                 
                 JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());

@@ -148,10 +148,10 @@ public class Estoque
     
     public static List imprimeEstoqueS()
     {
-        List<Item> listaEstoque = new ArrayList<>();
+        List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
         {
-            listaEstoque.add(prod);
+            listaEstoque.add(prod.getNome());
         }
         return listaEstoque;
     }
