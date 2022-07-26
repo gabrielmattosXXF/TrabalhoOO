@@ -128,6 +128,7 @@ public class TelaAdm extends JFrame implements Tela
                     listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
                     
                     JScrollPane scroll= new JScrollPane (listaFuncionarios);
+                    scroll.setPreferredSize(new Dimension(200,200));
 
                     btopcao.add(scroll);
                     
@@ -155,7 +156,7 @@ public class TelaAdm extends JFrame implements Tela
                         }
                         
                     });
-                    
+                    //listaFuncionarios =new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
                     
                     painelTxt.removeAll();
                     painelTxt.add(listFunc, BorderLayout.CENTER);
@@ -169,56 +170,61 @@ public class TelaAdm extends JFrame implements Tela
             });
             btopcao.add(remover);
             
-            JButton imprime = new JButton("Imprimir funcionários");
-            imprime.addActionListener(g -> {
+            //JButton imprime = new JButton("Imprimir funcionários");
+            //imprime.addActionListener(g -> {
 
-                String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
-                JComboBox listFunc = new JComboBox<>(funcionarios);
-                btopcao.add(listFunc);
+            String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
+            JComboBox listFunc = new JComboBox<>(funcionarios);
+            btopcao.add(listFunc);
 
-                painelTxt.removeAll();
-                painelTxt.add(listFunc, BorderLayout.CENTER);
-                painelTxt.revalidate();
-                painelTxt.repaint();
+            painelTxt.removeAll();
+            painelTxt.add(listFunc, BorderLayout.CENTER);
+            painelTxt.revalidate();
+            painelTxt.repaint();
 
-                listFunc.addActionListener(h->
-                {
-                    int selectedIndex = listFunc.getSelectedIndex();
+            listFunc.addActionListener(h->
+            {
+                int selectedIndex = listFunc.getSelectedIndex();
                     
-                    JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
-                    listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+                JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
+                listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
                     
-                    JScrollPane scroll= new JScrollPane (listaFuncionarios);
+                JScrollPane scroll= new JScrollPane (listaFuncionarios);
+                scroll.setPreferredSize(new Dimension(200,200));
 
-                    btopcao.add(scroll);
+                //btopcao.add(scroll);
                     
-                    listaFuncionarios.addListSelectionListener(s->{
+                listaFuncionarios.addListSelectionListener(s->{
                         
-                        int funcSelectedIndex = listaFuncionarios.getSelectedIndex();
+                    int funcSelectedIndex = listaFuncionarios.getSelectedIndex();
                     
-                        if(selectedIndex==1)
-                        {
-                            funcSelectedIndex+=DadosUsuario.indexLastAdm()+1;
-                        }
-                        else if(selectedIndex==2)
-                        {
-                            funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
+                    if(selectedIndex==1)
+                    {
+                        funcSelectedIndex+=DadosUsuario.indexLastAdm()+1;
+                    }
+                    else if(selectedIndex==2)
+                    {
+                        funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
                         }
                         JOptionPane.showMessageDialog(null, DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex));
                     });
                     
-                    
+                    //btopcao.add(listFunc);
+                    btopcao.add(scroll);
 
                     painelTxt.removeAll();
-                    painelTxt.add(listFunc, BorderLayout.CENTER);
+                    painelTxt.add(opcao);
+                    //painelTxt.add(btopcao);
+                    //painelTxt.add(remover);
+                    //painelTxt.add(listFunc, BorderLayout.CENTER);
                     painelTxt.add(scroll,BorderLayout.SOUTH);
                     painelTxt.revalidate();
                     painelTxt.repaint();
 
                 });
                 
-            });
-            btopcao.add(imprime);
+            //});
+            btopcao.add(listFunc);
             
             
             opcao.add(btopcao);
