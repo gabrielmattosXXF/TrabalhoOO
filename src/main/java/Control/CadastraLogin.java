@@ -31,15 +31,15 @@ public class CadastraLogin implements ActionListener
         //if(!DadosUsuario.validaLogin(tela.getLogin().getText(), tela.getSenha().getText()))
         if(!DadosUsuario.verificaLoginInicializado(tela.getLogin().getText()))
         {
-            if(tela.getNivel().getText().equalsIgnoreCase("Administrador"))
+            if(tela.getNivel().equalsIgnoreCase("Administrador"))
             {
                 DadosUsuario.adicionaLogin(new Administrador(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
             }
-            else if(tela.getNivel().getText().equalsIgnoreCase("Vendedor"))
+            else if(tela.getNivel().equalsIgnoreCase("Vendedor"))
             {
                 DadosUsuario.adicionaLogin(new Vendedor(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
             }
-            else if(tela.getNivel().getText().equalsIgnoreCase("Tecnico"))
+            else if(tela.getNivel().equalsIgnoreCase("Tecnico"))
             {
                 DadosUsuario.adicionaLogin(new Tecnico(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
             }

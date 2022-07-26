@@ -18,14 +18,15 @@ public class TelaCadastro extends JFrame implements Tela
     JTextField nome;
     JTextField login;
     JPasswordField senha;
-    JTextField nivel;
+    JComboBox nivel;
     
     public TelaCadastro()
     {
+        String[] funcionarios = {"Administrador", "Técnico", "Vendedor"};
         this.nome = new JTextField(50);
         this.login = new JTextField(50);
         this.senha = new JPasswordField(50);
-        this.nivel = new JTextField(50);
+        this.nivel = new JComboBox<>(funcionarios);
         
         this.setLayout(new BorderLayout());
         this.add(painelCaixaTexto(), BorderLayout.CENTER);
@@ -93,11 +94,13 @@ public class TelaCadastro extends JFrame implements Tela
         this.senha = senha;
     }
     
-    public JTextField getNivel() {
-        return nivel;
+    public String getNivel() {
+        
+        //nivel.getItemAt(nivel.getSelectedIndex());
+        return nivel.getItemAt(nivel.getSelectedIndex()).toString();
     }
 
-    public void setNivel(JTextField nivel) {
+    public void setNivel(JComboBox nivel) {
         this.nivel = nivel;
     }
 }

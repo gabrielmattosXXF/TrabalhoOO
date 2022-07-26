@@ -106,10 +106,7 @@ public class TelaAdm extends JFrame implements Tela
             
             JButton remover = new JButton("Remover");
             remover.addActionListener(f->{
-                
-                //JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(0).toArray());
-                //listaFuncionarios.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
-                //JScrollPane scroll= new JScrollPane (listaFuncionarios);
+
                 
                 String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
                 JComboBox listFunc = new JComboBox<>(funcionarios);
