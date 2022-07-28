@@ -9,7 +9,6 @@ package View;
  *
  * @author Derlucio Nazareth
  */
-import Control.RetornaInicio;
 import Model.Estoque;
 import Control.*;
 import Model.*;
@@ -24,12 +23,12 @@ import java.awt.*;
 public class TelaVendedor extends JFrame implements Tela
 {
     JPanel painelTxt;
-    protected Vendedor v;
+    protected Vendedor vendedor;
     
-    public TelaVendedor(Vendedor v)
+    public TelaVendedor(Vendedor vendedor)
     {
         super("Tela Vendedor");
-        this.v=v;
+        this.vendedor=vendedor;
 
         //this.setLayout(new BorderLayout());
         this.setLayout(new GridLayout(0, 2));
@@ -70,14 +69,26 @@ public class TelaVendedor extends JFrame implements Tela
         //botoes.setSize(500, 250);
         botoes.setLayout(new GridLayout(4, 0));
         
-        JButton btConsultarProduto = new JButton("Consultar Estoque");
-        btConsultarProduto.addActionListener(e -> {
+        JButton btEstoque = new JButton("Consultar Estoque");
+        btEstoque.addActionListener(e -> {
                 
-            JList listaEstoque = new JList (Estoque.imprimeEstoque().toArray());
+            JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
             listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            
+            listaEstoque.addListSelectionListener(a->{
+                int firstIndex = listaEstoque.getSelectedIndex();
+
+                if (firstIndex != -1) {
+
+                    Item elementAt = Estoque.retornaItemIndex(firstIndex);
+                    
+                    JOptionPane.showMessageDialog(null, elementAt);
+                }
+            });
+            
             JScrollPane scroll= new JScrollPane (listaEstoque);
             scroll.setPreferredSize(new Dimension(200,200));
-            btConsultarProduto.add(scroll);
+            btEstoque.add(scroll);
 
             painelTxt.removeAll();
             painelTxt.add(scroll, BorderLayout.CENTER);
@@ -85,29 +96,28 @@ public class TelaVendedor extends JFrame implements Tela
             painelTxt.repaint();
             
         });
-        botoes.add(btConsultarProduto);
+        botoes.add(btEstoque);
         
-        JButton btAdministrarProduto = new JButton("Realizar Venda");
-        btAdministrarProduto.addActionListener(d-> {
-            //this.setVisible(false);
-            new TelaAdmProduto();
-            
-            
+        JButton btVenda = new JButton("Realizar Venda");
+        btVenda.addActionListener(d-> {
+            this.setVisible(false);
+            new TelaVenda(vendedor);
         });
-        botoes.add(btAdministrarProduto);
+        botoes.add(btVenda);
         
-        JButton btAdministrarFuncionarios = new JButton("Criar Ordem de Serviço");
-        btAdministrarFuncionarios.addActionListener(e-> {
-            
+        JButton btServico = new JButton("Criar Ordem de Serviço");
+        btServico.addActionListener(e-> {
+            this.setVisible(false);
             new TelaServico();
             
         });
-            
-                        
-            
+        botoes.add(btServico);
         
         JButton btCancelar = new JButton("Cancelar");
-        btCancelar.addActionListener(new RetornaInicio(this));
+        btCancelar.addActionListener(a->{
+            this.setVisible(false);
+            new TelaInicial();
+        });
         botoes.add(btCancelar);
         return botoes;
     }

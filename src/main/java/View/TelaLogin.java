@@ -4,7 +4,6 @@
  */
 package View;
 import Control.ConfirmaLogin;
-import Control.RetornaInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,7 +57,10 @@ public class TelaLogin extends JFrame implements Tela
         botoes.add(btConfirmar);
         
         JButton btCancelar = new JButton("Cancelar");
-        btCancelar.addActionListener(new RetornaInicio(this));
+        btCancelar.addActionListener(e->{
+            this.setVisible(false);
+            new TelaInicial(); 
+        });
         botoes.add(btCancelar);
         return botoes;
     }

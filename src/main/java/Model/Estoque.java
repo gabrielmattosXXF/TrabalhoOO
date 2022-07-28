@@ -104,9 +104,9 @@ public class Estoque
         
     }
      
-    public static Item retornaItem(String nome)
+    public static double retornaPrecoItem(String nome)
     {
-        return estoqueMercadoria.get(retornaIndexNome(nome));
+        return estoqueMercadoria.get(retornaIndexNome(nome)).getPreco();
     }
     
     public static int retornaIndexNome(String nome)
@@ -136,7 +136,7 @@ public class Estoque
     }
      
     
-    public static List imprimeEstoque()
+    public static List imprimeEstoque()//provavelmente vai apagar
     {
         List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
@@ -156,15 +156,15 @@ public class Estoque
         return listaEstoque;
     }
     
-    public static void setPrecoProd(String nome, double preco)
+    public static void setPrecoProd(String nome, double preco)//rever essa funç/ão
     {
         estoqueMercadoria.get(retornaIndexNome(nome)).setPreco(preco);
     }
     
-    public static void setNomeProd(String nome1, String nome2)
+    /*public static void setNomeProd(String nome1, String nome2)//rever essa funç/ão
     {
         estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
-    }
+    }*/
     
     
     public static boolean realizaVenda(String nome,int qntd,Vendedor v)
@@ -174,7 +174,7 @@ public class Estoque
             if(qntd>=estoqueMercadoria.get(retornaIndexNome(nome)).getQuant())
             {
                 diminuiQuantidade(nome, qntd);
-                v.computaVenda(nome ,retornaItem(nome).getPreco(),qntd);
+                v.computaVenda(nome ,retornaPrecoItem(nome),qntd);
                 return true;
             }
             else
@@ -191,7 +191,7 @@ public class Estoque
         estoqueMercadoria.remove(index);
     }
     
-    public static Item retornaItemIndex(int index)
+    public static Item retornaItemIndex(int index)//rever essa função
     {
         return estoqueMercadoria.get(index);
     }

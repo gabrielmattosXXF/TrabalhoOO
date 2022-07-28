@@ -4,7 +4,6 @@
  */
 package View;
 import Control.CadastraLogin;
-import Control.RetornaInicio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +62,10 @@ public class TelaCadastro extends JFrame implements Tela
         botoes.add(btConfirmar);
         
         JButton btCancelar = new JButton("Cancelar");
-        btCancelar.addActionListener(new RetornaInicio(this));//fazer retornar para a tela do administrador
+        btCancelar.addActionListener(e->{
+            this.setVisible(false);
+            new TelaInicial(); 
+        });//fazer retornar para a tela do administrador
         botoes.add(btCancelar);
         
         return botoes;

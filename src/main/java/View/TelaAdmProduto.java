@@ -72,7 +72,7 @@ public class TelaAdmProduto extends JFrame implements Tela
         
         this.setSize(500, 500);
         this.setVisible(true);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
     }
@@ -112,7 +112,6 @@ public class TelaAdmProduto extends JFrame implements Tela
 
         JButton btAdicionar = new JButton("Adicionar");
         btAdicionar.addActionListener(a->{
-            //fazer um script que adiciona o contato escrito à JList
             Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
             //this.principal.repaint();
             //SwingUtilities.updateComponentTreeUI(this);
@@ -166,7 +165,6 @@ public class TelaAdmProduto extends JFrame implements Tela
         botoesGer.add(btEditar);
         
         JButton btLimpar = new JButton("Limpar");
-        //btnLimpar.addActionListener(new LimparFormulario(this));
         btLimpar.addActionListener(d->{
             nomeItem.setText("");
             precoItem.setText("");
@@ -177,6 +175,7 @@ public class TelaAdmProduto extends JFrame implements Tela
         JButton btSair = new JButton("Sair");
         btSair.addActionListener(d->{
             this.setVisible(false);
+            new TelaAdm();
         });
         botoesGer.add(btSair);
         

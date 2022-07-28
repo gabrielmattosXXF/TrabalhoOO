@@ -28,6 +28,7 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
+             dadosLogin.add(new Vendedor("maras", "oi", "oi"));
              
              Collections.sort(dadosLogin);
              

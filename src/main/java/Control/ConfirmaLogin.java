@@ -52,16 +52,16 @@ public class ConfirmaLogin implements ActionListener
             else if(usuario.getNivelDeAcesso().equals("Tecnico"))
             {
                 this.tela.setVisible(false);
-                //new TelaTecnico();
-                new TelaTecnicoS();
+                new TelaTecnico();
+                //new TelaTecnicoS();
             }
         }
         else
         {
-            JOptionPane.showMessageDialog(null, "Login Inválido");
+            JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
             //fazer implementação que retorna a tela de incio
             tela.setVisible(false);
-            new TelaInicial();
+            new TelaLogin();
         }
         
         tela.setVisible(false);

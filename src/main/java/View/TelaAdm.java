@@ -5,7 +5,6 @@
 package View;
 
 import Control.DirecionaTelaCadastro;
-import Control.RetornaInicio;
 import Model.Estoque;
 import Control.*;
 import Model.*;
@@ -67,8 +66,20 @@ public class TelaAdm extends JFrame implements Tela
         JButton btImprimeEstoque = new JButton("Imprime estoque");
         btImprimeEstoque.addActionListener(e -> {
                 
-            JList listaEstoque = new JList (Estoque.imprimeEstoque().toArray());
+            JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
             listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            
+            listaEstoque.addListSelectionListener(a->{
+                int firstIndex = listaEstoque.getSelectedIndex();
+
+                if (firstIndex != -1) {
+
+                    Item elementAt = Estoque.retornaItemIndex(firstIndex);
+                    
+                    JOptionPane.showMessageDialog(null, elementAt);
+                }
+            });
+            
             JScrollPane scroll= new JScrollPane (listaEstoque);
             scroll.setPreferredSize(new Dimension(200,200));
             btImprimeEstoque.add(scroll);
@@ -83,7 +94,7 @@ public class TelaAdm extends JFrame implements Tela
         
         JButton btAdministrarProduto = new JButton("Administrar produto");
         btAdministrarProduto.addActionListener(d-> {
-            //this.setVisible(false);
+            this.setVisible(false);
             new TelaAdmProduto();
         });
         botoes.add(btAdministrarProduto);
@@ -236,7 +247,10 @@ public class TelaAdm extends JFrame implements Tela
         botoes.add(btAdministrarFuncionarios);
         
         JButton btCancelar = new JButton("Cancelar");
-        btCancelar.addActionListener(new RetornaInicio(this));
+        btCancelar.addActionListener(e->{
+            this.setVisible(false);
+            new TelaInicial(); 
+        });
         botoes.add(btCancelar);
         return botoes;
     }
