@@ -68,19 +68,19 @@ public class TelaTecnico extends JFrame implements Tela
                 Servico elementAt = DadosServico.retornaServicoIndex(firstIndex);
                 
                 this.numServico.setText("OS: "+elementAt.getNumServico());
-                this.nomeCliente.setText("Nome: "+elementAt.getNomeServico());
-                this.telefoneCliente.setText("Telefone: "+elementAt.getTelefoneServico());
+                this.nomeCliente.setText("Nome: "+elementAt.getNomeCliente());
+                this.telefoneCliente.setText("Telefone: "+elementAt.getTelefoneCliente());
                 this.dataChegada.setText("Data entrada: "+elementAt.getDataChegada());
                 this.dataSaida.setText("Data saída: "+elementAt.getDataSaida());
                 
-                this.marca.setText("Marca: "+elementAt.getAparelho().getMarca());
-                this.modelo.setText("Modelo:"+elementAt.getAparelho().getModelo());
-                this.serial.setText("Serial:"+elementAt.getAparelho().getSerial());
+                this.marca.setText("Marca: "+elementAt.getMarca());
+                this.modelo.setText("Modelo:"+elementAt.getModelo());
+                this.serial.setText("Serial:"+elementAt.getSerial());
                 
-                this.tfDefeito.setText(elementAt.getAparelho().getDefeito());
-                this.tfReparo.setText(elementAt.getAparelho().getReparo());
-                this.tfObservacao.setText(elementAt.getAparelho().getObservacao());
-                this.tfPreco.setText(elementAt.getPreco().toString());
+                this.tfDefeito.setText(elementAt.getDefeito());
+                this.tfReparo.setText(elementAt.getReparo());
+                this.tfObservacao.setText(elementAt.getObservacao());
+                this.tfPreco.setText(elementAt.getPreco());
                 
                 painelGerencia.revalidate();
                 painelGerencia.repaint();
@@ -163,10 +163,11 @@ public class TelaTecnico extends JFrame implements Tela
             {
                 Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
                 
-                selectedServico.getAparelho().setDefeito(defeito.getText());
-                selectedServico.getAparelho().setReparo(reparo.getText());
-                selectedServico.getAparelho().setObservacao(observacao.getText());
-                selectedServico.setPreco(Double.parseDouble(preco.getText()));
+                selectedServico.setDefeito(defeito.getText());
+                selectedServico.setReparo(reparo.getText());
+                selectedServico.setObservacao(observacao.getText());
+                //selectedServico.setPreco(Double.parseDouble(preco.getText()));
+                selectedServico.setPreco(preco.getText());
                 
                 this.setVisible(true);//cambiarra
                 new TelaTecnico();

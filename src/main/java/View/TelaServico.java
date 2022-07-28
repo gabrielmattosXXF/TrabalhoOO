@@ -25,7 +25,7 @@ public class TelaServico extends JFrame implements Tela
     private JTextField marcaP;
     private JTextField modeloP;
     private JTextField serialP;
-    private JTextField defeitoP;
+    private JTextField observacaoVendedorP;
     private Vendedor vendedor;
     //private JTextField reparoP; serão informadas pelo técnico
     //private JTextField observacaoP;
@@ -44,6 +44,8 @@ public class TelaServico extends JFrame implements Tela
         this.marcaP = new JTextField(50);
         this.modeloP = new JTextField(50);
         this.serialP = new JTextField(50);
+        
+        this.observacaoVendedorP = new JTextField(50);
         
         this.setLayout(new BorderLayout());
         this.add(painelCaixaTexto(), BorderLayout.CENTER);
@@ -74,6 +76,8 @@ public class TelaServico extends JFrame implements Tela
         caixaTexto.add(this.modeloP);
         caixaTexto.add(new JLabel("Serial:"));
         caixaTexto.add(this.serialP);
+        caixaTexto.add(new JLabel("observação vendedor:"));
+        caixaTexto.add(this.observacaoVendedorP);
         
         return caixaTexto;
     }
@@ -152,12 +156,12 @@ public class TelaServico extends JFrame implements Tela
         this.marcaP = marcaP;
     }
     
-    public JTextField getmodeloP()
+    public JTextField getModeloP()
     {
         return modeloP;
     }
     
-    public void modeloP(JTextField modeloP)
+    public void setModeloP(JTextField modeloP)
     {
         this.modeloP = modeloP;
     }
@@ -172,13 +176,13 @@ public class TelaServico extends JFrame implements Tela
         this.serialP = serialP;
     }
     
-    public JTextField getDefeito()
+    public JTextField getObservacaoVendedorP()
     {
-        return defeitoP;
+        return observacaoVendedorP;
     }
     
-    public void setDefeitoP(JTextField defeitoP)
+    public void setObservacaoVendedorP(JTextField observacaoVendedorP)
     {
-        this.defeitoP = defeitoP;
+        this.observacaoVendedorP = observacaoVendedorP;
     }
 }
