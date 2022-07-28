@@ -33,10 +33,12 @@ public class TelaTecnico extends JFrame implements Tela
     private JLabel marca = new JLabel("Marca:");
     private JLabel modelo = new JLabel("Modelo:");
     private JLabel serial = new JLabel("Serial:");
-    
+    private JLabel observacaovendedor = new JLabel("Observacao do vendedor:");
+
     private JLabel defeito = new JLabel("Defeito:");
     private JLabel reparo = new JLabel("Reparo:");
     private JLabel observacao = new JLabel("Observacao:");
+    
     
     private JTextField tfDefeito;
     private JTextField tfReparo;
@@ -74,8 +76,9 @@ public class TelaTecnico extends JFrame implements Tela
                 this.dataSaida.setText("Data saída: "+elementAt.getDataSaida());
                 
                 this.marca.setText("Marca: "+elementAt.getAparelho().getMarca());
-                this.modelo.setText("Modelo:"+elementAt.getAparelho().getModelo());
-                this.serial.setText("Serial:"+elementAt.getAparelho().getSerial());
+                this.modelo.setText("Modelo: "+elementAt.getAparelho().getModelo());
+                this.serial.setText("Serial: "+elementAt.getAparelho().getSerial());
+                //this.observacaovendedor.setText("Observação do vendedor: " + elementAt.getObservacaoVendedor());
                 
                 this.tfDefeito.setText(elementAt.getAparelho().getDefeito());
                 this.tfReparo.setText(elementAt.getAparelho().getReparo());
@@ -185,8 +188,9 @@ public class TelaTecnico extends JFrame implements Tela
             this.dataChegada.setText("Data entrada: ");
             this.dataSaida.setText("Data saída: ");
             this.marca.setText("Marca: ");
-            this.modelo.setText("Modelo:");
-            this.serial.setText("Serial:");
+            this.modelo.setText("Modelo: ");
+            this.serial.setText("Serial: ");
+            this.serial.setText("Observação do vendedor: ");
             painelGerencia.revalidate();
             painelGerencia.repaint();
             
@@ -252,6 +256,7 @@ public class TelaTecnico extends JFrame implements Tela
         painelGer.add(marca);
         painelGer.add(modelo);
         painelGer.add(serial);
+        painelGer.add(observacaovendedor);
         
         return painelGer;
     }
