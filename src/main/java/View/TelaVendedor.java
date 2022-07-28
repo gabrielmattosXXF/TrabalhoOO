@@ -27,7 +27,7 @@ public class TelaVendedor extends JFrame implements Tela
     
     public TelaVendedor(Vendedor vendedor)
     {
-        super("Tela Vendedor");
+        super("Tela Vendedor: " + vendedor.getNomeUsuario());
         this.vendedor=vendedor;
 
         //this.setLayout(new BorderLayout());
@@ -108,7 +108,7 @@ public class TelaVendedor extends JFrame implements Tela
         JButton btServico = new JButton("Criar Ordem de Serviço");
         btServico.addActionListener(e-> {
             this.setVisible(false);
-            new TelaServico();
+            new TelaServico(vendedor);
             
         });
         botoes.add(btServico);

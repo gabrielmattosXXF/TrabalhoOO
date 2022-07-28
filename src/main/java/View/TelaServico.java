@@ -5,6 +5,7 @@
 package View;
 
 import Model.Aparelho;
+import Model.Vendedor;
 import Control.CriarServico;
 import javax.swing.*;
 import java.awt.*;
@@ -25,14 +26,16 @@ public class TelaServico extends JFrame implements Tela
     private JTextField modeloP;
     private JTextField serialP;
     private JTextField defeitoP;
+    private Vendedor vendedor;
     //private JTextField reparoP; serão informadas pelo técnico
     //private JTextField observacaoP;
     //private JTextField precoP;
     
     
     
-    public TelaServico()
+    public TelaServico(Vendedor vendedor)
     {
+        this.vendedor = vendedor;
         this.nomeClienteP = new JTextField(50);
         this.telefoneClienteP = new JTextField(50);
         this.dataChegadaP = new JTextField(50);
@@ -80,11 +83,20 @@ public class TelaServico extends JFrame implements Tela
         JPanel botoes = new JPanel();
         botoes.setLayout(new GridLayout(0, 2));
         JButton btConfirmar = new JButton("Confirmar");
-        btConfirmar.addActionListener(new CriarServico(this));
+        btConfirmar.addActionListener(e->{
+            new CriarServico(this);
+            this.setVisible(false);
+            new TelaVendedor(vendedor);
+        });
         botoes.add(btConfirmar);
+        //this.setVisible(false);
         
         JButton btCancelar = new JButton("Cancelar");
-        //btCancelar.addActionListener(new RetornaInicio(this));//fazer retornar para a tela do administrador
+        btCancelar.addActionListener(f->{
+            this.setVisible(false);
+            new TelaVendedor(vendedor);
+
+        });
         botoes.add(btCancelar);
         
         return botoes;

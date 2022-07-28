@@ -216,7 +216,8 @@ public class TelaAdm extends JFrame implements Tela
                         }
                         JOptionPane.showMessageDialog(null, DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex));
                     });
-                    
+
+                    //listaFuncionarios = DadosUsuario.imprimeFuncionario(selectedIndex).toArray();
                     //btopcao.add(listFunc);
                     btopcao.add(scroll);
 

@@ -182,7 +182,7 @@ public class TelaTecnico extends JFrame implements Tela
             this.numServico.setText("OS:  ");
             this.nomeCliente.setText("Nome: ");
             this.telefoneCliente.setText("Telefone: ");
-            this.dataChegada.setText("Data chegada: ");
+            this.dataChegada.setText("Data entrada: ");
             this.dataSaida.setText("Data saída: ");
             this.marca.setText("Marca: ");
             this.modelo.setText("Modelo:");
