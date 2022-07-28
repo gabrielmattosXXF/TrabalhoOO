@@ -33,10 +33,12 @@ public class TelaTecnico extends JFrame implements Tela
     private JLabel marca = new JLabel("Marca:");
     private JLabel modelo = new JLabel("Modelo:");
     private JLabel serial = new JLabel("Serial:");
-    
+    private JLabel observacaovendedor = new JLabel("Observacao do vendedor:");
+
     private JLabel defeito = new JLabel("Defeito:");
     private JLabel reparo = new JLabel("Reparo:");
     private JLabel observacao = new JLabel("Observacao:");
+    
     
     private JTextField tfDefeito;
     private JTextField tfReparo;
@@ -76,6 +78,10 @@ public class TelaTecnico extends JFrame implements Tela
                 this.marca.setText("Marca: "+elementAt.getMarca());
                 this.modelo.setText("Modelo:"+elementAt.getModelo());
                 this.serial.setText("Serial:"+elementAt.getSerial());
+                this.marca.setText("Marca: "+elementAt.getMarca());
+                this.modelo.setText("Modelo: "+elementAt.getModelo());
+                this.serial.setText("Serial: "+elementAt.getSerial());
+                this.observacaovendedor.setText("Observação do vendedor: " + elementAt.getObservacaoVendedor());
                 
                 this.tfDefeito.setText(elementAt.getDefeito());
                 this.tfReparo.setText(elementAt.getReparo());
@@ -119,6 +125,7 @@ public class TelaTecnico extends JFrame implements Tela
         JPanel painelProd = new JPanel();
         painelProd.setBorder(BorderFactory.createTitledBorder("Lista de Serviços"));
         JScrollPane scroll= new JScrollPane (listaServico);
+        scroll.setPreferredSize(new Dimension(300, 250));
         
         painelProd.add(scroll);
         
@@ -186,8 +193,9 @@ public class TelaTecnico extends JFrame implements Tela
             this.dataChegada.setText("Data entrada: ");
             this.dataSaida.setText("Data saída: ");
             this.marca.setText("Marca: ");
-            this.modelo.setText("Modelo:");
-            this.serial.setText("Serial:");
+            this.modelo.setText("Modelo: ");
+            this.serial.setText("Serial: ");
+            this.serial.setText("Observação do vendedor: ");
             painelGerencia.revalidate();
             painelGerencia.repaint();
             
@@ -253,6 +261,7 @@ public class TelaTecnico extends JFrame implements Tela
         painelGer.add(marca);
         painelGer.add(modelo);
         painelGer.add(serial);
+        painelGer.add(observacaovendedor);
         
         return painelGer;
     }

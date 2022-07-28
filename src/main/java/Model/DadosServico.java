@@ -25,14 +25,19 @@ public class DadosServico
     
     public static List imprimeServico()
     {
-        List <Integer> listaServico = new ArrayList<>();
+        List <String> listaServico = new ArrayList<>();
         
         for(Servico serv : dadosServico)
             {
-                listaServico.add(serv.getNumServico());
+                listaServico.add("OS: "+serv.getNumServico()+". Cliente "+serv.nomeCliente);
             }  
         
         return listaServico;
+    }
+    
+    public static int NumeroDeServicos()
+    {
+        return dadosServico.size();
     }
     
 }

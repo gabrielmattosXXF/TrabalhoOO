@@ -5,6 +5,7 @@
 package Model;
 import java.util.*;
 import Model.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,7 +14,7 @@ import Model.*;
 public class Servico
 {
     private static int numServicoS=0;
-    private int numServico=0;
+    private int numServico;
     
     /*private String nomeCliente;
     private String telefoneCliente;
@@ -44,7 +45,7 @@ public class Servico
     
     public Servico(String nomeCliente, String telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, String serial, String observacaoVendedor)
     {
-        this.numServicoS++;
+        numServicoS++;
         this.numServico=numServicoS;
         
         this.nomeCliente=nomeCliente;
@@ -59,14 +60,10 @@ public class Servico
         
         this.observacaoVendedor=observacaoVendedor;
         
-        this.defeito="";
-        this.reparo="";
-        this.observacao="";
-        this.preco="";
-        
-        //DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial));
-
-        
+        this.defeito=" ";
+        this.reparo=" ";
+        this.observacao=" ";
+        this.preco=" ";
     }
 
     public int getNumServico() {

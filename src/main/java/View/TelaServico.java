@@ -6,7 +6,8 @@ package View;
 
 import Model.Aparelho;
 import Model.Vendedor;
-import Control.CriarServico;
+import Model.DadosServico;
+import Model.Servico;
 import javax.swing.*;
 import java.awt.*;
 
@@ -35,6 +36,8 @@ public class TelaServico extends JFrame implements Tela
     
     public TelaServico(Vendedor vendedor)
     {
+        super("Ordem de servico num: "+DadosServico.NumeroDeServicos());
+        
         this.vendedor = vendedor;
         this.nomeClienteP = new JTextField(50);
         this.telefoneClienteP = new JTextField(50);
@@ -76,7 +79,7 @@ public class TelaServico extends JFrame implements Tela
         caixaTexto.add(this.modeloP);
         caixaTexto.add(new JLabel("Serial:"));
         caixaTexto.add(this.serialP);
-        caixaTexto.add(new JLabel("observação vendedor:"));
+        caixaTexto.add(new JLabel("Observação vendedor:"));
         caixaTexto.add(this.observacaoVendedorP);
         
         return caixaTexto;
@@ -88,12 +91,24 @@ public class TelaServico extends JFrame implements Tela
         botoes.setLayout(new GridLayout(0, 2));
         JButton btConfirmar = new JButton("Confirmar");
         btConfirmar.addActionListener(e->{
-            new CriarServico(this);
+            //new CriarServico(this);
+            
+            String nomeCliente = nomeClienteP.getText();
+            String telefoneCliente = telefoneClienteP.getText();//é numero
+            String dataChegada = dataChegadaP.getText();//é numero
+            String dataSaida = dataSaidaP.getText();//é numero
+            String marca = marcaP.getText();
+            String modelo = modeloP.getText();
+            String serial = serialP.getText();//é numero
+            String observacaoVendedor = observacaoVendedorP.getText();
+
+            DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
+
+            
             this.setVisible(false);
             new TelaVendedor(vendedor);
         });
         botoes.add(btConfirmar);
-        //this.setVisible(false);
         
         JButton btCancelar = new JButton("Cancelar");
         btCancelar.addActionListener(f->{
