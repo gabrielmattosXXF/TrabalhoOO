@@ -29,19 +29,17 @@ public class TelaServico extends JFrame implements Tela
     private JTextField observacaoVendedorP;
     private Vendedor vendedor;
     
-    
-    
     public TelaServico(Vendedor vendedor)
     {
-        super("Ordem de servico num: "+DadosServico.NumeroDeServicos());
+        super("Ordem de servico num: "+(DadosServico.NumeroDeServicos()+1));
         
         this.vendedor = vendedor;
         this.nomeClienteP = new JTextField(50);
         this.telefoneClienteP = new JTextField(50);
         this.dataChegadaP = new JTextField(50);
         this.dataChegadaP.setText("dd/mm/aaaa");
-        //this.dataSaidaP = new JTextField(50);
-        //this.dataSaidaP.setText("dd/mm/aaaa");
+        this.dataSaidaP = new JTextField(50);
+        this.dataSaidaP.setText("dd/mm/aaaa");
         
         this.marcaP = new JTextField(50);
         this.modeloP = new JTextField(50);
@@ -91,14 +89,14 @@ public class TelaServico extends JFrame implements Tela
         JButton btConfirmar = new JButton("Confirmar");
         btConfirmar.addActionListener(e->{
             
-            String nomeCliente = nomeClienteP.getText();
-            int telefoneCliente = Integer.parseInt(telefoneClienteP.getText());//é numero
-            String dataChegada = dataChegadaP.getText();//é numero
-            String dataSaida = dataSaidaP.getText();//é numero
-            String marca = marcaP.getText();
-            String modelo = modeloP.getText();
-            int serial = Integer.parseInt(serialP.getText());//é numero
-            String observacaoVendedor = observacaoVendedorP.getText();
+            String nomeCliente = this.nomeClienteP.getText();
+            int telefoneCliente = Integer.parseInt(this.telefoneClienteP.getText());
+            String dataChegada = this.dataChegadaP.getText();
+            String dataSaida = this.dataSaidaP.getText();
+            String marca = this.marcaP.getText();
+            String modelo = this.modeloP.getText();
+            int serial = Integer.parseInt(this.serialP.getText());//é numero
+            String observacaoVendedor = this.observacaoVendedorP.getText();
 
             DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
 

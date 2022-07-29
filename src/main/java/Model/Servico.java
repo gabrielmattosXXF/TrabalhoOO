@@ -30,6 +30,10 @@ public class Servico
     private String observacao;
     private Double preco;
     
+    private boolean feito, semManutencao;
+
+
+    
     public Servico(String nomeCliente, int telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, int serial, String observacaoVendedor)
     {
         numServicoS++;
@@ -55,6 +59,24 @@ public class Servico
         this.reparo=" ";
         this.observacao=" ";
         this.preco=0.0;
+        this.feito=false;
+        this.semManutencao=false;
+    }
+    
+    public boolean isFeito() {
+        return feito;
+    }
+
+    public void setFeito(boolean feito) {
+        this.feito = feito;
+    }
+
+    public boolean isSemManutencao() {
+        return semManutencao;
+    }
+
+    public void setSemManutencao(boolean semManutencao) {
+        this.semManutencao = semManutencao;
     }
 
     public int getNumServico() {
@@ -123,5 +145,46 @@ public class Servico
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+    
+    @Override
+    public String toString()
+    {
+        if(this.isFeito())
+        {
+            return "FEITO\n"
+                    + "\nNome: "+getNomeCliente()
+                    + "\nTelefone: "+getTelefoneCliente()
+                    + "\nData chegada: "+getDataChegada()
+                    + "\nData Saida: "+getDataSaida()
+                    + "\nMarca: "+getMarca()
+                    + "\nModelo: "+getModelo()
+                    + "\nSerial: "+getSerial()
+                    + "\nDefeito: "+getDefeito()
+                    + "\nReparo: "+getReparo()
+                    + "\nObservação: "+getObservacao()
+                    + "\nPreço: "+getPreco();
+        }
+            else if(this.isSemManutencao())
+        {
+                return "SEM CONCERTO\n"
+                    + "\nNome: "+getNomeCliente()
+                    + "\nTelefone: "+getTelefoneCliente()
+                    + "\nData chegada: "+getDataChegada()
+                    + "\nData Saida: "+getDataSaida()
+                    + "\nMarca: "+getMarca()
+                    + "\nModelo: "+getModelo()
+                    + "\nSerial: "+getSerial();
+        }
+        
+        return "EM ANALISE\n"
+                    + "\nNome: "+getNomeCliente()
+                    + "\nTelefone: "+getTelefoneCliente()
+                    + "\nData chegada: "+getDataChegada()
+                    + "\nData Saida: "+getDataSaida()
+                    + "\nMarca: "+getMarca()
+                    + "\nModelo: "+getModelo()
+                    + "\nSerial: "+getSerial()
+                    + "\nObservação: "+getObservacaoVendedor();
     }
 }

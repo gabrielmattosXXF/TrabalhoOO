@@ -18,10 +18,10 @@ public class TelaTecnico extends JFrame implements Tela
     fazendo a JList que aparecerá no canto esuqerdo conter apenas os nomes dos produtos. ao acessar um dos produtos pela seleção, retornará essa string, que servirá para buscar esse produto no estoque e realizar as alterações nele
     */
     
-    JPanel principal;
-    JPanel painelGerencia;
-    JPanel painelBotoes;
-    JPanel painelInsercao;
+    private JPanel principal;
+    private JPanel painelGerencia;
+    private JPanel painelBotoes;
+    private JPanel painelInsercao;
     
     
     private JLabel numServico = new JLabel("OS:");
@@ -38,6 +38,7 @@ public class TelaTecnico extends JFrame implements Tela
     private JLabel defeito = new JLabel("Defeito:");
     private JLabel reparo = new JLabel("Reparo:");
     private JLabel observacao = new JLabel("Observacao:");
+    private JLabel situacao = new JLabel("Situação:");
     
     
     private JTextField tfDefeito;
@@ -63,11 +64,11 @@ public class TelaTecnico extends JFrame implements Tela
         tfPreco = new JTextField(15);
         
         listaServico.addListSelectionListener(a->{
-            int firstIndex = listaServico.getSelectedIndex();
+            int selectedIndex = listaServico.getSelectedIndex();
 
-            if (firstIndex != -1) {
+            if (selectedIndex != -1) {
                 
-                Servico elementAt = DadosServico.retornaServicoIndex(firstIndex);
+                Servico elementAt = DadosServico.retornaServicoIndex(selectedIndex);
                 
                 this.numServico.setText("OS: "+elementAt.getNumServico());
                 this.nomeCliente.setText("Nome: "+elementAt.getNomeCliente());
@@ -82,6 +83,16 @@ public class TelaTecnico extends JFrame implements Tela
                 this.modelo.setText("Modelo: "+elementAt.getModelo());
                 this.serial.setText("Serial: "+elementAt.getSerial());
                 this.observacaovendedor.setText("Observação do vendedor: " + elementAt.getObservacaoVendedor());
+                String situacaoS="Em análise.";
+                if(elementAt.isFeito())
+                {
+                    situacaoS="Feito.";
+                }
+                else if(elementAt.isSemManutencao())
+                {
+                    situacaoS="Sem manutenção.";
+                }
+                this.situacao.setText("Situação: " + situacaoS);
                 
                 this.tfDefeito.setText(elementAt.getDefeito());
                 this.tfReparo.setText(elementAt.getReparo());
@@ -138,28 +149,74 @@ public class TelaTecnico extends JFrame implements Tela
         
         botoesGer.setLayout(new GridLayout(5, 0));
 
-        JButton btAdicionar = new JButton("Add. Feito");//vale a pena implementar isso?
-        btAdicionar.addActionListener(a->{
-            
-            this.setVisible(true);//cambiarra
-            new TelaTecnico();
-            painelGerencia.removeAll();
-            painelGerencia.revalidate();
-            painelGerencia.repaint();
+        JButton btFeito = new JButton("Marcar Feito");//vale a pena implementar isso?
+        btFeito.addActionListener(a->{
+            int selectedIndex = listaServico.getSelectedIndex();
+                    
+            if(selectedIndex != -1)
+            {
+                Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
+                
+                if(selectedServico.isFeito()==false)
+                {
+                    selectedServico.setFeito(true);
+                    selectedServico.setSemManutencao(false);
+                }
+                else
+                {
+                    selectedServico.setFeito(false);
+                    selectedServico.setSemManutencao(false);
+                }
+                String situacaoS = "Em análise.";
+                if(selectedServico.isFeito())
+                {
+                    situacaoS="Feito.";
+                }
+                else if(selectedServico.isSemManutencao())
+                {
+                    situacaoS="Sem manutenção.";
+                }
+                this.situacao.setText("Situação: " + situacaoS);
+                JOptionPane.showConfirmDialog(null, "Situação atualizada: "+situacaoS);
+            }
         });
-        botoesGer.add(btAdicionar);
+        botoesGer.add(btFeito);
 
-        JButton btEditar = new JButton(" Add. Sem Manutenção");
-        btEditar.addActionListener(c->{
+        JButton btSemMa = new JButton(" Marcar Sem Manutenção");
+        btSemMa.addActionListener(c->{
+            int selectedIndex = listaServico.getSelectedIndex();
+                    
+            if(selectedIndex != -1)
+            {
+                Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
+                
+                if(selectedServico.isSemManutencao()==false)
+                {
+                    selectedServico.setSemManutencao(true);
+                    selectedServico.setFeito(false);
+                }  
+                else
+                {
+                    selectedServico.setSemManutencao(false);
+                    selectedServico.setFeito(false);
+                }
+                String situacaoS = "Em análise.";
+                if(selectedServico.isFeito())
+                {
+                    situacaoS="Feito.";
+                }
+                else if(selectedServico.isSemManutencao())
+                {
+                    situacaoS="Sem manutenção.";
+                }
+                this.situacao.setText("Situação: " + situacaoS);
+                
+                JOptionPane.showConfirmDialog(null, "Situação atualizada: "+situacaoS);
+            }
             
-            this.setVisible(true);//cambiarra
-            new TelaTecnico();
-            painelGerencia.removeAll();
-            painelGerencia.revalidate();
-            painelGerencia.repaint();
             
         });
-        botoesGer.add(btEditar);
+        botoesGer.add(btSemMa);
         
         JButton btAddOrcamento = new JButton("Add. Orçamento");
         btAddOrcamento.addActionListener(b->{
@@ -170,16 +227,12 @@ public class TelaTecnico extends JFrame implements Tela
             {
                 Servico selectedServico = DadosServico.retornaServicoIndex(selectedIndex);
                 
-                selectedServico.setDefeito(defeito.getText());
-                selectedServico.setReparo(reparo.getText());
-                selectedServico.setObservacao(observacao.getText());
-                selectedServico.setPreco(Double.parseDouble(preco.getText()));
+                selectedServico.setDefeito(tfDefeito.getText());
+                selectedServico.setReparo(tfReparo.getText());
+                selectedServico.setObservacao(tfObservacao.getText());
+                selectedServico.setPreco(Double.parseDouble(tfPreco.getText()));
                 
-                this.setVisible(true);//cambiarra
-                new TelaTecnico();
-                painelGerencia.removeAll();
-                painelGerencia.revalidate();
-                painelGerencia.repaint();
+                JOptionPane.showConfirmDialog(null, "Orçamento adicionado com sucesso!");//fazer essa mensagem aparecer caso não ocorra erro
             }
         });
         botoesGer.add(btAddOrcamento);
@@ -194,16 +247,19 @@ public class TelaTecnico extends JFrame implements Tela
             this.marca.setText("Marca: ");
             this.modelo.setText("Modelo: ");
             this.serial.setText("Serial: ");
-            this.serial.setText("Observação do vendedor: ");
-            painelGerencia.revalidate();
-            painelGerencia.repaint();
+            this.observacaovendedor.setText("Observação do vendedor: ");
+            this.situacao.setText("Situação: ");
+            
+            //painelGerencia.revalidate();
+            //painelGerencia.repaint();
             
             this.tfDefeito.setText("");
             this.tfReparo.setText("");
             this.tfObservacao.setText("");
             this.tfPreco.setText("");
             
-            
+            //listaServico.setSelectedIndex(-1);
+            listaServico.setSelectedValue(null, false);
         });
         botoesGer.add(btLimpar);
         
@@ -261,6 +317,7 @@ public class TelaTecnico extends JFrame implements Tela
         painelGer.add(modelo);
         painelGer.add(serial);
         painelGer.add(observacaovendedor);
+        painelGer.add(situacao);
         
         return painelGer;
     }

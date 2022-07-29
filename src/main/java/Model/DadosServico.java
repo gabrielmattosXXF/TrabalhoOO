@@ -40,4 +40,19 @@ public class DadosServico
         return dadosServico.size();
     }
     
+    public static double totalPrecoServico()
+    {
+        double valor=0;
+        
+        for(Servico serv : dadosServico)
+        {
+            if(serv.isFeito())
+            {
+                valor+=serv.getPreco();
+            }
+        }
+        
+        return valor;
+    }
+    
 }
