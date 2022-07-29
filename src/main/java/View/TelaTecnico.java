@@ -86,7 +86,7 @@ public class TelaTecnico extends JFrame implements Tela
                 this.tfDefeito.setText(elementAt.getDefeito());
                 this.tfReparo.setText(elementAt.getReparo());
                 this.tfObservacao.setText(elementAt.getObservacao());
-                this.tfPreco.setText(elementAt.getPreco());
+                this.tfPreco.setText(elementAt.getPreco().toString());
                 
                 painelGerencia.revalidate();
                 painelGerencia.repaint();
@@ -161,8 +161,8 @@ public class TelaTecnico extends JFrame implements Tela
         });
         botoesGer.add(btEditar);
         
-        JButton btRemover = new JButton("Add. Orçamento");
-        btRemover.addActionListener(b->{
+        JButton btAddOrcamento = new JButton("Add. Orçamento");
+        btAddOrcamento.addActionListener(b->{
             
             int selectedIndex = listaServico.getSelectedIndex();
                     
@@ -173,8 +173,7 @@ public class TelaTecnico extends JFrame implements Tela
                 selectedServico.setDefeito(defeito.getText());
                 selectedServico.setReparo(reparo.getText());
                 selectedServico.setObservacao(observacao.getText());
-                //selectedServico.setPreco(Double.parseDouble(preco.getText()));
-                selectedServico.setPreco(preco.getText());
+                selectedServico.setPreco(Double.parseDouble(preco.getText()));
                 
                 this.setVisible(true);//cambiarra
                 new TelaTecnico();
@@ -183,7 +182,7 @@ public class TelaTecnico extends JFrame implements Tela
                 painelGerencia.repaint();
             }
         });
-        botoesGer.add(btRemover);
+        botoesGer.add(btAddOrcamento);
         
         JButton btLimpar = new JButton("Limpar");
         btLimpar.addActionListener(d->{

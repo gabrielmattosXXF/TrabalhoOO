@@ -29,7 +29,7 @@ public class DadosServico
         
         for(Servico serv : dadosServico)
             {
-                listaServico.add("OS: "+serv.getNumServico()+". Cliente "+serv.nomeCliente);
+                listaServico.add("OS: "+serv.getNumServico()+". Cliente "+serv.getNomeCliente());
             }  
         
         return listaServico;

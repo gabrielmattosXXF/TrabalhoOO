@@ -16,126 +16,81 @@ public class Servico
     private static int numServicoS=0;
     private int numServico;
     
-    /*private String nomeCliente;
+    private String nomeCliente;
     private String telefoneCliente;
+    private String dataChegada;
+    private String dataSaida;
+    private String marca;
+    private String modelo;
+    private String serial;
+    private String observacaoVendedor;
     
-    private String dataChegada;//criar tipo Data
-    private Date dataChegada;//criar tipo Data
-    private Date dataSaida;//criar tipo Data
+    private String defeito;
+    private String reparo;
+    private String observacao;
+    private Double preco;
     
-    private Aparelho aparelho;
-    
-    private Double preco=0.0;
-    
-    private boolean autorizacao;*/
-    
-    String nomeCliente;
-    String telefoneCliente;
-    String dataChegada;
-    String dataSaida;
-    String marca;
-    String modelo;
-    String serial;
-    String observacaoVendedor;
-    
-    String defeito;
-    String reparo;
-    String observacao;
-    String preco;
-    
-    public Servico(String nomeCliente, String telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, String serial, String observacaoVendedor)
+    public Servico(String nomeCliente, int telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, int serial, String observacaoVendedor)
     {
         numServicoS++;
         this.numServico=numServicoS;
         
         this.nomeCliente=nomeCliente;
-        this.telefoneCliente=telefoneCliente;
+        
+        Integer tel = telefoneCliente;
+        this.telefoneCliente=tel.toString();
+        this.telefoneCliente=this.telefoneCliente.charAt(0)+" "+this.telefoneCliente.substring(1, 5)+"-"+this.telefoneCliente.substring(5);
 
         this.dataChegada=dataChegada;
         this.dataSaida=dataSaida;
 
         this.marca=marca;
         this.modelo=modelo;
-        this.serial=serial;
+        Integer ser = serial;
+        this.serial=ser.toString();
         
         this.observacaoVendedor=observacaoVendedor;
         
         this.defeito=" ";
         this.reparo=" ";
         this.observacao=" ";
-        this.preco=" ";
+        this.preco=0.0;
     }
 
     public int getNumServico() {
         return numServico;
     }
 
-    public void setNumServico(int numServico) {
-        this.numServico = numServico;
-    }
-
     public String getNomeCliente() {
         return nomeCliente;
-    }
-
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
     }
 
     public String getTelefoneCliente() {
         return telefoneCliente;
     }
 
-    public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCliente = telefoneCliente;
-    }
-
     public String getDataChegada() {
         return dataChegada;
-    }
-
-    public void setDataChegada(String dataChegada) {
-        this.dataChegada = dataChegada;
     }
 
     public String getDataSaida() {
         return dataSaida;
     }
 
-    public void setDataSaida(String dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
     public String getMarca() {
         return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
     }
 
     public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
     public String getSerial() {
         return serial;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
-    }
-
     public String getObservacaoVendedor() {
         return observacaoVendedor;
-    }
-
-    public void setObservacaoVendedor(String observacaoVendedor) {
-        this.observacaoVendedor = observacaoVendedor;
     }
 
     public String getDefeito() {
@@ -162,11 +117,11 @@ public class Servico
         this.observacao = observacao;
     }
 
-    public String getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }

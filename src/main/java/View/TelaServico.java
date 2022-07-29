@@ -28,9 +28,6 @@ public class TelaServico extends JFrame implements Tela
     private JTextField serialP;
     private JTextField observacaoVendedorP;
     private Vendedor vendedor;
-    //private JTextField reparoP; serão informadas pelo técnico
-    //private JTextField observacaoP;
-    //private JTextField precoP;
     
     
     
@@ -42,7 +39,9 @@ public class TelaServico extends JFrame implements Tela
         this.nomeClienteP = new JTextField(50);
         this.telefoneClienteP = new JTextField(50);
         this.dataChegadaP = new JTextField(50);
-        this.dataSaidaP = new JTextField(50);
+        this.dataChegadaP.setText("dd/mm/aaaa");
+        //this.dataSaidaP = new JTextField(50);
+        //this.dataSaidaP.setText("dd/mm/aaaa");
         
         this.marcaP = new JTextField(50);
         this.modeloP = new JTextField(50);
@@ -91,15 +90,14 @@ public class TelaServico extends JFrame implements Tela
         botoes.setLayout(new GridLayout(0, 2));
         JButton btConfirmar = new JButton("Confirmar");
         btConfirmar.addActionListener(e->{
-            //new CriarServico(this);
             
             String nomeCliente = nomeClienteP.getText();
-            String telefoneCliente = telefoneClienteP.getText();//é numero
+            int telefoneCliente = Integer.parseInt(telefoneClienteP.getText());//é numero
             String dataChegada = dataChegadaP.getText();//é numero
             String dataSaida = dataSaidaP.getText();//é numero
             String marca = marcaP.getText();
             String modelo = modeloP.getText();
-            String serial = serialP.getText();//é numero
+            int serial = Integer.parseInt(serialP.getText());//é numero
             String observacaoVendedor = observacaoVendedorP.getText();
 
             DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
