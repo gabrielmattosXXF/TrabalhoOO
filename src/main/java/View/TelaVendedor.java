@@ -44,7 +44,10 @@ public class TelaVendedor extends JFrame implements Tela
 
         this.setSize(500, 500);
         this.setVisible(true);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.addWindowListener(new EventoJanela(this));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
     

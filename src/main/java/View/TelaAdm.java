@@ -38,7 +38,10 @@ public class TelaAdm extends JFrame implements Tela
 
         this.setSize(500, 500);
         this.setVisible(true);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        this.addWindowListener(new EventoJanela(this));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
     
@@ -61,7 +64,7 @@ public class TelaAdm extends JFrame implements Tela
         
         JPanel botoes = new JPanel();
         //botoes.setSize(500, 250);
-        botoes.setLayout(new GridLayout(4, 0));
+        botoes.setLayout(new GridLayout(5, 0));
         
         JButton btImprimeEstoque = new JButton("Imprime estoque");
         btImprimeEstoque.addActionListener(e -> {
@@ -91,6 +94,42 @@ public class TelaAdm extends JFrame implements Tela
             
         });
         botoes.add(btImprimeEstoque);
+        
+        JButton btImprimeServicos = new JButton("Imprime Serviços");
+        btImprimeServicos.addActionListener(e -> {
+                
+            JList listaServico = new JList (DadosServico.imprimeServico().toArray());
+            listaServico.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            
+            listaServico.addListSelectionListener(a->{
+                int firstIndex = listaServico.getSelectedIndex();
+
+                if (firstIndex != -1) {
+
+                    Servico elementAt = DadosServico.retornaServicoIndex(firstIndex);
+                    
+                    JOptionPane.showMessageDialog(null, elementAt);
+                }
+            });
+            
+            JScrollPane scroll= new JScrollPane (listaServico);
+            scroll.setPreferredSize(new Dimension(200,200));
+            btImprimeServicos.add(scroll);
+
+            painelTxt.removeAll();
+            painelTxt.add(scroll, BorderLayout.CENTER);
+            
+            JButton btTotalPrecoServico = new JButton("Calcular valor total");
+            btTotalPrecoServico.addActionListener(a->{
+                JOptionPane.showMessageDialog(null, "Valor total dos serviços feitos: R$"+DadosServico.totalPrecoServico());
+            });
+            painelTxt.add(btTotalPrecoServico);
+            //fazer um botão que mostre a soma dos valores de cada servico feito
+            painelTxt.revalidate();
+            painelTxt.repaint();
+            
+        });
+        botoes.add(btImprimeServicos);
         
         JButton btAdministrarProduto = new JButton("Administrar produto");
         btAdministrarProduto.addActionListener(d-> {

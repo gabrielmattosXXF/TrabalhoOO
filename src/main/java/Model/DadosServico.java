@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
+import Util.Arquivo;
+import Util.JSONServicos;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -12,6 +15,29 @@ import java.util.*;
 public class DadosServico
 {
     private static List<Servico> dadosServico = new ArrayList<>();
+    
+    static
+    {
+        try {
+            String lerArquivo = Arquivo.lerArquivo("dadosServico");
+            dadosServico = JSONServicos.toDadosServico(lerArquivo);
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }
+        
+        /*String toJSON = JSONServicos.toJSON(dadosServico);
+
+        //System.out.println(toJSON);
+
+        Arquivo.escreverArquivo("dadosServico", toJSON);*/
+        
+    }
+    
+    public static List getDadosServico()
+    {
+        return dadosServico;
+    }
     
     public static void adicionaServico(Servico serv)
     {
@@ -29,7 +55,7 @@ public class DadosServico
         
         for(Servico serv : dadosServico)
             {
-                listaServico.add("OS: "+serv.getNumServico()+". Cliente "+serv.nomeCliente);
+                listaServico.add("OS: "+serv.getNumServico()+". Cliente "+serv.getNomeCliente());
             }  
         
         return listaServico;
@@ -38,6 +64,21 @@ public class DadosServico
     public static int NumeroDeServicos()
     {
         return dadosServico.size();
+    }
+    
+    public static double totalPrecoServico()
+    {
+        double valor=0;
+        
+        for(Servico serv : dadosServico)
+        {
+            if(serv.isFeito())
+            {
+                valor+=serv.getPreco();
+            }
+        }
+        
+        return valor;
     }
     
 }

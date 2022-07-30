@@ -4,6 +4,7 @@
  */
 package View;
 import Control.ConfirmaLogin;
+import Control.EventoJanela;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +33,10 @@ public class TelaLogin extends JFrame implements Tela
         
         this.setSize(300, 200);
         this.setVisible(true);
+        
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         setLocationRelativeTo(null);
     }
 

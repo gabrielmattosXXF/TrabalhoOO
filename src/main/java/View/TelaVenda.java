@@ -20,9 +20,9 @@ public class TelaVenda extends JFrame implements Tela{
     private JLabel precoItem = new JLabel("Preço: ");
     private JLabel quantItem = new JLabel("Quantidade do item: ");
     private JList listaEstoque = new JList(Estoque.imprimeEstoqueS().toArray());
-    private Vendedor v;
+    private Vendedor vendedor;
     
-    public TelaVenda(Vendedor v)
+    public TelaVenda(Vendedor vendedor)
     {
         listaEstoque.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         

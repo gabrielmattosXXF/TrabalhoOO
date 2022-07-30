@@ -4,9 +4,9 @@
  */
 package Model;
 
-import Model.Item;
-import Model.Usuario;
-import Model.Vendedor;
+import Util.Arquivo;
+import Util.JSONItens;
+import java.io.FileNotFoundException;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -19,6 +19,29 @@ public class Estoque
     Scanner teclado = new Scanner(System.in);
     
     private static List<Item> estoqueMercadoria = new ArrayList<>();
+    
+    /*static
+    {
+        try {
+            String lerArquivo = Arquivo.lerArquivo("estoqueMercadoria");
+            estoqueMercadoria = JSONItens.toEstoqueMercadoria(lerArquivo);
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }
+        
+        /*String toJSON = JSONItens.toJSON(estoqueMercadoria);
+
+        //System.out.println(toJSON);
+
+        Arquivo.escreverArquivo("estoqueMercadoria", toJSON);*/
+        
+    //}
+    
+    public static List getEstoqueMercadoria()
+    {
+        return estoqueMercadoria;
+    }
      
     static void adicionaProdutoAoEstoque()
     {

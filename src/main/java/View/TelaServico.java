@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.EventoJanela;
 import Model.Aparelho;
 import Model.Vendedor;
 import Model.DadosServico;
@@ -28,21 +29,18 @@ public class TelaServico extends JFrame implements Tela
     private JTextField serialP;
     private JTextField observacaoVendedorP;
     private Vendedor vendedor;
-    //private JTextField reparoP; serão informadas pelo técnico
-    //private JTextField observacaoP;
-    //private JTextField precoP;
-    
-    
     
     public TelaServico(Vendedor vendedor)
     {
-        super("Ordem de servico num: "+DadosServico.NumeroDeServicos());
+        super("Ordem de servico num: "+(DadosServico.NumeroDeServicos()+1));
         
         this.vendedor = vendedor;
         this.nomeClienteP = new JTextField(50);
         this.telefoneClienteP = new JTextField(50);
         this.dataChegadaP = new JTextField(50);
+        this.dataChegadaP.setText("dd/mm/aaaa");
         this.dataSaidaP = new JTextField(50);
+        this.dataSaidaP.setText("dd/mm/aaaa");
         
         this.marcaP = new JTextField(50);
         this.modeloP = new JTextField(50);
@@ -56,7 +54,10 @@ public class TelaServico extends JFrame implements Tela
         
         this.setSize(350, 250);//redimensionar tela
         this.setVisible(true);
+        
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
     
@@ -91,16 +92,15 @@ public class TelaServico extends JFrame implements Tela
         botoes.setLayout(new GridLayout(0, 2));
         JButton btConfirmar = new JButton("Confirmar");
         btConfirmar.addActionListener(e->{
-            //new CriarServico(this);
             
-            String nomeCliente = nomeClienteP.getText();
-            String telefoneCliente = telefoneClienteP.getText();//é numero
-            String dataChegada = dataChegadaP.getText();//é numero
-            String dataSaida = dataSaidaP.getText();//é numero
-            String marca = marcaP.getText();
-            String modelo = modeloP.getText();
-            String serial = serialP.getText();//é numero
-            String observacaoVendedor = observacaoVendedorP.getText();
+            String nomeCliente = this.nomeClienteP.getText();
+            int telefoneCliente = Integer.parseInt(this.telefoneClienteP.getText());
+            String dataChegada = this.dataChegadaP.getText();
+            String dataSaida = this.dataSaidaP.getText();
+            String marca = this.marcaP.getText();
+            String modelo = this.modeloP.getText();
+            int serial = Integer.parseInt(this.serialP.getText());//é numero
+            String observacaoVendedor = this.observacaoVendedorP.getText();
 
             DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
 

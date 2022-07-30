@@ -4,9 +4,17 @@
  */
 package View;
 
+import Control.EventoJanela;
+import Model.Item;
+import Model.Servico;
+import Model.Usuario;
+import Util.Arquivo;
+import Util.JSONItens;
+import Util.JSONLogins;
+import Util.JSONServicos;
 import javax.swing.*;
 import java.awt.*;
-
+import java.util.ArrayList;
 
 
 /**
@@ -25,7 +33,12 @@ public class TelaInicial extends JFrame implements Tela
         this.add(painelDeBotoes());
         this.setSize(300, 200);
         this.setVisible(true);
+        
+        this.addWindowListener(new EventoJanela(this));
+        
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -44,15 +57,14 @@ public class TelaInicial extends JFrame implements Tela
         
         JButton btSair = new JButton("Sair");
         btSair.addActionListener(a->{
+            
+            new EventoJanela(this).windowClosing();
             System.exit(0);
-        }); //mesma coisa que na tela de login
+        });
         botoes.add(btSair);
         return botoes;
     }
     
-    /*
-    
-    */
     public static void main(String[] args)
     {
         TelaInicial telaInicial = new TelaInicial();
