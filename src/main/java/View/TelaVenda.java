@@ -36,9 +36,8 @@ public class TelaVenda extends JFrame implements Tela{
                 Item elementAt = Estoque.retornaItemIndex(firstIndex);
                 
                 this.nomeItem.setText("Nome: " + elementAt.getNome());
-                this.precoItem.setText("Preço: " + elementAt.getNome());
-                this.quantItem.setText("Quantidade: " + elementAt.getNome());
-                
+                this.precoItem.setText("Preço: " + elementAt.getPreco());
+                this.quantItem.setText("Quantidade: " + elementAt.getQuant());
                 //tela.setLastIndex(firstIndex);
             }
         });
@@ -84,16 +83,11 @@ public class TelaVenda extends JFrame implements Tela{
         JPanel botoesGer = new JPanel();
         botoesGer.setLayout(new GridLayout(0, 5));
         
-        nomeGer.add(new JLabel("Nome: "));
-        nomeGer.add(nomeItem);
-        
-        precoGer.add(new JLabel("Preco: "));
-        precoGer.add(precoItem, BorderLayout.CENTER);
-        
-        quantGer.add(new JLabel("Preco: "));
+        nomeGer.add(nomeItem);       
+        precoGer.add(precoItem, BorderLayout.CENTER);                
         quantGer.add(quantItem, BorderLayout.CENTER);
         
-        JButton btRealizarVenda = new JButton("Realizar Venda");
+        JButton btRealizarVenda = new JButton("Realizar Venda");      
         btRealizarVenda.addActionListener(a->{
             int selectedIndex = listaEstoque.getSelectedIndex();
                     
@@ -105,6 +99,17 @@ public class TelaVenda extends JFrame implements Tela{
                 }
             }
         });
+
+        JButton Cancela = new JButton("Cancelar");
+            Cancela.addActionListener(j->{
+
+            });
+
+
+        painelGer.add(nomeGer);
+        painelGer.add(precoGer);
+        painelGer.add(quantGer);
+        painelGer.add(btRealizarVenda);
                 
         return painelGer;
      }  
