@@ -186,7 +186,8 @@ public class Estoque
     
     public static void realizaVenda(Item item,int qntd,Vendedor vendedor)
     {
-        
+        vendedor.computaVenda(item,qntd);
+        item.venda(qntd);
     }
     
     public static void removeItem(int index)

@@ -217,8 +217,6 @@ public class TelaAdm extends JFrame implements Tela
             });
             btopcao.add(remover);
             
-            //JButton imprime = new JButton("Imprimir funcionários");
-            //imprime.addActionListener(g -> {
 
             String[] funcionarios = {"Administradores", "Técnicos", "Vendedores"};
             JComboBox listFunc = new JComboBox<>(funcionarios);
@@ -231,6 +229,7 @@ public class TelaAdm extends JFrame implements Tela
 
             listFunc.addActionListener(h->
             {
+
                 int selectedIndex = listFunc.getSelectedIndex();
                     
                 JList listaFuncionarios = new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
@@ -238,8 +237,6 @@ public class TelaAdm extends JFrame implements Tela
                     
                 JScrollPane scroll= new JScrollPane (listaFuncionarios);
                 scroll.setPreferredSize(new Dimension(200,200));
-
-                //btopcao.add(scroll);
                     
                 listaFuncionarios.addListSelectionListener(s->{
                         
@@ -252,26 +249,22 @@ public class TelaAdm extends JFrame implements Tela
                     else if(selectedIndex==2)
                     {
                         funcSelectedIndex+=DadosUsuario.indexLastTec()+1;
-                        }
-                        JOptionPane.showMessageDialog(null, DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex));
+                    }
+
+                    JOptionPane.showMessageDialog(null, DadosUsuario.imprimeUsuarioIndex(funcSelectedIndex));
                     });
 
-                    //listaFuncionarios = DadosUsuario.imprimeFuncionario(selectedIndex).toArray();
-                    //btopcao.add(listFunc);
-                    btopcao.add(scroll);
 
+                    btopcao.add(scroll);
                     painelTxt.removeAll();
                     painelTxt.add(opcao);
-                    //painelTxt.add(btopcao);
-                    //painelTxt.add(remover);
-                    //painelTxt.add(listFunc, BorderLayout.CENTER);
                     painelTxt.add(scroll,BorderLayout.SOUTH);
                     painelTxt.revalidate();
                     painelTxt.repaint();
 
                 });
                 
-            //});
+
             btopcao.add(listFunc);
             
             

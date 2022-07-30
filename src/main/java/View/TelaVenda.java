@@ -105,6 +105,9 @@ public class TelaVenda extends JFrame implements Tela{
                     Item elementAt = Estoque.retornaItemIndex(selectedIndex);
                     
                     Estoque.realizaVenda(elementAt, Integer.parseInt(tfQuantVenda.getText()), vendedor);
+                    this.dispose();
+                    new TelaVenda(vendedor);
+
                 }
             }
         });
@@ -112,7 +115,7 @@ public class TelaVenda extends JFrame implements Tela{
 
         JButton btCancelar = new JButton("Cancelar");
         btCancelar.addActionListener(f->{
-            this.setVisible(false);
+            this.dispose();
             new TelaVendedor(vendedor);
 
         });

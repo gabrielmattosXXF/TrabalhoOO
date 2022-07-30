@@ -70,7 +70,7 @@ public class TelaVendedor extends JFrame implements Tela
         
         JPanel botoes = new JPanel();
         //botoes.setSize(500, 250);
-        botoes.setLayout(new GridLayout(4, 0));
+        botoes.setLayout(new GridLayout(5, 0));
         
         JButton btEstoque = new JButton("Consultar Estoque");
         btEstoque.addActionListener(e -> {
@@ -115,6 +115,32 @@ public class TelaVendedor extends JFrame implements Tela
             
         });
         botoes.add(btServico);
+
+
+        JButton btVendasrealizadas = new JButton("Histórico de Vendas");
+        btVendasrealizadas.addActionListener(l->{
+            JList vendas = new JList(vendedor.getprodutosvendidos().toArray());
+            vendas.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+
+            JScrollPane scroll = new JScrollPane(vendas);
+            scroll.setPreferredSize(new Dimension(200,200));
+
+            JLabel vendatotal = new JLabel("Vendas Totais:" + vendedor.getvendatotal());
+            JLabel comissao = new JLabel("Comissão:" + vendedor.getcomissao());
+
+            painelTxt.removeAll();
+            painelTxt.add(painelDeTexto());
+            painelTxt.add(scroll);
+            painelTxt.add(vendatotal);
+            painelTxt.add(comissao);
+            painelTxt.revalidate();
+            painelTxt.repaint();
+
+            
+
+
+        });
+        botoes.add(btVendasrealizadas);
         
         JButton btCancelar = new JButton("Cancelar");
         btCancelar.addActionListener(a->{
@@ -123,6 +149,7 @@ public class TelaVendedor extends JFrame implements Tela
         });
         botoes.add(btCancelar);
         return botoes;
+ 
     }
     
     
