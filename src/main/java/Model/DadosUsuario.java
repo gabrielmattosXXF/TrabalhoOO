@@ -19,13 +19,13 @@ public class DadosUsuario
     
     static
     {
-        /*try {
+        try {
             String lerArquivo = Arquivo.lerArquivo("dadosLogins");
             dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
 
         } catch (FileNotFoundException ex) {
             System.out.println("Pasta nao encontrada!");
-        }*/
+        }
         
         if(dadosLogin.isEmpty())
         {
@@ -44,6 +44,14 @@ public class DadosUsuario
 
             Arquivo.escreverArquivo("dadosLogins", toJSON);*/
         }
+    }
+    
+    public static void registraLogin(){
+        String toJSON = JSONLogins.toJSON(dadosLogin);
+
+        System.out.println(toJSON);
+
+        Arquivo.escreverArquivo("dadosLogin", toJSON);
     }
     
     public static List getDadosLogin()

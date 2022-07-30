@@ -20,7 +20,7 @@ public class Estoque
     
     private static List<Item> estoqueMercadoria = new ArrayList<>();
     
-    /*static
+    static
     {
         try {
             String lerArquivo = Arquivo.lerArquivo("estoqueMercadoria");
@@ -30,13 +30,7 @@ public class Estoque
             System.out.println("Pasta nao encontrada!");
         }
         
-        /*String toJSON = JSONItens.toJSON(estoqueMercadoria);
-
-        //System.out.println(toJSON);
-
-        Arquivo.escreverArquivo("estoqueMercadoria", toJSON);*/
-        
-    //}
+    }
     
     public static List getEstoqueMercadoria()
     {

@@ -41,8 +41,8 @@ public class EventoJanela implements WindowListener
     @Override
     public void windowClosing(WindowEvent e)
     {
-        List<Usuario> dadosLogin=DadosUsuario.getDadosLogin();
-        String toJSONLogin = JSONLogins.toJSON(dadosLogin);
+        /*List<Usuario> dadosLogin=DadosUsuario.getDadosLogin();
+        String toJSONLogin = JSONLogins.toJSON(dadosLogin);//não consegue transformar qnd está com valores inicalizados
         Arquivo.escreverArquivo("dadosLogin", toJSONLogin);
         
         List<Item> estoqueMercadoria=Estoque.getEstoqueMercadoria();
@@ -54,12 +54,12 @@ public class EventoJanela implements WindowListener
         Arquivo.escreverArquivo("dadosServico", toJSONServico);
         
         //System.out.println(toJSON);
-        //System.out.println("windowClosing");
+        //System.out.println("windowClosing");*/
     }
     
     public void windowClosing()
     {
-        List<Usuario> dadosLogin=DadosUsuario.getDadosLogin();
+        /*List<Usuario> dadosLogin=DadosUsuario.getDadosLogin();
         String toJSONLogin = JSONLogins.toJSON(dadosLogin);
         Arquivo.escreverArquivo("dadosLogin", toJSONLogin);
         
@@ -72,7 +72,7 @@ public class EventoJanela implements WindowListener
         Arquivo.escreverArquivo("dadosServico", toJSONServico);
         
         //System.out.println(toJSON);
-        //System.out.println("windowClosing");
+        //System.out.println("windowClosing");*/
     }
 
     @Override
