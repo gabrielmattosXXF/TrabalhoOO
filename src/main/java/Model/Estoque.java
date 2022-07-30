@@ -184,23 +184,9 @@ public class Estoque
     }*/
     
     
-    public static boolean realizaVenda(String nome,int qntd,Vendedor v)
+    public static void realizaVenda(Item item,int qntd,Vendedor vendedor)
     {
-        if(verificaDispoProd(nome))
-        {
-            if(qntd>=estoqueMercadoria.get(retornaIndexNome(nome)).getQuant())
-            {
-                diminuiQuantidade(nome, qntd);
-                v.computaVenda(nome ,retornaPrecoItem(nome),qntd);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-            return false;
+        
     }
     
     public static void removeItem(int index)
