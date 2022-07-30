@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import Model.Estoque;
 import Model.Item;
+import Control.EventoJanela;
 
 /**
  *
@@ -59,6 +60,7 @@ public class TelaAdmProduto extends JFrame implements Tela
             }
         });
         
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.principal = new JPanel();
@@ -72,7 +74,9 @@ public class TelaAdmProduto extends JFrame implements Tela
         
         this.setSize(500, 500);
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
         this.setLocationRelativeTo(null);
         
     }

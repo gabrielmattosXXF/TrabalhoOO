@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
+import Util.Arquivo;
+import Util.JSONLogins;
 import java.util.*;
-import View.*;
-import javax.swing.*;
+import java.io.FileNotFoundException;
 //import java.awt.*;
 
 /**
@@ -16,10 +17,16 @@ public class DadosUsuario
 {
     private static List<Usuario> dadosLogin = new ArrayList<>();
     
-    //vamos implementar um tratamento na lista para armazenar sempre na ordem adm, func e tec;
-    
     static
     {
+        /*try {
+            String lerArquivo = Arquivo.lerArquivo("dadosLogins");
+            dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }*/
+        
         if(dadosLogin.isEmpty())
         {
              dadosLogin.add(new Administrador("Luiz Gustavo Ferreira Nazareth", "luizgustavonazareth4@gmail.com", "12345678"));
@@ -31,9 +38,17 @@ public class DadosUsuario
              dadosLogin.add(new Vendedor("maras", "oi", "oi"));
              
              Collections.sort(dadosLogin);
-             
+            /*String toJSON = JSONLogins.toJSON(dadosLogin);
+
+            System.out.println(toJSON);
+
+            Arquivo.escreverArquivo("dadosLogins", toJSON);*/
         }
-        
+    }
+    
+    public static List getDadosLogin()
+    {
+        return dadosLogin;
     }
     
     public static String NivelAcessoLogin(String login, String senha)

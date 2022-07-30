@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.EventoJanela;
 import Model.Aparelho;
 import Model.Vendedor;
 import Model.DadosServico;
@@ -53,7 +54,10 @@ public class TelaServico extends JFrame implements Tela
         
         this.setSize(350, 250);//redimensionar tela
         this.setVisible(true);
+        
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
     

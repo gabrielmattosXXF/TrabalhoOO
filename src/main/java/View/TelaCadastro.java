@@ -4,6 +4,7 @@
  */
 package View;
 import Control.CadastraLogin;
+import Control.EventoJanela;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +34,10 @@ public class TelaCadastro extends JFrame implements Tela
         
         this.setSize(350, 250);//redimensionar tela
         this.setVisible(true);
+        
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         this.setLocationRelativeTo(null);
     }
     

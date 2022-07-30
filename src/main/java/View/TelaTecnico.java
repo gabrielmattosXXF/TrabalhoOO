@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package View;
+import Control.EventoJanela;
 import javax.swing.*;
 import java.awt.*;
 import Model.DadosServico;
@@ -108,7 +109,8 @@ public class TelaTecnico extends JFrame implements Tela
             }
         });
         
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//repensar isso
+        this.addWindowListener(new EventoJanela(this));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.principal = new JPanel();
         this.principal.setLayout(new BorderLayout());

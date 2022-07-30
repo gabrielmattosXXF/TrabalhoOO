@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Model;
+import Util.Arquivo;
+import Util.JSONServicos;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -12,6 +15,29 @@ import java.util.*;
 public class DadosServico
 {
     private static List<Servico> dadosServico = new ArrayList<>();
+    
+    static
+    {
+        try {
+            String lerArquivo = Arquivo.lerArquivo("dadosServico");
+            dadosServico = JSONServicos.toDadosServico(lerArquivo);
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }
+        
+        /*String toJSON = JSONServicos.toJSON(dadosServico);
+
+        //System.out.println(toJSON);
+
+        Arquivo.escreverArquivo("dadosServico", toJSON);*/
+        
+    }
+    
+    public static List getDadosServico()
+    {
+        return dadosServico;
+    }
     
     public static void adicionaServico(Servico serv)
     {
