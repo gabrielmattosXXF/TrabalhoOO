@@ -98,7 +98,7 @@ public class TelaVenda extends JFrame implements Tela{
         btRealizarVenda.addActionListener(a->{
             int selectedIndex = listaEstoque.getSelectedIndex();
                     
-            if(JOptionPane.showConfirmDialog(null, "Deseja vender" + tfQuantVenda.getText() + "do produto "+listaEstoque.getModel().getElementAt(selectedIndex))==0)
+            if(JOptionPane.showConfirmDialog(null, "Deseja vender " + tfQuantVenda.getText() + " unidades do produto \""+listaEstoque.getModel().getElementAt(selectedIndex)+"\"?")==0)
             {
                 if(selectedIndex != -1)
                 {
