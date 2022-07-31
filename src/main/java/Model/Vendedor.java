@@ -13,6 +13,7 @@ public class Vendedor extends Usuario
 {
     private List<Item> produtosVendidos=new ArrayList<>();
     private double comissao=0;
+    private double vendatotal;
     
     public Vendedor(String nomeUsuario, String login, String senha)
     {
@@ -23,12 +24,31 @@ public class Vendedor extends Usuario
     public String toString() {
         return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
     }
+
+    public double getcomissao(){
+        return comissao;
+    }
+
+    public double getvendatotal(){
+        return vendatotal;
+    }
+
+    public List getprodutosvendidos(){
+
+        List<String> nomeprodutosvendidos = new ArrayList<>();
+        for(Item item : produtosVendidos)
+            {
+                    nomeprodutosvendidos.add(item.getNome());
+            }
+            return nomeprodutosvendidos;
+    }
     
-    public void computaVenda(String nome, double preco, int qntd)
+    public void computaVenda(Item item, int qntd)
     {        
-        Item p1=new Item(nome,preco,qntd);
+        Item p1=new Item(item.getNome(),item.getPreco(),qntd);
         
         produtosVendidos.add(p1);
-        comissao+=p1.getPreco()*0.05;
+        vendatotal= item.getPreco()*qntd;
+        comissao += item.getPreco()*qntd*0.05;
     }
 }
