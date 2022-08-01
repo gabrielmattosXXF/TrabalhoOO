@@ -20,7 +20,7 @@ public class DadosUsuario
     static
     {
         try {
-            String lerArquivo = Arquivo.lerArquivo("dadosLogins");
+            String lerArquivo = Arquivo.lerArquivo("dadosLogin.txt");
             dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
 
         } catch (FileNotFoundException ex) {
@@ -38,11 +38,13 @@ public class DadosUsuario
              dadosLogin.add(new Vendedor("maras", "oi", "oi"));
              
              Collections.sort(dadosLogin);
-            /*String toJSON = JSONLogins.toJSON(dadosLogin);
+            //String toJSON = JSONLogins.toJSON(dadosLogin);
+            
+            //String toJSON = JSONLogins.toJSON(new Administrador("ugas", "sim", "nao"));
 
-            System.out.println(toJSON);
+            //System.out.println(toJSON);
 
-            Arquivo.escreverArquivo("dadosLogins", toJSON);*/
+            //Arquivo.escreverArquivo("dadosLogin.txt", toJSON);
         }
     }
     

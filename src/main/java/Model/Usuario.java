@@ -22,45 +22,39 @@ public class Usuario implements Comparable<Usuario>
         this.nivelDeAcesso = nivelDeAcesso;
     }
 
-    public String getNomeUsuario()
-    {
+    public String getNomeUsuario() {
         return nomeUsuario;
     }
 
-    public void setNomeUsuario(String nomeUsuario)
-    {
+    public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
     }
 
-    public String getLogin()
-    {
+    public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login)
-    {
+    public void setLogin(String login) {
         this.login = login;
     }
 
-    public String getSenha()
-    {
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha)
-    {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public String getNivelDeAcesso()
-    {
+    public String getNivelDeAcesso() {
         return nivelDeAcesso;
     }
 
-    public void setNivelDeAcesso(String nivelDeAcesso)
-    {
+    public void setNivelDeAcesso(String nivelDeAcesso) {
         this.nivelDeAcesso = nivelDeAcesso;
     }
+    
+    
 
     public boolean verificaLogin(String loginDigitado, String senhaDigitada)
     {

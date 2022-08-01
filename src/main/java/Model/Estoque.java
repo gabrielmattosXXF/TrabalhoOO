@@ -23,8 +23,9 @@ public class Estoque
     static
     {
         try {
-            String lerArquivo = Arquivo.lerArquivo("estoqueMercadoria");
+            String lerArquivo = Arquivo.lerArquivo("estoqueMercadoria.txt");
             estoqueMercadoria = JSONItens.toEstoqueMercadoria(lerArquivo);
+            System.out.println(lerArquivo);
 
         } catch (FileNotFoundException ex) {
             System.out.println("Pasta nao encontrada!");

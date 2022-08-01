@@ -11,96 +11,163 @@ import javax.swing.JOptionPane;
  */
 public class Item
 {
-     Scanner teclado = new Scanner(System.in);
-     
+//     Scanner teclado = new Scanner(System.in);
+//     
      private String nomeItem;
      private double precoItem;
      //private double precoDeCompra;
-     private int quantItem=0; 
+     private int quantItem; 
      
-     public Item(String nome, double preco,/*double precoCompra,*/ int quant)
-     {
-          this.nomeItem=nome.toLowerCase();
-          this.precoItem=preco;
-          //this.precoDeCompra=precoCompra;
-          this.quantItem=quant;
-     }
      
-     public Item()
-     {
-          //System.out.println("Informe o nome do item: ");
-          //this.nomeItem=teclado.nextLine().toLowerCase();
-          this.nomeItem=JOptionPane.showInputDialog(null,"informe o nome do item");
-          
-          //System.out.println("Informe o preço do item: ");
-          //this.precoItem=teclado.nextDouble();
-          //this.precoItem=JOptionPane.showInputDialog(null,"informe o preço do Item");
-          this.precoItem = Double.parseDouble(JOptionPane.showInputDialog(null,"informe o preço do Item"));
+     
+//     public Item(String nome, double preco,/*double precoCompra,*/ int quant)
+//     {
+//          this.nomeItem=nome.toLowerCase();
+//          this.precoItem=preco;
+//          //this.precoDeCompra=precoCompra;
+//          this.quantItem=quant;
+//     }
+//     
+//     public Item()
+//     {
+//          //System.out.println("Informe o nome do item: ");
+//          //this.nomeItem=teclado.nextLine().toLowerCase();
+//          this.nomeItem=JOptionPane.showInputDialog(null,"informe o nome do item");
+//          
+//          //System.out.println("Informe o preço do item: ");
+//          //this.precoItem=teclado.nextDouble();
+//          //this.precoItem=JOptionPane.showInputDialog(null,"informe o preço do Item");
+//          this.precoItem = Double.parseDouble(JOptionPane.showInputDialog(null,"informe o preço do Item"));
+//
+//          //System.out.println("Informe a quantidade do item: ");
+//          //this.quantItem=teclado.nextInt();
+//          this.quantItem=Integer.parseInt(JOptionPane.showInputDialog(null,"informe a quantidade do Item"));
+//          
+//     }
+//     
+//     public String getNome()
+//     {
+//         return nomeItem;
+//     }
+//     
+//     public double getPreco()
+//     {
+//         return precoItem;
+//     }
+//     
+//     public int getQuant()
+//     {
+//         return quantItem;
+//     }
+//     
+//     public void setQuant(int quant)
+//     {
+//        if(quant>0)
+//         {
+//             quantItem=quant;
+//         }
+//         else
+//         {
+//             quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade inválida. Digite novamente."));
+//             //System.out.println("Preço inválido. Digite o ajuste novamente.");
+//             //preco=teclado.nextDouble();
+//             setPreco(quant);
+//         }
+//     }
+//     
+//     public void setPreco(double preco)
+//     {
+//         if(preco>0)
+//         {
+//             precoItem=preco;
+//         }
+//         else
+//         {
+//             preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Preço inválido. Digite o ajuste novamente."));
+//             //System.out.println("Preço inválido. Digite o ajuste novamente.");
+//             //preco=teclado.nextDouble();
+//             setPreco(preco);
+//         }
+//     }
+//     
+//     public void setNome(String nome)
+//     {
+//         this.nomeItem=nome.toLowerCase();
+//     }
+//
+//    @Override
+//    public String toString() {
+//        return "Nome =" + nomeItem + ", preco =" + precoItem + ", quantidade em estoque =" + quantItem+".";
+//    }
+//    public void venda(int quantidadevendida)
+//    {
+//        quantItem = quantItem - quantidadevendida;
+//    }
+//
+//    public String getNomeItem() {
+//        return nomeItem;
+//    }
+//
+//    public void setNomeItem(String nomeItem) {
+//        this.nomeItem = nomeItem;
+//    }
+//
+//    public double getPrecoItem() {
+//        return precoItem;
+//    }
+//
+//    public void setPrecoItem(double precoItem) {
+//        this.precoItem = precoItem;
+//    }
+//
+//    public int getQuantItem() {
+//        return quantItem;
+//    }
+//
+//    public void setQuantItem(int quantItem) {
+//        this.quantItem = quantItem;
+//    }
 
-          //System.out.println("Informe a quantidade do item: ");
-          //this.quantItem=teclado.nextInt();
-          this.quantItem=Integer.parseInt(JOptionPane.showInputDialog(null,"informe a quantidade do Item"));
-          
-     }
-     
-     public String getNome()
-     {
-         return nomeItem;
-     }
-     
-     public double getPreco()
-     {
-         return precoItem;
-     }
-     
-     public int getQuant()
-     {
-         return quantItem;
-     }
-     
-     public void setQuant(int quant)
-     {
-        if(quant>0)
-         {
-             quantItem=quant;
-         }
-         else
-         {
-             quant = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantidade inválida. Digite novamente."));
-             //System.out.println("Preço inválido. Digite o ajuste novamente.");
-             //preco=teclado.nextDouble();
-             setPreco(quant);
-         }
-     }
-     
-     public void setPreco(double preco)
-     {
-         if(preco>0)
-         {
-             precoItem=preco;
-         }
-         else
-         {
-             preco = Double.parseDouble(JOptionPane.showInputDialog(null, "Preço inválido. Digite o ajuste novamente."));
-             //System.out.println("Preço inválido. Digite o ajuste novamente.");
-             //preco=teclado.nextDouble();
-             setPreco(preco);
-         }
-     }
-     
-     public void setNome(String nome)
-     {
-         this.nomeItem=nome.toLowerCase();
-     }
+    public Item() {
+    }
 
-    @Override
-    public String toString() {
-        return "Nome =" + nomeItem + ", preco =" + precoItem + ", quantidade em estoque =" + quantItem+".";
+    public Item(String nomeItem, double precoItem, int quantItem) {
+        this.nomeItem = nomeItem;
+        this.precoItem = precoItem;
+        this.quantItem = quantItem;
     }
-    public void venda(int quantidadevendida)
-    {
-        quantItem = quantItem - quantidadevendida;
+
+    
+
+    
+
+    
+    
+    public String getNomeItem() {
+        return nomeItem;
+    }
+
+    public void setNomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
+    }
+
+    public double getPrecoItem() {
+        return precoItem;
+    }
+
+    public void setPrecoItem(double precoItem) {
+        this.precoItem = precoItem;
+    }
+
+    public int getQuantItem() {
+        return quantItem;
+    }
+
+    public void setQuantItem(int quantItem) {
+        this.quantItem = quantItem;
     }
      
+    
+    
      
 }

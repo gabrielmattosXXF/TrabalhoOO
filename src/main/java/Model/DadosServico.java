@@ -19,7 +19,7 @@ public class DadosServico
     static
     {
         try {
-            String lerArquivo = Arquivo.lerArquivo("dadosServico");
+            String lerArquivo = Arquivo.lerArquivo("dadosServico.txt");
             dadosServico = JSONServicos.toDadosServico(lerArquivo);
 
         } catch (FileNotFoundException ex) {
