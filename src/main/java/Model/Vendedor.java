@@ -12,43 +12,63 @@ import java.util.*;
 public class Vendedor extends Usuario
 {
     private List<Item> produtosVendidos=new ArrayList<>();
-    private double comissao=0;
+    private double comissao;
     private double vendatotal;
     
     public Vendedor(String nomeUsuario, String login, String senha)
     {
         super(nomeUsuario, login, senha, "Vendedor");
+        this.comissao=0;
+        this.vendatotal=0;
     }
 
-    @Override
-    public String toString() {
-        return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
+    public List<Item> getProdutosVendidos() {
+        return produtosVendidos;
     }
 
-    public double getcomissao(){
+    public void setProdutosVendidos(List<Item> produtosVendidos) {
+        this.produtosVendidos = produtosVendidos;
+    }
+
+    public double getComissao() {
         return comissao;
     }
 
-    public double getvendatotal(){
+    public void setComissao(double comissao) {
+        this.comissao = comissao;
+    }
+
+    public double getVendatotal() {
         return vendatotal;
     }
 
-    public List getprodutosvendidos(){
+    public void setVendatotal(double vendatotal) {
+        this.vendatotal = vendatotal;
+    }
+
+
+    public List getProdutosVendidosS(){
 
         List<String> nomeprodutosvendidos = new ArrayList<>();
         for(Item item : produtosVendidos)
             {
-                    nomeprodutosvendidos.add(item.getNome());
+                    nomeprodutosvendidos.add(item.getNomeItem());
             }
             return nomeprodutosvendidos;
     }
     
     public void computaVenda(Item item, int qntd)
     {        
-        Item p1=new Item(item.getNome(),item.getPreco(),qntd);
+        Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
         
         produtosVendidos.add(p1);
-        vendatotal= item.getPreco()*qntd;
-        comissao += item.getPreco()*qntd*0.05;
+        vendatotal= item.getPrecoItem()*qntd;
+        comissao += item.getPrecoItem()*qntd*0.05;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
     }
 }

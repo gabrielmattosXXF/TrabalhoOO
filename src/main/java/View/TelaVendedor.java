@@ -119,14 +119,24 @@ public class TelaVendedor extends JFrame implements Tela
 
         JButton btVendasrealizadas = new JButton("Histórico de Vendas");
         btVendasrealizadas.addActionListener(l->{
-            JList vendas = new JList(vendedor.getprodutosvendidos().toArray());
+            JList vendas = new JList(vendedor.getProdutosVendidosS().toArray());
             vendas.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
+            vendas.addListSelectionListener(e->{
+                int selectedIndex = vendas.getSelectedIndex();
+
+                if (selectedIndex != -1) {
+
+                    Item elementAt = Estoque.retornaItemIndex(selectedIndex);
+
+                    JOptionPane.showMessageDialog(null, elementAt);
+                }
+            });
 
             JScrollPane scroll = new JScrollPane(vendas);
             scroll.setPreferredSize(new Dimension(200,200));
 
-            JLabel vendatotal = new JLabel("Vendas Totais:" + vendedor.getvendatotal());
-            JLabel comissao = new JLabel("Comissão:" + vendedor.getcomissao());
+            JLabel vendatotal = new JLabel("Vendas Totais:" + vendedor.getVendatotal());
+            JLabel comissao = new JLabel("Comissão:" + vendedor.getComissao());
 
             painelTxt.removeAll();
             painelTxt.add(painelDeTexto());

@@ -1,1 +1,1 @@
-[]
+[{"numServico":1,"nomeCliente":"werwrwer","telefoneCliente":"9 8805-0132","dataChegada":"01/08/2022","dataSaida":"07/08/2022","marca":"samsung","modelo":"j5","serial":"123","observacaoVendedor":"tela trincada","defeito":" frontal quebrada","reparo":" troca da frontal","observacao":" display apresenta manchas","preco":180.0,"feito":true,"semManutencao":false}]

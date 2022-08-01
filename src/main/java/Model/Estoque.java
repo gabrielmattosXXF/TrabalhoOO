@@ -25,7 +25,7 @@ public class Estoque
         try {
             String lerArquivo = Arquivo.lerArquivo("estoqueMercadoria.txt");
             estoqueMercadoria = JSONItens.toEstoqueMercadoria(lerArquivo);
-            System.out.println(lerArquivo);
+            //System.out.println(lerArquivo);
 
         } catch (FileNotFoundException ex) {
             System.out.println("Pasta nao encontrada!");
@@ -52,19 +52,19 @@ public class Estoque
         estoqueMercadoria.add(produto);
     }
     
-    public static void aumentaQuantidade(String nome, int quant)
+    /*public static void aumentaQuantidade(String nome, int quant)
     {
         estoqueMercadoria.get(retornaIndexNome(nome)).setQuant(quant);
-    }
+    }*/
     
-    public static void diminuiQuantidade(String nome, int quant)
+    /*public static void diminuiQuantidade(String nome, int quant)
     {
         if(verificaDispoProd(nome))
         {
             //estoqueMercadoria.get(retornaIndexNome(nome)).getQuant();
             estoqueMercadoria.get(retornaIndexNome(nome)).setQuant((-quant));
         }
-    }
+    }*/
     
     public static boolean veirificaEStoqueVazio()
     {
@@ -86,7 +86,7 @@ public class Estoque
         }
         else if(verificaProdInicializado(nome))
         {
-            if(estoqueMercadoria.get(retornaIndexNome(nome)).getQuant()>0)
+            if(estoqueMercadoria.get(retornaIndexNome(nome)).getQuantItem()>0)
                 return true;
             else
                 return false;
@@ -99,7 +99,7 @@ public class Estoque
     {
         for(Item prod : estoqueMercadoria)
         {
-            if(prod.getNome().equalsIgnoreCase(nome))
+            if(prod.getNomeItem().equalsIgnoreCase(nome))
             {
                 return true;
             }
@@ -124,7 +124,7 @@ public class Estoque
      
     public static double retornaPrecoItem(String nome)
     {
-        return estoqueMercadoria.get(retornaIndexNome(nome)).getPreco();
+        return estoqueMercadoria.get(retornaIndexNome(nome)).getPrecoItem();
     }
     
     public static int retornaIndexNome(String nome)
@@ -135,7 +135,7 @@ public class Estoque
         
         for(i=0; i<estoqueMercadoria.size(); i++)
         {
-            if(estoqueMercadoria.get(i).getNome().equalsIgnoreCase(nome))
+            if(estoqueMercadoria.get(i).getNomeItem().equalsIgnoreCase(nome))
             {
                 return i;
             }
@@ -169,14 +169,14 @@ public class Estoque
         List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
         {
-            listaEstoque.add(prod.getNome());
+            listaEstoque.add(prod.getNomeItem());
         }
         return listaEstoque;
     }
     
     public static void setPrecoProd(String nome, double preco)//rever essa funç/ão
     {
-        estoqueMercadoria.get(retornaIndexNome(nome)).setPreco(preco);
+        estoqueMercadoria.get(retornaIndexNome(nome)).setPrecoItem(preco);
     }
     
     /*public static void setNomeProd(String nome1, String nome2)//rever essa funç/ão

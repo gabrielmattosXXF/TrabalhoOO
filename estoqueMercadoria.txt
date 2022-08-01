@@ -1,1 +1,1 @@
-[]
+[{"nomeItem":"carregador","precoItem":20.0,"quantItem":10},{"nomeItem":"fone de ouvido","precoItem":30.0,"quantItem":15}]

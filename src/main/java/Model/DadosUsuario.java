@@ -15,13 +15,22 @@ import java.io.FileNotFoundException;
  */
 public class DadosUsuario 
 {
+    //talvez tenha que fazer um arquivo para guardar os adms, os tecnicos e os vendedores, ai pega o arquivo de cada faz uma lista 
+    //para cada tipo, junta todas essas em uma lista de usuarios pra ser usada efetivamente
+    //ai ao final da inicialização separa essa lista de usuarios em tres listas pra escrever os arquivos de cada uma 
+    
     private static List<Usuario> dadosLogin = new ArrayList<>();
     
     static
     {
         try {
             String lerArquivo = Arquivo.lerArquivo("dadosLogin.txt");
-            dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
+            System.out.println(lerArquivo);
+            //dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
+            /*for(Usuario user : dadosLogin)
+            {
+                System.out.println(user.getClass().getName());
+            }*/
 
         } catch (FileNotFoundException ex) {
             System.out.println("Pasta nao encontrada!");
@@ -37,23 +46,16 @@ public class DadosUsuario
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
              dadosLogin.add(new Vendedor("maras", "oi", "oi"));
              
-             Collections.sort(dadosLogin);
-            //String toJSON = JSONLogins.toJSON(dadosLogin);
-            
-            //String toJSON = JSONLogins.toJSON(new Administrador("ugas", "sim", "nao"));
+            /*for(Usuario user : dadosLogin)
+            {
+                System.out.println(user.getClass().getName());
+            }*/
+             
+            Collections.sort(dadosLogin);
+            String toJSON = JSONLogins.toJSON(dadosLogin);
 
-            //System.out.println(toJSON);
-
-            //Arquivo.escreverArquivo("dadosLogin.txt", toJSON);
+            Arquivo.escreverArquivo("dadosLogin.txt", toJSON);
         }
-    }
-    
-    public static void registraLogin(){
-        String toJSON = JSONLogins.toJSON(dadosLogin);
-
-        System.out.println(toJSON);
-
-        Arquivo.escreverArquivo("dadosLogin", toJSON);
     }
     
     public static List getDadosLogin()
@@ -147,7 +149,7 @@ public class DadosUsuario
         
         if(listaFuncionario.isEmpty())
         {
-            
+            listaFuncionario.add("Não há funcionários cadastrados");
         }
         
         return listaFuncionario;

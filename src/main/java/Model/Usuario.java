@@ -53,8 +53,6 @@ public class Usuario implements Comparable<Usuario>
     public void setNivelDeAcesso(String nivelDeAcesso) {
         this.nivelDeAcesso = nivelDeAcesso;
     }
-    
-    
 
     public boolean verificaLogin(String loginDigitado, String senhaDigitada)
     {
@@ -72,6 +70,9 @@ public class Usuario implements Comparable<Usuario>
             return nivelDeAcesso.compareToIgnoreCase(outro.nivelDeAcesso);
         }
     }
+    
+    //@Override
+    //public abstract String toString();
 
     
 }

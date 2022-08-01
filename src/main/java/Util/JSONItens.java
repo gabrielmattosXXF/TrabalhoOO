@@ -30,12 +30,6 @@ public class JSONItens
         String json = gson.toJson(estoqueMercadoria);
         System.out.println(json);
         return json;
-        /*String json;
-        for(Item item : estoqueMercadoria)
-        {
-            json+=Arquivo.escreverArquivo("estoqueMercadoria", toJSON(item));
-        }
-        return json*/
     }
 
     public static Item toItem(String conteudo) {
@@ -54,7 +48,7 @@ public class JSONItens
         return estoqueMercadoria;
     }
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         List<Item>itens = new ArrayList<>();
         itens.add(new Item("TV", 250, 5));
         itens.add(new Item("Som", 350, 5));
@@ -65,5 +59,5 @@ public class JSONItens
         
         System.out.println("json = " + json);
       
-    }
+    }*/
 }

@@ -39,9 +39,9 @@ public class TelaVenda extends JFrame implements Tela{
                 
                 Item elementAt = Estoque.retornaItemIndex(firstIndex);
                 
-                this.nomeItem.setText("Nome: " + elementAt.getNome());
-                this.precoItem.setText("Preço: " + elementAt.getPreco());
-                this.quantItem.setText("Quantidade em estoque: " + elementAt.getQuant());
+                this.nomeItem.setText("Nome: " + elementAt.getNomeItem());
+                this.precoItem.setText("Preço: " + elementAt.getPrecoItem());
+                this.quantItem.setText("Quantidade em estoque: " + elementAt.getQuantItem());
                 this.tfQuantVenda.setText("");
             }
         });

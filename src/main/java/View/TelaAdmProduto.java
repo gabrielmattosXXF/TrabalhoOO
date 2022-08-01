@@ -52,11 +52,9 @@ public class TelaAdmProduto extends JFrame implements Tela
                 
                 Item elementAt = Estoque.retornaItemIndex(firstIndex);
                 
-                this.nomeItem.setText(elementAt.getNome());
-                this.precoItem.setText(Double.toString(elementAt.getPreco()));
-                this.quantItem.setText(Integer.toString(elementAt.getQuant()));
-                
-                //tela.setLastIndex(firstIndex);
+                this.nomeItem.setText(elementAt.getNomeItem());
+                this.precoItem.setText(Double.toString(elementAt.getPrecoItem()));
+                this.quantItem.setText(Integer.toString(elementAt.getQuantItem()));
             }
         });
         
@@ -158,9 +156,9 @@ public class TelaAdmProduto extends JFrame implements Tela
             
             Item selectedItem = Estoque.retornaItemIndex(selectedIndex);
             
-            selectedItem.setNome(nomeItem.getText());
-            selectedItem.setPreco(Double.parseDouble(precoItem.getText()));
-            selectedItem.setQuant(Integer.parseInt(quantItem.getText()));
+            selectedItem.setNomeItem(nomeItem.getText());
+            selectedItem.setPrecoItem(Double.parseDouble(precoItem.getText()));
+            selectedItem.setQuantItem(Integer.parseInt(quantItem.getText()));
             
             this.setVisible(false);//cambiarra
             new TelaAdmProduto();
