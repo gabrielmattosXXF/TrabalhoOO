@@ -70,7 +70,7 @@ public class EventoJanela implements WindowListener
         Arquivo.escreverArquivo("dadosAdministrador.txt", toJSONAdm);
         
         String toJSONTec = JSONTecnico.toJSON(dadosTecnico);
-        Arquivo.escreverArquivo("dadosTecnico.txtt", toJSONTec);
+        Arquivo.escreverArquivo("dadosTecnico.txt", toJSONTec);
         
         String toJSONVend = JSONVendedor.toJSON(dadosVendedor);
         Arquivo.escreverArquivo("dadosVendedor.txt", toJSONVend);

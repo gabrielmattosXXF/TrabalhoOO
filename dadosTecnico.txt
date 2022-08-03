@@ -1,1 +1,1 @@
-[{"nomeUsuario":"lolo","login":"opa","senha":"opa","nivelDeAcesso":"Tecnico"}]
+[{"nomeUsuario":"Yuri Freitas Toledo","login":"yuritoledo@gmail.com","senha":"12345678","nivelDeAcesso":"Tecnico"}]

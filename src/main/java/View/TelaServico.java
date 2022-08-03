@@ -100,13 +100,13 @@ public class TelaServico extends JFrame implements Tela
                 String dataSaida = this.dataSaidaP.getText();
                 String marca = this.marcaP.getText();
                 String modelo = this.modeloP.getText();
-                int serial = Integer.parseInt(this.serialP.getText());//é numero
+                int serial = Integer.parseInt(this.serialP.getText());
                 String observacaoVendedor = this.observacaoVendedorP.getText();
                 DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
             }
             catch(Exception ex)
             {
-                JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
+                JOptionPane.showMessageDialog(null, "Inicialização indevida. Tente novamente.");
             }
             
             this.setVisible(false);

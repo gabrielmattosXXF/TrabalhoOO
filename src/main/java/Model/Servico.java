@@ -164,7 +164,7 @@ public class Servico
         }
             else if(this.isSemManutencao())
         {
-                return "SEM CONCERTO\n"
+                return "SEM CONSERTO\n"
                     + "\nNome: "+getNomeCliente()
                     + "\nTelefone: "+getTelefoneCliente()
                     + "\nData chegada: "+getDataChegada()
@@ -174,7 +174,7 @@ public class Servico
                     + "\nSerial: "+getSerial();
         }
         
-        return "EM ANALISE\n"
+        return "EM ANÁLISE\n"
                     + "\nNome: "+getNomeCliente()
                     + "\nTelefone: "+getTelefoneCliente()
                     + "\nData chegada: "+getDataChegada()

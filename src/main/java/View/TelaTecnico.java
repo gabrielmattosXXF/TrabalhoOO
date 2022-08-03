@@ -77,7 +77,29 @@ public class TelaTecnico extends JFrame implements Tela
                 this.marca.setText("Marca: "+elementAt.getMarca());
                 this.modelo.setText("Modelo: "+elementAt.getModelo());
                 this.serial.setText("Serial: "+elementAt.getSerial());
-                this.observacaovendedor.setText("Observação do vendedor: " + elementAt.getObservacaoVendedor());
+                String obs = elementAt.getObservacaoVendedor();//o texto sai da página, tentar resolver problema
+                if(obs.length()>20)
+                {
+                    /*int quebra = obs.indexOf(" ", 10);
+                    System.out.println(quebra);
+                    
+                    char[] obsVet = obs.toCharArray();
+                    obsVet[quebra]='\n';
+                    obs = String.valueOf(obsVet);
+                    
+                    int quebra = obs.indexOf(" ", 10);
+                    
+                    String aux = obs.substring(quebra);
+                    System.out.println(aux);
+                    obs.concat("\n"+aux);
+                    */
+                }
+                else
+                {
+                    
+                }
+                this.observacaovendedor.setText("Observação do vendedor: " + obs);
+                
                 String situacaoS="Em análise.";
                 if(elementAt.isFeito())
                 {

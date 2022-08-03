@@ -22,7 +22,7 @@ public class TelaCadastro extends JFrame implements Tela
     
     public TelaCadastro()
     {
-        String[] funcionarios = {"Administrador", "Técnico", "Vendedor"};
+        String[] funcionarios = {"Administrador", "Tecnico", "Vendedor"};
         this.nome = new JTextField(50);
         this.login = new JTextField(50);
         this.senha = new JPasswordField(50);

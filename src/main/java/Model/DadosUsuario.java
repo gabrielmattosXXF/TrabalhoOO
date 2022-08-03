@@ -68,18 +68,13 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("Luiz Gustavo Ferreira Nazareth", "luizgustavonazareth4@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Gabriel Mattos", "gabrielmattos@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
-             dadosLogin.add(new Administrador("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
-             dadosLogin.add(new Administrador("ugas", "sim", "nao"));
-             dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
-             dadosLogin.add(new Vendedor("maras", "oi", "oi"));
+             dadosLogin.add(new Tecnico("Yuri Freitas Toledo", "yuritoledo@gmail.com", "12345678"));
+             dadosLogin.add(new Vendedor("Marina Civinelli Gomes Facio", "marinacivinelli@gmail.com", "12345678"));
             }
             catch(Exception ex)
             {
                JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
             }
-                    
-             
-             
             Collections.sort(dadosLogin);
         }
     }
