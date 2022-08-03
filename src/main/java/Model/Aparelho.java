@@ -17,7 +17,7 @@ public class Aparelho {
     private String reparo="";
     private String observacao="";
     
-    public Aparelho(String marca, String modelo, int serial)
+    public Aparelho(String marca, String modelo, int serial)throws Exception
     {        
         this.marca=marca;
         this.modelo=modelo;

@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Gabriel Mattos
@@ -15,7 +16,7 @@ public class Vendedor extends Usuario
     private double comissao;
     private double vendatotal;
     
-    public Vendedor(String nomeUsuario, String login, String senha)
+    public Vendedor(String nomeUsuario, String login, String senha)throws Exception
     {
         super(nomeUsuario, login, senha, "Vendedor");
         this.comissao=0;
@@ -59,11 +60,17 @@ public class Vendedor extends Usuario
     
     public void computaVenda(Item item, int qntd)
     {        
-        Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
-        
-        produtosVendidos.add(p1);
-        vendatotal= item.getPrecoItem()*qntd;
-        comissao += item.getPrecoItem()*qntd*0.05;
+        try
+        {
+            Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
+            produtosVendidos.add(p1);
+            vendatotal= item.getPrecoItem()*qntd;
+            comissao += item.getPrecoItem()*qntd*0.05;
+        }
+        catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
+        }
     }
     
     @Override

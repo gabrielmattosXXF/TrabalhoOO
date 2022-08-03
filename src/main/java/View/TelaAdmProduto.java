@@ -114,11 +114,19 @@ public class TelaAdmProduto extends JFrame implements Tela
 
         JButton btAdicionar = new JButton("Adicionar");
         btAdicionar.addActionListener(a->{
-            Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
-            //this.principal.repaint();
-            //SwingUtilities.updateComponentTreeUI(this);
-            this.setVisible(false);//cambiarra
-            new TelaAdmProduto();
+            try
+            {
+                Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
+                //this.principal.repaint();
+                //SwingUtilities.updateComponentTreeUI(this);
+                this.setVisible(false);//cambiarra
+                new TelaAdmProduto();
+            }
+            catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
+            }
+            
         });
         botoesGer.add(btAdicionar);
 

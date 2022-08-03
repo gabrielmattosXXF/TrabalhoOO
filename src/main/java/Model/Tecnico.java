@@ -10,7 +10,7 @@ package Model;
  */
 public class Tecnico extends Usuario
 {
-    public Tecnico(String nomeUsuario, String login, String senha)
+    public Tecnico(String nomeUsuario, String login, String senha)throws Exception
     {
         super(nomeUsuario, login, senha, "Tecnico");
     }

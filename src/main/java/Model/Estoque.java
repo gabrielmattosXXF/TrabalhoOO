@@ -66,7 +66,7 @@ public class Estoque
         }
     }*/
     
-    public static boolean veirificaEStoqueVazio()
+    /*public static boolean veirificaEStoqueVazio()
     {
         if(estoqueMercadoria.isEmpty())
         {
@@ -74,7 +74,7 @@ public class Estoque
         }
         else
             return false;
-    }
+    }*/
     
     public static boolean verificaDispoProd(String nome)
     {
@@ -122,10 +122,10 @@ public class Estoque
         
     }
      
-    public static double retornaPrecoItem(String nome)
+    /*public static double retornaPrecoItem(String nome)
     {
         return estoqueMercadoria.get(retornaIndexNome(nome)).getPrecoItem();
-    }
+    }*/
     
     public static int retornaIndexNome(String nome)
     {
