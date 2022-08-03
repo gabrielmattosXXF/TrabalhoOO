@@ -20,7 +20,7 @@ public class TelaAdmProduto extends JFrame implements Tela
     private JTextField nomeItem;
     private JTextField precoItem;
     private JTextField quantItem;
-    private JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
+    private JList listaEstoque = new JList (Estoque.imprimeNomeDosProdutos().toArray());
     
     public TelaAdmProduto()
     {
@@ -103,12 +103,19 @@ public class TelaAdmProduto extends JFrame implements Tela
         btAdicionar.addActionListener(a->{
 
             try
-            {
-                Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
-                //this.principal.repaint();
-                //SwingUtilities.updateComponentTreeUI(this);
-                this.setVisible(false);//cambiarra
-                new TelaAdmProduto();
+            {   
+                if(!Estoque.verificaProdInicializado(nomeItem.getText()))
+                {
+                    Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
+                    //this.principal.repaint();
+                    //SwingUtilities.updateComponentTreeUI(this);
+                    this.setVisible(false);//cambiarra
+                    new TelaAdmProduto();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Esse item já está no estoque!");
+                }
             }
             catch(Exception ex)
             {

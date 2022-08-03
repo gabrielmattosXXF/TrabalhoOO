@@ -1,1 +1,1 @@
-[{"produtosVendidos":[{"nomeItem":"carregador","precoItem":20.0,"quantItem":6}],"comissao":6.0,"vendatotal":120.0,"nomeUsuario":"maras","login":"oi","senha":"oi","nivelDeAcesso":"Vendedor"}]
+[{"produtosVendidos":[{"nomeItem":"carregador","precoItem":20.0,"quantItem":1},{"nomeItem":"fone de ouvido","precoItem":15.0,"quantItem":2}],"comissao":2.5,"vendatotal":50.0,"nomeUsuario":"maras","login":"oi","senha":"oi","nivelDeAcesso":"Vendedor"}]

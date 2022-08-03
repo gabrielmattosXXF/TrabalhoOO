@@ -62,7 +62,7 @@ public class TelaAdm extends JFrame implements Tela
         JButton btImprimeEstoque = new JButton("Imprime estoque");
         btImprimeEstoque.addActionListener(e -> {
                 
-            JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
+            JList listaEstoque = new JList (Estoque.imprimeNomeDosProdutos().toArray());
             listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
             
             listaEstoque.addListSelectionListener(a->{

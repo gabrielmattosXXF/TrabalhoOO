@@ -68,7 +68,7 @@ public class TelaVendedor extends JFrame implements Tela
         JButton btEstoque = new JButton("Consultar Estoque");
         btEstoque.addActionListener(e -> {
                 
-            JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
+            JList listaEstoque = new JList (Estoque.imprimeNomeDosProdutos().toArray());
             listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
             
             listaEstoque.addListSelectionListener(a->{
@@ -112,7 +112,7 @@ public class TelaVendedor extends JFrame implements Tela
 
         JButton btVendasrealizadas = new JButton("Histórico de Vendas");
         btVendasrealizadas.addActionListener(l->{
-            JList vendas = new JList(vendedor.getProdutosVendidosS().toArray());
+            JList vendas = new JList(vendedor.getNomeProdutosVendidos().toArray());
             vendas.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
             vendas.addListSelectionListener(e->{
                 int selectedIndex = vendas.getSelectedIndex();

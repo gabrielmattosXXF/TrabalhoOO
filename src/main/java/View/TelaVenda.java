@@ -22,7 +22,7 @@ public class TelaVenda extends JFrame implements Tela{
     private JLabel quantVenda = new JLabel("Quantidade da venda: ");
     private JTextField tfQuantVenda = new JTextField(10);
     
-    private JList listaEstoque = new JList(Estoque.imprimeEstoqueS().toArray());
+    private JList listaEstoque = new JList(Estoque.imprimeNomeDosProdutos().toArray());
     private Vendedor vendedor;
     
     public TelaVenda(Vendedor vendedor)

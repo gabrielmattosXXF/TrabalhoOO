@@ -48,7 +48,7 @@ public class Vendedor extends Usuario
     }
 
 
-    public List getProdutosVendidosS(){
+    public List getNomeProdutosVendidos(){
 
         List<String> nomeprodutosvendidos = new ArrayList<>();
         for(Item item : produtosVendidos)
@@ -70,8 +70,8 @@ public class Vendedor extends Usuario
             Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
         
             produtosVendidos.add(p1);
-            vendatotal= item.getPrecoItem()*qntd;
-            comissao += item.getPrecoItem()*qntd*0.05;
+            vendatotal+= item.getPrecoItem()*qntd;
+            comissao  += item.getPrecoItem()*qntd*0.05;
             
             item.venda(qntd);
         }

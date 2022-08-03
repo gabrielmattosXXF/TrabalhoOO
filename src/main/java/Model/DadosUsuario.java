@@ -98,7 +98,7 @@ public class DadosUsuario
                 return user.getNivelDeAcesso();
             }
         }
-        return ("é...");
+        return ("null");
     }
             
     public static boolean validaLogin(String login, String senha)

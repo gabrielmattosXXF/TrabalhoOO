@@ -49,25 +49,7 @@ public class Estoque
     {
         estoqueMercadoria.add(produto);
     }
-    
-    public static boolean verificaDispoProd(String nome)
-    {
-        if(estoqueMercadoria.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null, "Estoque vazio!", "Estoque", 0);
-            return false;
-        }
-        else if(verificaProdInicializado(nome))
-        {
-            if(estoqueMercadoria.get(retornaIndexNome(nome)).getQuantItem()>0)
-                return true;
-            else
-                return false;
-        }
-        else
-            return false;
-    }
-    
+       
     public static boolean verificaProdInicializado(String nome)
     {
         for(Item prod : estoqueMercadoria)
@@ -80,11 +62,6 @@ public class Estoque
         
         return false;
     }
-     
-    /*public static double retornaPrecoItem(String nome)
-    {
-        return estoqueMercadoria.get(retornaIndexNome(nome)).getPrecoItem();
-    }*/
     
     public static int retornaIndexNome(String nome)
     {
@@ -121,7 +98,7 @@ public class Estoque
         return listaEstoque;
     }
     
-    public static List imprimeEstoqueS()
+    public static List imprimeNomeDosProdutos()
     {
         List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
@@ -130,13 +107,7 @@ public class Estoque
         }
         return listaEstoque;
     }
-    
-    public static void setPrecoProd(String nome, double preco)
-    {
-        estoqueMercadoria.get(retornaIndexNome(nome)).setPrecoItem(preco);
-    }
-    
-    
+        
     public static void realizaVenda(Item item,int qntd,Vendedor vendedor)
     {
         vendedor.computaVenda(item,qntd);
