@@ -10,7 +10,7 @@ package Model;
  */
 public class Administrador extends Usuario
 {
-    public Administrador(String nomeUsuario, String login, String senha) {
+    public Administrador(String nomeUsuario, String login, String senha)throws Exception {
         super(nomeUsuario, login, senha, "Administrador");
     }
 

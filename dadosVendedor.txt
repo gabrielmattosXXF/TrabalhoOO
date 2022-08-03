@@ -1,0 +1,1 @@
+[{"produtosVendidos":[{"nomeItem":"carregador","precoItem":20.0,"quantItem":6}],"comissao":6.0,"vendatotal":120.0,"nomeUsuario":"maras","login":"oi","senha":"oi","nivelDeAcesso":"Vendedor"}]

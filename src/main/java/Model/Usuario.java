@@ -15,7 +15,7 @@ public abstract class Usuario implements Comparable<Usuario>
     private String senha;
     private String nivelDeAcesso;
 
-    public Usuario(String nomeUsuario, String login, String senha, String nivelDeAcesso) {
+    public Usuario(String nomeUsuario, String login, String senha, String nivelDeAcesso) throws Exception {
         this.nomeUsuario = nomeUsuario;
         this.login = login;
         this.senha = senha;

@@ -47,19 +47,7 @@ public class Estoque
     
     public static void adicionaProdutoAoEstoque(Item produto)
     {
-        //Item produto = new Item();
-        
         estoqueMercadoria.add(produto);
-    }
-    
-    public static boolean veirificaEStoqueVazio()
-    {
-        if(estoqueMercadoria.isEmpty())
-        {
-            return true;
-        }
-        else
-            return false;
     }
     
     public static boolean verificaDispoProd(String nome)
@@ -93,10 +81,10 @@ public class Estoque
         return false;
     }
      
-    public static double retornaPrecoItem(String nome)
+    /*public static double retornaPrecoItem(String nome)
     {
         return estoqueMercadoria.get(retornaIndexNome(nome)).getPrecoItem();
-    }
+    }*/
     
     public static int retornaIndexNome(String nome)
     {

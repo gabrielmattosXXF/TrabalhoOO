@@ -9,6 +9,8 @@ import Util.JSONTecnico;
 import Util.JSONVendedor;
 import java.util.*;
 import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+//import java.awt.*;
 
 /**
  *
@@ -61,6 +63,8 @@ public class DadosUsuario
         Collections.sort(dadosLogin);
         if(dadosLogin.isEmpty())
         {
+            try
+            {
              dadosLogin.add(new Administrador("Luiz Gustavo Ferreira Nazareth", "luizgustavonazareth4@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Gabriel Mattos", "gabrielmattos@gmail.com", "12345678"));
              dadosLogin.add(new Administrador("Augusto de Filippo Cavalini", "augustocavalini@gmail.com", "12345678"));
@@ -68,6 +72,13 @@ public class DadosUsuario
              dadosLogin.add(new Administrador("ugas", "sim", "nao"));
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
              dadosLogin.add(new Vendedor("maras", "oi", "oi"));
+            }
+            catch(Exception ex)
+            {
+               JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
+            }
+                    
+             
              
             Collections.sort(dadosLogin);
         }

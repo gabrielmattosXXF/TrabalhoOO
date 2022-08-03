@@ -16,7 +16,7 @@ public class Vendedor extends Usuario
     private double comissao;
     private double vendatotal;
     
-    public Vendedor(String nomeUsuario, String login, String senha)
+    public Vendedor(String nomeUsuario, String login, String senha)throws Exception
     {
         super(nomeUsuario, login, senha, "Vendedor");
         this.comissao=0;

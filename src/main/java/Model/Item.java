@@ -18,7 +18,7 @@ public class Item
     public Item() {
     }
 
-    public Item(String nomeItem, double precoItem, int quantItem) {
+    public Item(String nomeItem, double precoItem, int quantItem)throws Exception {
         this.nomeItem = nomeItem.toLowerCase();
         this.precoItem = precoItem;
         this.quantItem = quantItem;

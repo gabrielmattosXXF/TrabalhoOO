@@ -33,7 +33,7 @@ public class DadosServico
         return dadosServico;
     }
     
-    public static void adicionaServico(Servico serv)
+    public static void adicionaServico(Servico serv) throws Exception
     {
         dadosServico.add(serv);
     }

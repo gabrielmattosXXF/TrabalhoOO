@@ -91,18 +91,23 @@ public class TelaServico extends JFrame implements Tela
         botoes.setLayout(new GridLayout(0, 2));
         JButton btConfirmar = new JButton("Confirmar");
         btConfirmar.addActionListener(e->{
-            
-            String nomeCliente = this.nomeClienteP.getText();
-            int telefoneCliente = Integer.parseInt(this.telefoneClienteP.getText());
-            String dataChegada = this.dataChegadaP.getText();
-            String dataSaida = this.dataSaidaP.getText();
-            String marca = this.marcaP.getText();
-            String modelo = this.modeloP.getText();
-            int serial = Integer.parseInt(this.serialP.getText());
-            String observacaoVendedor = this.observacaoVendedorP.getText();
-
-            DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
-
+                                 
+            try
+            {
+                String nomeCliente = this.nomeClienteP.getText();
+                int telefoneCliente = Integer.parseInt(this.telefoneClienteP.getText());
+                String dataChegada = this.dataChegadaP.getText();
+                String dataSaida = this.dataSaidaP.getText();
+                String marca = this.marcaP.getText();
+                String modelo = this.modeloP.getText();
+                int serial = Integer.parseInt(this.serialP.getText());//é numero
+                String observacaoVendedor = this.observacaoVendedorP.getText();
+                DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));
+            }
+            catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Login Inválido. Tente novamente.");
+            }
             
             this.setVisible(false);
             new TelaVendedor(vendedor);

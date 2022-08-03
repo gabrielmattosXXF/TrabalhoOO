@@ -27,22 +27,28 @@ public class CadastraLogin implements ActionListener
     {
         if(!DadosUsuario.verificaLoginInicializado(tela.getLogin().getText()))
         {
-            if(tela.getNivel().equalsIgnoreCase("Administrador"))
+            try
             {
-                DadosUsuario.adicionaLogin(new Administrador(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
+                if(tela.getNivel().equalsIgnoreCase("Administrador"))
+                {
+                    DadosUsuario.adicionaLogin(new Administrador(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
+                }
+                else if(tela.getNivel().equalsIgnoreCase("Vendedor"))
+                {
+                    DadosUsuario.adicionaLogin(new Vendedor(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
+                }
+                else if(tela.getNivel().equalsIgnoreCase("Tecnico"))
+                {
+                    DadosUsuario.adicionaLogin(new Tecnico(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
+                }
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+                tela.setVisible(false);
+                new TelaAdm();
             }
-            else if(tela.getNivel().equalsIgnoreCase("Vendedor"))
+            catch(Exception ex)
             {
-                DadosUsuario.adicionaLogin(new Vendedor(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
+                JOptionPane.showMessageDialog(null, "Insercao indevida. Digite novamente");
             }
-            else if(tela.getNivel().equalsIgnoreCase("Tecnico"))
-            {
-                DadosUsuario.adicionaLogin(new Tecnico(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
-            }
-            
-            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
-            tela.setVisible(false);
-            new TelaAdm();
         }
         else
         {

@@ -31,13 +31,13 @@ public class Servico
 
 
     
-    public Servico(String nomeCliente, int telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, int serial, String observacaoVendedor)
+    public Servico(String nomeCliente, int telefoneCliente, String dataChegada, String dataSaida, String marca, String modelo, int serial, String observacaoVendedor)throws Exception 
     {
         numServicoS++;
         this.numServico=numServicoS;
         
         this.nomeCliente=nomeCliente;
-        
+              
         Integer tel = telefoneCliente;
         this.telefoneCliente=tel.toString();
         this.telefoneCliente=this.telefoneCliente.charAt(0)+" "+this.telefoneCliente.substring(1, 5)+"-"+this.telefoneCliente.substring(5);
