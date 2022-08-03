@@ -5,6 +5,7 @@
 package Model;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Gabriel Mattos
@@ -59,16 +60,35 @@ public class Vendedor extends Usuario
     
     public void computaVenda(Item item, int qntd)
     {        
-        Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
+        try
+        {
+            if(qntd>item.getQuantItem() || qntd<=0)
+            {
+                throw new Exception();
+            }
+            
+            Item p1=new Item(item.getNomeItem(),item.getPrecoItem(),qntd);
         
-        produtosVendidos.add(p1);
-        vendatotal= item.getPrecoItem()*qntd;
-        comissao += item.getPrecoItem()*qntd*0.05;
+            produtosVendidos.add(p1);
+            vendatotal= item.getPrecoItem()*qntd;
+            comissao += item.getPrecoItem()*qntd*0.05;
+            
+            item.venda(qntd);
+        }
+        catch(Exception exception)
+        {
+            JOptionPane.showMessageDialog(null, "Quantidade inválida. Digite novamente.");
+        }
+    }
+    
+    public Item retornaItemIndex(int index)//rever essa função
+    {
+        return this.produtosVendidos.get(index);
     }
     
     @Override
     public String toString()
     {
-        return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha();
+        return "Vendedor "+getNomeUsuario()+'\n'+"Login: "+getLogin()+'\n'+"Senha: "+getSenha()+'\n'+"Total Vendas: "+getVendatotal()+'\n'+"Comissão: "+getComissao();
     }
 }

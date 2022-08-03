@@ -8,7 +8,7 @@ package Model;
  *
  * @author Gabriel Mattos
  */
-public class Usuario implements Comparable<Usuario>
+public abstract class Usuario implements Comparable<Usuario>
 {
     private String nomeUsuario;
     private String login;
@@ -71,8 +71,6 @@ public class Usuario implements Comparable<Usuario>
         }
     }
     
-    //@Override
-    //public abstract String toString();
-
-    
+    @Override
+    public abstract String toString();
 }

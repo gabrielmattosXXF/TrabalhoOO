@@ -47,17 +47,4 @@ public class JSONItens
         
         return estoqueMercadoria;
     }
-    
-    /*public static void main(String[] args) {
-        List<Item>itens = new ArrayList<>();
-        itens.add(new Item("TV", 250, 5));
-        itens.add(new Item("Som", 350, 5));
-        itens.add(new Item("Carro", 2050, 5));
-        
-        
-        String json = toJSON(itens);
-        
-        System.out.println("json = " + json);
-      
-    }*/
 }

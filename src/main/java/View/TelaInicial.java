@@ -5,16 +5,8 @@
 package View;
 
 import Control.EventoJanela;
-import Model.Item;
-import Model.Servico;
-import Model.Usuario;
-import Util.Arquivo;
-import Util.JSONItens;
-import Util.JSONLogins;
-import Util.JSONServicos;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 
 /**
@@ -35,8 +27,6 @@ public class TelaInicial extends JFrame implements Tela
         this.setVisible(true);
         
         this.addWindowListener(new EventoJanela(this));
-        
-        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.setLocationRelativeTo(null);
@@ -48,9 +38,8 @@ public class TelaInicial extends JFrame implements Tela
         botoes.setLayout(new GridLayout(0,2));
         
         JButton btLogin = new JButton("Login");
-        //btLogin.addActionListener(new OpcaoLogin(this)); //addActionListener adiciona um comando ao click do botão
         btLogin.addActionListener(a->{
-            this.setVisible(false);//faz a tela ficar oculta após o comando acontecer
+            this.setVisible(false);
             new TelaLogin();
         });
         botoes.add(btLogin);

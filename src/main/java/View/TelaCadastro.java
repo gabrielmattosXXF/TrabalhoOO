@@ -32,7 +32,7 @@ public class TelaCadastro extends JFrame implements Tela
         this.add(painelCaixaTexto(), BorderLayout.CENTER);
         this.add(painelBotoes(), BorderLayout.SOUTH);
         
-        this.setSize(350, 250);//redimensionar tela
+        this.setSize(350, 250);
         this.setVisible(true);
         
         this.addWindowListener(new EventoJanela(this));
@@ -69,7 +69,7 @@ public class TelaCadastro extends JFrame implements Tela
         btCancelar.addActionListener(e->{
             this.setVisible(false);
             new TelaInicial(); 
-        });//fazer retornar para a tela do administrador
+        });
         botoes.add(btCancelar);
         
         return botoes;
@@ -102,7 +102,6 @@ public class TelaCadastro extends JFrame implements Tela
     
     public String getNivel() {
         
-        //nivel.getItemAt(nivel.getSelectedIndex());
         return nivel.getItemAt(nivel.getSelectedIndex()).toString();
     }
 

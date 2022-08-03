@@ -30,16 +30,13 @@ public class TelaVendedor extends JFrame implements Tela
         super("Tela Vendedor: " + vendedor.getNomeUsuario());
         this.vendedor=vendedor;
 
-        //this.setLayout(new BorderLayout());
         this.setLayout(new GridLayout(0, 2));
-        //this.add(painelDeBotoes(), BorderLayout.WEST);
         this.add(painelDeBotoes());
 
         this.painelTxt= new JPanel();
                 
         painelTxt.add(painelDeTexto());
         
-        //this.add(painelTxt, BorderLayout.EAST);
         this.add(painelTxt);
 
         this.setSize(500, 500);
@@ -65,11 +62,7 @@ public class TelaVendedor extends JFrame implements Tela
     
     private JPanel painelDeBotoes()
     {
-
-        //"Adiciona ao estoque", "Imprime estoque", "Administrar produto","Administrar funcionários", "Cancelar"};
-        
         JPanel botoes = new JPanel();
-        //botoes.setSize(500, 250);
         botoes.setLayout(new GridLayout(5, 0));
         
         JButton btEstoque = new JButton("Consultar Estoque");
@@ -126,7 +119,7 @@ public class TelaVendedor extends JFrame implements Tela
 
                 if (selectedIndex != -1) {
 
-                    Item elementAt = Estoque.retornaItemIndex(selectedIndex);
+                    Item elementAt = vendedor.retornaItemIndex(selectedIndex);
 
                     JOptionPane.showMessageDialog(null, elementAt);
                 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package View;
+import Control.EventoJanela;
 import javax.swing.*;
 import java.awt.*;
 import Model.Estoque;
@@ -46,6 +47,7 @@ public class TelaVenda extends JFrame implements Tela{
             }
         });
         
+        this.addWindowListener(new EventoJanela(this));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.principal = new JPanel();
@@ -59,7 +61,6 @@ public class TelaVenda extends JFrame implements Tela{
         
         this.setSize(500, 500);
         this.setVisible(true);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
     

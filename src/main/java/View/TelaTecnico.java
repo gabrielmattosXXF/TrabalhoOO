@@ -15,10 +15,6 @@ import Model.Servico;
  */
 public class TelaTecnico extends JFrame implements Tela
 {
-    /*
-    fazendo a JList que aparecerá no canto esuqerdo conter apenas os nomes dos produtos. ao acessar um dos produtos pela seleção, retornará essa string, que servirá para buscar esse produto no estoque e realizar as alterações nele
-    */
-    
     private JPanel principal;
     private JPanel painelGerencia;
     private JPanel painelBotoes;
@@ -54,8 +50,6 @@ public class TelaTecnico extends JFrame implements Tela
     public TelaTecnico()
     {
         super("Tela Técnico");
-        
-        //DefaultListModel<Item> model = new DefaultListModel<>();
         
         listaServico.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
         
@@ -147,11 +141,11 @@ public class TelaTecnico extends JFrame implements Tela
     
     private JPanel painelBotoes()
     {
-        JPanel botoesGer = new JPanel();//Fazer as funcionalidades realizar orçamento e direcionar o Serviço para a lista de feitos e de sem concerto
+        JPanel botoesGer = new JPanel();
         
         botoesGer.setLayout(new GridLayout(5, 0));
 
-        JButton btFeito = new JButton("Marcar Feito");//vale a pena implementar isso?
+        JButton btFeito = new JButton("Marcar Feito");
         btFeito.addActionListener(a->{
             int selectedIndex = listaServico.getSelectedIndex();
                     
@@ -234,7 +228,7 @@ public class TelaTecnico extends JFrame implements Tela
                 selectedServico.setObservacao(tfObservacao.getText());
                 selectedServico.setPreco(Double.parseDouble(tfPreco.getText()));
                 
-                JOptionPane.showConfirmDialog(null, "Orçamento adicionado com sucesso!");//fazer essa mensagem aparecer caso não ocorra erro
+                JOptionPane.showConfirmDialog(null, "Orçamento adicionado com sucesso!");
             }
         });
         botoesGer.add(btAddOrcamento);
@@ -252,15 +246,11 @@ public class TelaTecnico extends JFrame implements Tela
             this.observacaovendedor.setText("Observação do vendedor: ");
             this.situacao.setText("Situação: ");
             
-            //painelGerencia.revalidate();
-            //painelGerencia.repaint();
-            
             this.tfDefeito.setText("");
             this.tfReparo.setText("");
             this.tfObservacao.setText("");
             this.tfPreco.setText("");
             
-            //listaServico.setSelectedIndex(-1);
             listaServico.setSelectedValue(null, false);
         });
         botoesGer.add(btLimpar);

@@ -5,7 +5,6 @@
 package Control;
 import View.*;
 import Model.*;
-import Control.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,7 +45,7 @@ public class ConfirmaLogin implements ActionListener
             {
                 this.tela.setVisible(false);
                 Vendedor vendedor = (Vendedor)usuario;
-                new TelaVendedor(vendedor);//gambiarra?
+                new TelaVendedor(vendedor);
             }
             else if(usuario.getNivelDeAcesso().equals("Tecnico"))
             {

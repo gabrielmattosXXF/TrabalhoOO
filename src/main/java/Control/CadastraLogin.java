@@ -5,14 +5,11 @@
 package Control;
 
 import View.*;
-import Control.*;
 import Model.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 /**
  *
  * @author Gabriel Mattos
@@ -28,7 +25,6 @@ public class CadastraLogin implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        //if(!DadosUsuario.validaLogin(tela.getLogin().getText(), tela.getSenha().getText()))
         if(!DadosUsuario.verificaLoginInicializado(tela.getLogin().getText()))
         {
             if(tela.getNivel().equalsIgnoreCase("Administrador"))
@@ -43,8 +39,7 @@ public class CadastraLogin implements ActionListener
             {
                 DadosUsuario.adicionaLogin(new Tecnico(tela.getNome().getText(), tela.getLogin().getText(), tela.getSenha().getText()));
             }
-            //está estabelecido que o usuário digitou o nivel de acesso corretamente
-            //fazer um tratamento de excessão aq
+            
             JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
             tela.setVisible(false);
             new TelaAdm();

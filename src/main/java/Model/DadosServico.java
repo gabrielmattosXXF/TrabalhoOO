@@ -26,12 +26,6 @@ public class DadosServico
             System.out.println("Pasta nao encontrada!");
         }
         
-        /*String toJSON = JSONServicos.toJSON(dadosServico);
-
-        //System.out.println(toJSON);
-
-        Arquivo.escreverArquivo("dadosServico", toJSON);*/
-        
     }
     
     public static List getDadosServico()

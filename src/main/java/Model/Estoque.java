@@ -52,20 +52,6 @@ public class Estoque
         estoqueMercadoria.add(produto);
     }
     
-    /*public static void aumentaQuantidade(String nome, int quant)
-    {
-        estoqueMercadoria.get(retornaIndexNome(nome)).setQuant(quant);
-    }*/
-    
-    /*public static void diminuiQuantidade(String nome, int quant)
-    {
-        if(verificaDispoProd(nome))
-        {
-            //estoqueMercadoria.get(retornaIndexNome(nome)).getQuant();
-            estoqueMercadoria.get(retornaIndexNome(nome)).setQuant((-quant));
-        }
-    }*/
-    
     public static boolean veirificaEStoqueVazio()
     {
         if(estoqueMercadoria.isEmpty())
@@ -81,7 +67,6 @@ public class Estoque
         if(estoqueMercadoria.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Estoque vazio!", "Estoque", 0);
-            //System.out.println("Estoque vazio!");
             return false;
         }
         else if(verificaProdInicializado(nome))
@@ -106,20 +91,6 @@ public class Estoque
         }
         
         return false;
-        
-        /*
-        for(i=0; i<estoqueMercadoria.size(); i++)
-        {
-            if(estoqueMercadoria.get(i).getNome().equalsIgnoreCase(nome))
-            {
-                return true;
-            }
-        }
-        
-        return false;
-        */
-        
-        
     }
      
     public static double retornaPrecoItem(String nome)
@@ -143,9 +114,7 @@ public class Estoque
         if(i==estoqueMercadoria.size())
         {
             nome = JOptionPane.showInputDialog(null, "Item não localizado no estoque. Insira outro nome: ");
-            //System.out.println("Item não localizado no estoque. Insira outro nome: ");
             {
-                //nome=teclado.nextLine();
                 retornaIndexNome(nome);
             }
         }
@@ -154,7 +123,7 @@ public class Estoque
     }
      
     
-    public static List imprimeEstoque()//provavelmente vai apagar
+    public static List imprimeEstoque()
     {
         List<String> listaEstoque = new ArrayList<>();
         for(Item prod : estoqueMercadoria)
@@ -174,21 +143,15 @@ public class Estoque
         return listaEstoque;
     }
     
-    public static void setPrecoProd(String nome, double preco)//rever essa funç/ão
+    public static void setPrecoProd(String nome, double preco)
     {
         estoqueMercadoria.get(retornaIndexNome(nome)).setPrecoItem(preco);
     }
-    
-    /*public static void setNomeProd(String nome1, String nome2)//rever essa funç/ão
-    {
-        estoqueMercadoria.get(retornaIndexNome(nome1)).setNome(nome2);
-    }*/
     
     
     public static void realizaVenda(Item item,int qntd,Vendedor vendedor)
     {
         vendedor.computaVenda(item,qntd);
-        item.venda(qntd);
     }
     
     public static void removeItem(int index)
@@ -196,7 +159,7 @@ public class Estoque
         estoqueMercadoria.remove(index);
     }
     
-    public static Item retornaItemIndex(int index)//rever essa função
+    public static Item retornaItemIndex(int index)
     {
         return estoqueMercadoria.get(index);
     }

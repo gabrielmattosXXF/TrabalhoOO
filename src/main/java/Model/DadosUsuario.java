@@ -4,10 +4,11 @@
  */
 package Model;
 import Util.Arquivo;
-import Util.JSONLogins;
+import Util.JSONAdministrador;
+import Util.JSONTecnico;
+import Util.JSONVendedor;
 import java.util.*;
 import java.io.FileNotFoundException;
-//import java.awt.*;
 
 /**
  *
@@ -15,27 +16,49 @@ import java.io.FileNotFoundException;
  */
 public class DadosUsuario 
 {
-    //talvez tenha que fazer um arquivo para guardar os adms, os tecnicos e os vendedores, ai pega o arquivo de cada faz uma lista 
-    //para cada tipo, junta todas essas em uma lista de usuarios pra ser usada efetivamente
-    //ai ao final da inicialização separa essa lista de usuarios em tres listas pra escrever os arquivos de cada uma 
-    
     private static List<Usuario> dadosLogin = new ArrayList<>();
     
     static
     {
         try {
-            String lerArquivo = Arquivo.lerArquivo("dadosLogin.txt");
-            System.out.println(lerArquivo);
-            //dadosLogin = JSONLogins.toDadosLogin(lerArquivo);
-            /*for(Usuario user : dadosLogin)
+            String lerArquivoAdm = Arquivo.lerArquivo("dadosAdministrador.txt");
+            List<Administrador> dadosAdministrador = JSONAdministrador.toDadosAdministrador(lerArquivoAdm);
+            for(Administrador adm : dadosAdministrador)
             {
-                System.out.println(user.getClass().getName());
-            }*/
+                dadosLogin.add(adm);
+            }
 
         } catch (FileNotFoundException ex) {
             System.out.println("Pasta nao encontrada!");
         }
         
+        try
+        {
+            String lerArquivoTecnico = Arquivo.lerArquivo("dadosTecnico.txt");
+            List<Tecnico> dadosTecnico = JSONTecnico.toDadosTecnico(lerArquivoTecnico);
+            for(Tecnico tec : dadosTecnico)
+            {
+                dadosLogin.add(tec);
+            }
+        }
+        catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }
+        
+        try
+        {
+            String lerArquivoVendedor = Arquivo.lerArquivo("dadosVendedor.txt");
+            List<Vendedor> dadosVendedor = JSONVendedor.toDadosVendedor(lerArquivoVendedor);
+            for(Vendedor vend : dadosVendedor)
+            {
+                dadosLogin.add(vend);
+            }
+        }
+        catch (FileNotFoundException ex) {
+            System.out.println("Pasta nao encontrada!");
+        }
+        
+        Collections.sort(dadosLogin);
         if(dadosLogin.isEmpty())
         {
              dadosLogin.add(new Administrador("Luiz Gustavo Ferreira Nazareth", "luizgustavonazareth4@gmail.com", "12345678"));
@@ -46,15 +69,7 @@ public class DadosUsuario
              dadosLogin.add(new Tecnico("lolo", "opa", "opa"));
              dadosLogin.add(new Vendedor("maras", "oi", "oi"));
              
-            /*for(Usuario user : dadosLogin)
-            {
-                System.out.println(user.getClass().getName());
-            }*/
-             
             Collections.sort(dadosLogin);
-            String toJSON = JSONLogins.toJSON(dadosLogin);
-
-            Arquivo.escreverArquivo("dadosLogin.txt", toJSON);
         }
     }
     
@@ -104,7 +119,7 @@ public class DadosUsuario
         Collections.sort(dadosLogin);
     }
     
-    public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)//verificar diminuição de acoplamento aqui
+    public static Usuario retornaUsuario(String loginDigitado, String senhaDigitada)
     {
         for(Usuario user : dadosLogin)
         {
@@ -126,7 +141,8 @@ public class DadosUsuario
         {
             for(Usuario user : dadosLogin)
             {
-                if(user.getNivelDeAcesso()=="Administrador")
+                if(user.getNivelDeAcesso().equalsIgnoreCase("Administrador"))
+                
                     listaFuncionario.add(user.getNomeUsuario());
             }
         }
@@ -134,7 +150,7 @@ public class DadosUsuario
         {
             for(Usuario user : dadosLogin)
             {
-                if(user.getNivelDeAcesso()=="Tecnico")
+                if(user.getNivelDeAcesso().equalsIgnoreCase("Tecnico"))
                     listaFuncionario.add(user.getNomeUsuario());
             }            
         }
@@ -142,7 +158,7 @@ public class DadosUsuario
         {
             for(Usuario user : dadosLogin)
             {
-                if(user.getNivelDeAcesso()=="Vendedor")
+                if(user.getNivelDeAcesso().equalsIgnoreCase("Vendedor"))
                     listaFuncionario.add(user.getNomeUsuario());
             }            
         }
@@ -165,14 +181,14 @@ public class DadosUsuario
         return dadosLogin.get(index).toString();
     }
     
-    public static int indexLastAdm() //função só serve se a lista já tiver sido tratada
+    public static int indexLastAdm()
     {
         int i;
         for(i=0; i<dadosLogin.size(); i++)
         {
-            if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
+            if(dadosLogin.get(i).getNivelDeAcesso().equalsIgnoreCase("Administrador"))
             {
-                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Tecnico" || dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
+                if(dadosLogin.get(i+1).getNivelDeAcesso().equalsIgnoreCase("Tecnico") || dadosLogin.get(i+1).getNivelDeAcesso().equalsIgnoreCase("Vendedor"))
                 {
                     return i;
                 }
@@ -187,16 +203,16 @@ public class DadosUsuario
         int i;
         for(i=0; i<dadosLogin.size(); i++)
         {
-            if(dadosLogin.get(i).getNivelDeAcesso()=="Administrador")
+            if(dadosLogin.get(i).getNivelDeAcesso().equalsIgnoreCase("Administrador"))
             {
-                if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
+                if(dadosLogin.get(i+1).getNivelDeAcesso().equalsIgnoreCase("Vendedor"))
                 {
                     return i;
                 }
             }
-            else if(dadosLogin.get(i).getNivelDeAcesso()=="Tecnico")
+            else if(dadosLogin.get(i).getNivelDeAcesso().equalsIgnoreCase("Tecnico"))
                 {
-                    if(dadosLogin.get(i+1).getNivelDeAcesso()=="Vendedor")
+                    if(dadosLogin.get(i+1).getNivelDeAcesso().equalsIgnoreCase("Vendedor"))
                     {
                         return i;
                     }

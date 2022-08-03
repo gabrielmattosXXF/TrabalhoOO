@@ -15,29 +15,16 @@ import Control.EventoJanela;
  */
 public class TelaAdmProduto extends JFrame implements Tela
 {
-    /*
-    fazendo a JList que aparecerá no canto esuqerdo conter apenas os nomes dos produtos. ao acessar um dos produtos pela seleção, retornará essa string, que servirá para buscar esse produto no estoque e realizar as alterações nele
-    */
-    
     JPanel principal;
-    //private JList<String> lista;
-    //o item selecionado na JList retorna seu index ao action, fazendo alterações na lista dessa forma. Será feita alterações da mesma forma no item da lista normal do estoque
     
     private JTextField nomeItem;
     private JTextField precoItem;
     private JTextField quantItem;
     private JList listaEstoque = new JList (Estoque.imprimeEstoqueS().toArray());
     
-    //JTextField nomeItem;
-    //JTextField precoItem;
-    //JTextField quantItem; 
-    
-    
     public TelaAdmProduto()
     {
         super("Administrar Produto");
-        
-        //DefaultListModel<Item> model = new DefaultListModel<>();
         
         listaEstoque.setSelectionMode (ListSelectionModel.SINGLE_SELECTION);
         
@@ -115,9 +102,8 @@ public class TelaAdmProduto extends JFrame implements Tela
         JButton btAdicionar = new JButton("Adicionar");
         btAdicionar.addActionListener(a->{
             Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
-            //this.principal.repaint();
-            //SwingUtilities.updateComponentTreeUI(this);
-            this.setVisible(false);//cambiarra
+            
+            this.setVisible(false);
             new TelaAdmProduto();
         });
         botoesGer.add(btAdicionar);
@@ -131,19 +117,9 @@ public class TelaAdmProduto extends JFrame implements Tela
             {
                 if(selectedIndex != -1)
                 {
-                Estoque.removeItem(selectedIndex);//fazer um mecanismo que atualize a JList na hora de execução
+                    Estoque.removeItem(selectedIndex);
 
-                                //DefaultListModel<String> model = (DefaultListModel<String>) listaFuncionarios.getModel();
-                                //model.removeElementAt(selectedIndex);
-                                //listaFuncionarios.setModel(model);
-                                //painelTxt.repaint();
-                                
-                                //painelTxt.removeAll();
-                                //painelTxt.add(scroll,BorderLayout.CENTER);
-                                //painelTxt.add(removerFunc,BorderLayout.SOUTH);
-                                //painelTxt.revalidate();
-                                //painelTxt.repaint();
-                    this.setVisible(false);//cambiarra
+                    this.setVisible(false);
                     new TelaAdmProduto();
                 }
             }
@@ -160,7 +136,7 @@ public class TelaAdmProduto extends JFrame implements Tela
             selectedItem.setPrecoItem(Double.parseDouble(precoItem.getText()));
             selectedItem.setQuantItem(Integer.parseInt(quantItem.getText()));
             
-            this.setVisible(false);//cambiarra
+            this.setVisible(false);
             new TelaAdmProduto();
             
         });

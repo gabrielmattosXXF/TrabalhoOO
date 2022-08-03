@@ -24,16 +24,13 @@ public class TelaAdm extends JFrame implements Tela
     {
         super("Tela Administrador");
 
-        //this.setLayout(new BorderLayout());
         this.setLayout(new GridLayout(0, 2));
-        //this.add(painelDeBotoes(), BorderLayout.WEST);
         this.add(painelDeBotoes());
 
         this.painelTxt= new JPanel();
                 
         painelTxt.add(painelDeTexto());
         
-        //this.add(painelTxt, BorderLayout.EAST);
         this.add(painelTxt);
 
         this.setSize(500, 500);
@@ -59,11 +56,7 @@ public class TelaAdm extends JFrame implements Tela
     
     private JPanel painelDeBotoes()
     {
-
-        //"Adiciona ao estoque", "Imprime estoque", "Administrar produto","Administrar funcionários", "Cancelar"};
-        
         JPanel botoes = new JPanel();
-        //botoes.setSize(500, 250);
         botoes.setLayout(new GridLayout(5, 0));
         
         JButton btImprimeEstoque = new JButton("Imprime estoque");
@@ -124,7 +117,7 @@ public class TelaAdm extends JFrame implements Tela
                 JOptionPane.showMessageDialog(null, "Valor total dos serviços feitos: R$"+DadosServico.totalPrecoServico());
             });
             painelTxt.add(btTotalPrecoServico);
-            //fazer um botão que mostre a soma dos valores de cada servico feito
+            
             painelTxt.revalidate();
             painelTxt.repaint();
             
@@ -203,7 +196,6 @@ public class TelaAdm extends JFrame implements Tela
                         }
                         
                     });
-                    //listaFuncionarios =new JList (DadosUsuario.imprimeFuncionario(selectedIndex).toArray());
                     
                     painelTxt.removeAll();
                     painelTxt.add(listFunc, BorderLayout.CENTER);

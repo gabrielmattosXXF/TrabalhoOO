@@ -5,7 +5,6 @@
 package View;
 
 import Control.EventoJanela;
-import Model.Aparelho;
 import Model.Vendedor;
 import Model.DadosServico;
 import Model.Servico;
@@ -21,8 +20,8 @@ public class TelaServico extends JFrame implements Tela
     private JTextField nomeClienteP;
     private JTextField telefoneClienteP;
     
-    private JTextField dataChegadaP;//criar tipo Data
-    private JTextField dataSaidaP;//criar tipo Data
+    private JTextField dataChegadaP;
+    private JTextField dataSaidaP;
     
     private JTextField marcaP;
     private JTextField modeloP;
@@ -52,7 +51,7 @@ public class TelaServico extends JFrame implements Tela
         this.add(painelCaixaTexto(), BorderLayout.CENTER);
         this.add(painelBotoes(), BorderLayout.SOUTH);
         
-        this.setSize(350, 250);//redimensionar tela
+        this.setSize(350, 250);
         this.setVisible(true);
         
         this.addWindowListener(new EventoJanela(this));
@@ -99,7 +98,7 @@ public class TelaServico extends JFrame implements Tela
             String dataSaida = this.dataSaidaP.getText();
             String marca = this.marcaP.getText();
             String modelo = this.modeloP.getText();
-            int serial = Integer.parseInt(this.serialP.getText());//é numero
+            int serial = Integer.parseInt(this.serialP.getText());
             String observacaoVendedor = this.observacaoVendedorP.getText();
 
             DadosServico.adicionaServico(new Servico(nomeCliente, telefoneCliente, dataChegada, dataSaida, marca, modelo, serial, observacaoVendedor));

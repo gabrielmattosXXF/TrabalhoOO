@@ -16,10 +16,8 @@ import java.awt.*;
  */
 public class TelaLogin extends JFrame implements Tela
 {
-    //chega nessa classe através da classe no control que direciona à essa
-    
-    JTextField login;//quando escrito ele aparece a String
-    JPasswordField senha;//quando escrito a String aparece no formato ******
+    JTextField login;
+    JPasswordField senha;
     
     public TelaLogin(){
 
@@ -27,9 +25,9 @@ public class TelaLogin extends JFrame implements Tela
         this.senha = new JPasswordField(50);
         this.setLayout(new BorderLayout());
         
-        this.add(painelDeTexto(), BorderLayout.CENTER);//coloca o painel de texto ao centro 
+        this.add(painelDeTexto(), BorderLayout.CENTER);
         
-        this.add(painelDeBotoes(), BorderLayout.SOUTH);//coloca o painel de botoes na parte de baixo da tela
+        this.add(painelDeBotoes(), BorderLayout.SOUTH);
         
         this.setSize(300, 200);
         this.setVisible(true);
