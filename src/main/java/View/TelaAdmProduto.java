@@ -109,7 +109,7 @@ public class TelaAdmProduto extends JFrame implements Tela
                     Estoque.adicionaProdutoAoEstoque(new Item(nomeItem.getText(), Double.parseDouble(precoItem.getText()), Integer.parseInt(quantItem.getText())));
                     //this.principal.repaint();
                     //SwingUtilities.updateComponentTreeUI(this);
-                    this.setVisible(false);//cambiarra
+                    this.setVisible(false);
                     new TelaAdmProduto();
                 }
                 else
