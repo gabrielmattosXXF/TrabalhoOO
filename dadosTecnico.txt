@@ -1,1 +1,1 @@
-[{"nomeUsuario":"Yuri Freitas Toledo","login":"yuritoledo@gmail.com","senha":"12345678","nivelDeAcesso":"Tecnico"}]
+[{"nomeUsuario":"Sara Gomes ","login":"saragomes@gmail.com","senha":"12345678","nivelDeAcesso":"Tecnico"},{"nomeUsuario":"Yuri Freitas Toledo","login":"yuritoledo@gmail.com","senha":"12345678","nivelDeAcesso":"Tecnico"}]

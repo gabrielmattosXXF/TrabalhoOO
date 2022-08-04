@@ -1,7 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Augusto de Fillippo Cavalini-202165514B 
+
+Gabriel Mattos-202165503B 
+
+Luiz Gustavo Ferreira Nazareth-202165515B 
+*/
 package View;
 
 import Control.DirecionaTelaCadastro;
@@ -178,7 +181,6 @@ public class TelaAdm extends JFrame implements Tela {
 
                         if (funcSelectedIndex != -1) {
                             int funcSelectedIndexJList = listaFuncionarios.getSelectedIndex();
-                            System.out.println(funcSelectedIndexJList);
 
                             if (selectedIndex == 1) {
                                 funcSelectedIndex += DadosUsuario.indexLastAdm() + 1;

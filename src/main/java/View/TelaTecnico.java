@@ -1,7 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Augusto de Fillippo Cavalini-202165514B 
+
+Gabriel Mattos-202165503B 
+
+Luiz Gustavo Ferreira Nazareth-202165515B 
+*/
 package View;
 import Control.EventoJanela;
 import javax.swing.*;
@@ -30,7 +33,7 @@ public class TelaTecnico extends JFrame implements Tela
     private JLabel marca = new JLabel("Marca:");
     private JLabel modelo = new JLabel("Modelo:");
     private JLabel serial = new JLabel("Serial:");
-    private JLabel observacaovendedor = new JLabel("Observacao do vendedor:");
+    private JLabel observacaovendedor = new JLabel("Observacao vendedor:");
 
     private JLabel defeito = new JLabel("Defeito:");
     private JLabel reparo = new JLabel("Reparo:");
@@ -98,7 +101,7 @@ public class TelaTecnico extends JFrame implements Tela
                 {
                     
                 }
-                this.observacaovendedor.setText("Observação do vendedor: " + obs);
+                this.observacaovendedor.setText("Observacao vendedor: " + obs);
                 
                 String situacaoS="Em análise.";
                 if(elementAt.isFeito())

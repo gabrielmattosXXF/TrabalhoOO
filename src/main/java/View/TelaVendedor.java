@@ -1,9 +1,11 @@
-package View;
-
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+Augusto de Fillippo Cavalini-202165514B 
+
+Gabriel Mattos-202165503B 
+
+Luiz Gustavo Ferreira Nazareth-202165515B 
+*/
+package View;
 
 /**
  *
